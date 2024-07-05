@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 table {
-    width: 50%;
+    width:600px;
     border-collapse: collapse;
     margin: 20px 0;
 }
@@ -9,6 +9,9 @@ table {
 td, th {
     padding: 10px;
     text-align: left;
+}
+td:nth-child(2){
+    width: 70%;
 }
 
 input[type="text"], input[type="password"] {

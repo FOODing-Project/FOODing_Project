@@ -24,6 +24,10 @@
         <div>
             <input class="button" type="submit" value="다음">
         </div>
+        <div class="helper-links">
+            <a href="${pageContext.request.contextPath}/find-id">회원ID 찾기</a>
+            <a href="${pageContext.request.contextPath}/find-pass">비밀번호 찾기</a>
+        </div>
     </form>
 
     <!-- 두 번째 폼 -->
@@ -35,6 +39,9 @@
         </div>
         <div>
             <input class="button" type="submit" value="로그인" onclick="submitSecondForm()">
+        </div>
+        <div class="helper-links">
+            <a href="${pageContext.request.contextPath}/find-pass">비밀번호 찾기</a>
         </div>
     </form>
 </div>
