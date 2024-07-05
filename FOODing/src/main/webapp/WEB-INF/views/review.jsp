@@ -17,7 +17,7 @@
 
     <form:form action="review" modelAttribute="review" method="post">
         <h3>여기에 가게명 출력</h3>
-        <form:label path="rstar">별점을 선택해주세요   </form:label>
+        <form:label path="rstar">별점을 선택해주세요 ${"&nbsp"} </form:label>
         <form:select path="rstar">
             <form:option value="5" label="5"/>
             <form:option value="4" label="4"/>
