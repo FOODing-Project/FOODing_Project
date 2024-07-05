@@ -1,14 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>사장님 회원등록 화면</title>
+<%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
+<c:import url = "/top.jsp" />
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/register.css">
     <script src="${pageContext.request.contextPath}/resources/js/validation.js"></script>
-</head>
-<body>
+
+<section>
 <h2>${memberType} 회원등록</h2>
 <form:form name="registrationForm" action="${pageContext.request.contextPath}/register/owner" modelAttribute="member" method="post" onsubmit="return validateForm()">
     <table border="1" align="center">
@@ -76,8 +75,5 @@
     </table>
     <form:hidden path="mtype" />
 </form:form>
-
-
-</body>
-
-</html>
+</section>
+<c:import url = "/bottom.jsp" />

@@ -12,4 +12,6 @@ public interface MemberRepository extends JpaRepository<Member, String> {
     Optional<Member> findByMid(String mid);
 
     boolean existsByMid(String mid);
+    boolean existsByMnick(String mnick);
+
 }

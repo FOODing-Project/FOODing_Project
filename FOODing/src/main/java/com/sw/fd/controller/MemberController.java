@@ -46,6 +46,21 @@ public class MemberController {
             model.addAttribute("memberType", "손님");
             return "registerUser";
         }
+
+        // 아이디 중복 체크
+        if (memberService.isMidExists(member.getMid())) {
+            bindingResult.rejectValue("mid", "error.member", "이미 사용 중인 아이디입니다.");
+            model.addAttribute("memberType", "손님");
+            return "registerUser";
+        }
+
+        // 닉네임 중복 체크
+        if (memberService.isMnickExists(member.getMnick())) {
+            bindingResult.rejectValue("mnick", "error.member", "이미 사용 중인 닉네임입니다.");
+            model.addAttribute("memberType", "손님");
+            return "registerUser";
+        }
+
         memberService.saveMember(member);
         model.addAttribute("message", "일반 회원 가입 성공! 환영합니다!");
         return "login";
@@ -57,6 +72,21 @@ public class MemberController {
             model.addAttribute("memberType", "사장님");
             return "registerOwner";
         }
+
+        // 아이디 중복 체크
+        if (memberService.isMidExists(member.getMid())) {
+            bindingResult.rejectValue("mid", "error.member", "이미 사용 중인 아이디입니다.");
+            model.addAttribute("memberType", "손님");
+            return "registerUser";
+        }
+
+        // 닉네임 중복 체크
+        if (memberService.isMnickExists(member.getMnick())) {
+            bindingResult.rejectValue("mnick", "error.member", "이미 사용 중인 닉네임입니다.");
+            model.addAttribute("memberType", "손님");
+            return "registerUser";
+        }
+
         memberService.saveMember(member);
         model.addAttribute("message", "사장님 회원 가입 성공! 환영합니다!");
         return "login";

@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
+<c:import url = "/top.jsp" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,5 +16,7 @@
     <a href="${pageContext.request.contextPath}/register/user" class="btn-user">일반 회원가입</a>
     <a href="${pageContext.request.contextPath}/register/owner" class="btn-owner">사장님 회원가입</a>
 </div>
+
+<c:import url = "/bottom.jsp" />
 </body>
 </html>

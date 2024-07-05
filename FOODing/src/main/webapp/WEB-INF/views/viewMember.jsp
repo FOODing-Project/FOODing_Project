@@ -1,8 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/viewMember.css">
+<c:import url = "/top.jsp" />
 
+<section>
 <div class="view-container">
 <h1>회원 정보 조회</h1>
 <form class="form-container">
@@ -60,3 +62,5 @@
     </table>
 </form>
 </div>
+</section>
+<c:import url = "/bottom.jsp" />

@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
 
+<%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
+<c:import url = "/top.jsp" />
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
 <script src="${pageContext.request.contextPath}/resources/js/validation.js"></script>
@@ -36,6 +38,8 @@
         </div>
     </form>
 </div>
+
+<c:import url = "/bottom.jsp" />
 
 
 

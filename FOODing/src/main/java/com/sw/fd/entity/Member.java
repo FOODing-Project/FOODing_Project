@@ -17,8 +17,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Member {
     @Id
-    private String mid;
+    private int mno;
 
+    private String mid;
     private String mname;
     private String mpass;
 
@@ -45,4 +46,5 @@ public class Member {
     public void setMpassConfirm(String mpassConfirm) {
         this.mpassConfirm = mpassConfirm;
     }
+
 }

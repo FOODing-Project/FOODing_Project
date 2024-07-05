@@ -33,4 +33,11 @@ public class MemberService {
             memberRepository.save(member);
         }
     }
+
+    public boolean isMidExists(String mid) {
+        return memberRepository.existsByMid(mid);
+    }
+    public boolean isMnickExists(String mnick) {
+        return memberRepository.existsByMnick(mnick);
+    }
 }
