@@ -1,0 +1,62 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/viewMember.css">
+
+<div class="view-container">
+<h1>회원 정보 조회</h1>
+<form class="form-container">
+    <table border="1" align="center">
+        <tr>
+            <td><label for="mid">아이디</label></td>
+            <td><p>${member.mid}</p></td>
+        </tr>
+        <tr>
+            <td><label for="mname">이름</label></td>
+            <td><input type="text" id="mname" value="${member.mname}" readonly></td>
+        </tr>
+        <tr>
+            <td><label for="mtype">타입</label></td>
+            <td>
+                <p>
+                    <c:choose>
+                        <c:when test="${member.mtype == 0}">손님</c:when>
+                        <c:when test="${member.mtype == 1}">사장님</c:when>
+                    </c:choose>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="mnick">닉네임</label></td>
+            <td><input type="text" id="mnick" value="${member.mnick}" readonly></td>
+        </tr>
+        <tr>
+            <td><label for="mbirth">생년월일</label></td>
+            <td><input type="text" id="mbirth" value="${member.mbirth}" readonly></td>
+        </tr>
+        <tr>
+            <td><label for="mphone">연락처</label></td>
+            <td><input type="text" id="mphone" value="${member.mphone}" readonly></td>
+        </tr>
+        <tr>
+            <td><label for="memail">이메일</label></td>
+            <td><input type="text" id="memail" value="${member.memail}" readonly></td>
+        </tr>
+        <tr>
+            <td><label for="maddr">주소</label></td>
+            <td><input type="text" id="maddr" value="${member.maddr}" readonly></td>
+        </tr>
+        <tr>
+            <td><label>가입일자</label></td>
+            <td><p>${member.mdate}</p></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="button">
+                <a href="${pageContext.request.contextPath}/member/edit/${member.mid}">
+                    <button type="button">회원 정보 수정</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>

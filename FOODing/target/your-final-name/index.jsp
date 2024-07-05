@@ -12,11 +12,11 @@
             <tr>
                 <td align = "center">
                     <span>
-                        <a class = "head" href = "#">로그인</a>
+                        <a class = "head" href = "login">로그인</a>
                     </span>
                     <span>/</span>
                     <span>
-                        <a class = "head" href = "register">회원가입</a>
+                        <a class = "head" href = "registerSelect">회원가입</a>
                     </span>
                 </td>
             </tr>
