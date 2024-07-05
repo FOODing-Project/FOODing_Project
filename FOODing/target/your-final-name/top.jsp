@@ -3,12 +3,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel = "stylesheet" href = "resources/css/style_header.css" type = "text/css">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel = "stylesheet" href = "resources/css/style_nav.css" type = "text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="resources/js/nav_hover.js"></script>
         <meta charset = "UTF-8">
         <title>FOODing 메인화면</title>
     </head>
     <body>
         <header>
-            <link rel = "stylesheet" href = "resources/css/style_header.css" type = "text/css">
             <div class = "header-div">
                 <a class = "header1" href = "main">FOOD</a>
                 <a class = "header2" href = "main">ing</a>
@@ -18,15 +22,19 @@
             </div>
         </header>
         <nav>
-            <link rel = "stylesheet" href = "resources/css/style_nav.css" type = "text/css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="resources/js/nav_hover.js"></script>
             <div class = "nav-div">
                 <a class = "nav" href = "#">음식점 카테고리</a>
                 <a class = "nav" href = "#">가게리스트</a>
                 <a class = "nav" href = "#">모임</a>
                 <a class = "nav" href = "#">찜</a>
-                <a class = "nav" href = "#">검색</a>
+                <form class="d-flex">
+                    <div class = "search-form">
+                        <input class="form-control me-2" type="search" placeholder="검색어를 입력하세욧" aria-label="Search">
+                        <a class = "btn btn-link" href = "#" role = "button">
+                            <img src = "${pageContext.request.contextPath}/resources/images/search.png" alt="Search">
+                        </a>
+                    </div>
+                </form>
                 <ul class = "snb">
                     <div class = "submenu">
                         <li><a href = "#">한식</a></li>
