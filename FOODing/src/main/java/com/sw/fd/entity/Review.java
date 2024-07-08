@@ -18,7 +18,11 @@ public class Review {
     private int rno;
 
     private int mno;
-    private int sno;
+
+    @ManyToOne
+    @JoinColumn(name = "sno")
+    private Store store;
+
     private int rstar;
     private String rcomm;
     private LocalDate rdate;

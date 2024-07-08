@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public interface StoreRepository extends JpaRepository<Store, Integer> {
     Optional<Store> findBySno(int sno);
 }
