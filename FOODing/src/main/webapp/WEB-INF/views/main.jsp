@@ -16,5 +16,3 @@
     </div>
 </section>
 <c:import url = "/bottom.jsp" />
-</body>
-</html>
