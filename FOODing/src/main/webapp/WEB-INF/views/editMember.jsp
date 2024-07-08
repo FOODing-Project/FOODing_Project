@@ -2,7 +2,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
-<c:import url = "/top.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +11,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/validation.js"></script>
 </head>
 <body>
+<c:import url = "/top.jsp" />
 <h1>회원 정보 수정</h1>
 <form:form action="${pageContext.request.contextPath}/member/edit" modelAttribute="member" method="post">
     <table border="1" align="center">
@@ -60,5 +60,3 @@
 </form:form>
 
 <c:import url = "/bottom.jsp" />
-</body>
-</html>

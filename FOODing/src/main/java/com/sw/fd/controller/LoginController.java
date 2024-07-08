@@ -24,7 +24,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(String id, String password,HttpServletRequest request, Model model) {
-        Member member = memberService.findMemberByMidAndMpass(id, password);
+        Member member = memberService.login(id, password);
 
         if (member != null) {
             // 로그인 성공
@@ -32,6 +32,7 @@ public class LoginController {
             session.setAttribute("loggedInMember", member); // 세션에 로그인 정보 저장
             model.addAttribute("member", member);
             model.addAttribute("message", "로그인 성공!!");
+
             return "redirect:/dashboard"; // 대시보드 페이지로 리다이렉트
         } else {
             // 로그인 실패 처리
@@ -40,9 +41,22 @@ public class LoginController {
         }
     }
 
+//    @GetMapping("/dashboard")
+//    public String showDashboard() {
+//        return "dashboard"; // 대시보드 페이지로 이동
+//    }
+
     @GetMapping("/dashboard")
-    public String showDashboard() {
-        return "dashboard"; // 대시보드 페이지로 이동
+    public String showDashboard(HttpServletRequest request, Model model) {
+        // 세션에서 로그인된 회원 정보 가져오기
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("loggedInMember") != null) {
+            Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+            model.addAttribute("member", loggedInMember);
+            return "dashboard"; // 대시보드 페이지로 이동
+        } else {
+            return "redirect:/login"; // 로그인 페이지로 리다이렉트
+        }
     }
 
     @GetMapping("/logout")

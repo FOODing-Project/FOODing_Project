@@ -3,18 +3,25 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
-<c:import url = "/top.jsp" />
 
-
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/register.css">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <title>FOODing 메인화면</title>
     <script src="${pageContext.request.contextPath}/resources/js/validation.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/register.css">
 
+</head>
+
+<body>
+<c:import url = "/top.jsp" />
 <section>
-
 <form:form name="registrationForm" action="${pageContext.request.contextPath}/register/user" modelAttribute="member" method="post" onsubmit="return validateForm()">
+<div class="resister-container">
     <div><h1>${memberType} 회원등록</h1></div>
     <div>
-        <table border="1" align="center">
+        <table border="1">
             <tr>
                 <td><form:label path="mid">ID</form:label></td>
                 <td><form:input path="mid" />
@@ -79,6 +86,7 @@
             </tr>
         </table>
     </div>
+</div>
     <form:hidden path="mtype" />
 </form:form>
 </section>

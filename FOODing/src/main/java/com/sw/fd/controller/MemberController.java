@@ -76,14 +76,14 @@ public class MemberController {
         // 아이디 중복 체크
         if (memberService.isMidExists(member.getMid())) {
             bindingResult.rejectValue("mid", "error.member", "이미 사용 중인 아이디입니다.");
-            model.addAttribute("memberType", "손님");
+            model.addAttribute("memberType", "사장님");
             return "registerUser";
         }
 
         // 닉네임 중복 체크
         if (memberService.isMnickExists(member.getMnick())) {
             bindingResult.rejectValue("mnick", "error.member", "이미 사용 중인 닉네임입니다.");
-            model.addAttribute("memberType", "손님");
+            model.addAttribute("memberType", "사장님");
             return "registerUser";
         }
 
@@ -118,21 +118,50 @@ public class MemberController {
     }
 
     // 회원 정보 수정 처리
+//    @PostMapping("/member/edit")
+//    public String updateMember(@ModelAttribute("member") @Valid Member member,
+//                               BindingResult bindingResult, Model model) {
+//        if (bindingResult.hasErrors()) {
+//            return "editMember"; // 입력 폼으로 다시 이동
+//        }
+//
+//        Optional<Member> existingMemberOpt = memberService.findMemberById(member.getMid());
+//        if (existingMemberOpt.isPresent()) {
+//            Member existingMember = existingMemberOpt.get();
+//            member.setMdate(existingMember.getMdate()); // 기존 `mdate` 값을 유지
+//        }
+//
+//        memberService.updateMember(member); // 회원 정보 업데이트
+//        model.addAttribute("message", "회원 정보가 성공적으로 수정되었습니다.");
+//        return "redirect:/dashboard";
+//    }
+
     @PostMapping("/member/edit")
-    public String updateMember(@ModelAttribute("member") @Valid Member member,
+    public String updateMember(@ModelAttribute("member") @Valid Member updatedMember,
                                BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "editMember"; // 입력 폼으로 다시 이동
         }
 
-        Optional<Member> existingMemberOpt = memberService.findMemberById(member.getMid());
+        Optional<Member> existingMemberOpt = memberService.findMemberById(updatedMember.getMid());
         if (existingMemberOpt.isPresent()) {
             Member existingMember = existingMemberOpt.get();
-            member.setMdate(existingMember.getMdate()); // 기존 `mdate` 값을 유지
-        }
 
-        memberService.updateMember(member); // 회원 정보 업데이트
-        model.addAttribute("message", "회원 정보가 성공적으로 수정되었습니다.");
-        return "redirect:/dashboard";
+            // 기존 정보를 새로 입력된 정보로 업데이트
+            existingMember.setMname(updatedMember.getMname());
+            existingMember.setMpass(updatedMember.getMpass());
+            existingMember.setMnick(updatedMember.getMnick());
+            existingMember.setMbirth(updatedMember.getMbirth());
+            existingMember.setMphone(updatedMember.getMphone());
+            existingMember.setMemail(updatedMember.getMemail());
+            existingMember.setMaddr(updatedMember.getMaddr());
+
+            memberService.updateMember(existingMember); // 회원 정보 업데이트
+            model.addAttribute("message", "회원 정보가 성공적으로 수정되었습니다.");
+            return "redirect:/dashboard";
+        } else {
+            model.addAttribute("error", "회원 정보를 찾을 수 없습니다.");
+            return "error";
+        }
     }
 }

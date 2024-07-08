@@ -1,26 +1,30 @@
 @charset "UTF-8";
 
-table {
+.resister-container div{
     width:600px;
     border-collapse: collapse;
     margin: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: none;
 }
 
-td, th {
+.resister-container td, th {
     padding: 10px;
     text-align: left;
 }
-td:nth-child(2){
+.resister-container td:nth-child(2){
     width: 70%;
 }
 
-input[type="text"], input[type="password"] {
+.resister-container input[type="text"], input[type="password"] {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
 }
 
-button {
+.resister-container button {
     margin-top: 10px;
     padding: 8px 16px;
     background-color: #f5ba00;
@@ -30,11 +34,11 @@ button {
     cursor: pointer;
 }
 
-.error {
+.resister-container .error {
     color: red;
 }
 
-input[type="submit"] {
+.resister-container input[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: saddlebrown;
@@ -44,6 +48,6 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
+.resister-container input[type="submit"]:hover {
     background-color: rgb(222, 201, 171);
 }

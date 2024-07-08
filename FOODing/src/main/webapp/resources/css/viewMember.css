@@ -13,28 +13,28 @@
     width: 100%;
 }
 
-table {
+.view-container table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
 }
 
-td, th {
+.view-container td, th {
     padding: 10px;
     text-align: left;
 }
 
-input[type="text"], input[type="password"] {
+.view-container input[type="text"], input[type="password"] {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
 }
 
-.button {
+.view-container .button {
     text-align: center;
 }
 
-.button button {
+.view-container .button button {
     padding: 10px 20px;
     background-color: saddlebrown;
     color: white;
@@ -44,6 +44,6 @@ input[type="text"], input[type="password"] {
     font-size: 16px;
 }
 
-.button button:hover {
+.view-container .button button:hover {
     background-color: rgb(222, 201, 171);
 }

@@ -2,11 +2,17 @@
 <%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
 
 <%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <title>FOODing 메인화면</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
+    <script src="${pageContext.request.contextPath}/resources/js/validation.js"></script>
+
+</head>
+<body>
 <c:import url = "/top.jsp" />
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
-<script src="${pageContext.request.contextPath}/resources/js/validation.js"></script>
-
 <div class="login-container">
     <h1>로그인</h1>
 

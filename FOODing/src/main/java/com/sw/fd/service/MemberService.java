@@ -20,8 +20,16 @@ public class MemberService {
         member.setMdate(LocalDate.now()); // 가입 날짜를 현재 날짜로 설정
         return memberRepository.save(member);
     }
-    public Member findMemberByMidAndMpass(String username, String password) {
-        return memberRepository.findByMidAndMpass(username, password);
+
+    public Member login(String username, String password) {
+        Optional<Member> memberOpt = memberRepository.findByMid(username);
+        if (memberOpt.isPresent()) {
+            Member member = memberOpt.get();
+            if (member.getMpass().equals(password)) {
+                return member; // 로그인 성공
+            }
+        }
+        return null; // 로그인 실패
     }
 
     public Optional<Member> findMemberById(String mid) {

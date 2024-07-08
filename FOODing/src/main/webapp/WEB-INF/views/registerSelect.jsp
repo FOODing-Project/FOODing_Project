@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
-<c:import url = "/top.jsp" />
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +10,7 @@
 
 </head>
 <body>
+<c:import url = "/top.jsp" />
 <div class="button-container">
 <h2>회원가입을 선택해주세요</h2>
     <a href="${pageContext.request.contextPath}/register/user" class="btn-user">일반 회원가입</a>
