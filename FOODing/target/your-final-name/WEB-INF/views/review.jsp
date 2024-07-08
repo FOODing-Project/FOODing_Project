@@ -15,7 +15,7 @@
     <div class="review-container">
     <h2>리뷰 작성하기</h2>
 
-    <form:form action="review" modelAttribute="review" method="post">
+    <form:form action="showReviews" modelAttribute="review" method="post">
         <h3>여기에 가게명 출력</h3>
         <form:label path="rstar">별점을 선택해주세요 ${"&nbsp"} </form:label>
         <form:select path="rstar">
