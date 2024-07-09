@@ -53,7 +53,7 @@ ul li { list-style : none; }
 a { text-decoration : none; }
 
 .snb {
-    display : none;
+    display : flex;
     position : absolute;
     top : 100%;
     left : 3%;
@@ -67,6 +67,8 @@ a { text-decoration : none; }
     justify-content : space-between;
     align-items : flex-start;
     padding : 0 5%;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .snb .submenu {
@@ -88,6 +90,7 @@ a { text-decoration : none; }
 .nav-div:hover .snb {
     display: flex;
     justify-content : space-between;
+    opacity: 1;
 }
 
 .d-flex {
