@@ -47,7 +47,7 @@ nav {
 .nav:link { color : saddlebrown; text-decoration : none; }
 .nav:visited { color : saddlebrown; text-decoration : none; }
 .nav:active { color : orange; text-decoration : none; }
-.nav:hover { color : yellow; text-decoration : none; }
+.nav:hover { color : #ffea00; text-decoration : none; }
 
 ul li { list-style : none; }
 a { text-decoration : none; }
@@ -85,7 +85,7 @@ a { text-decoration : none; }
 .snb li a:link { color : #b67a47; text-decoration : none; }
 .snb li a:visited { color : #b67a47; text-decoration : none; }
 .snb li a:active { color : orange; text-decoration : none; }
-.snb li a:hover { color : yellow; text-decoration : none; }
+.snb li a:hover { color : #ffea00; text-decoration : none; }
 
 .nav-div:hover .snb {
     display: flex;

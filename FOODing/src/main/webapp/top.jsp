@@ -64,7 +64,7 @@
                 <li><a href = "#">중식</a></li>
                 <li><a href = "#">양식</a></li>
                 <li><a href = "#">세계요리</a></li>
-                <li><a href = "#">디저트</a></li>
+                <li><a href = "#">빵/디저트</a></li>
                 <li><a href = "#">차/커피</a></li>
                 <li><a href = "#">술집</a></li>
             </div>
