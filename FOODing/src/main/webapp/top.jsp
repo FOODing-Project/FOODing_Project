@@ -25,7 +25,9 @@
                 <tr>
                     <td align = "center">
                         <span>
-                            종
+                            <a class = "bell" href = "#">
+                                <img src = "${pageContext.request.contextPath}/resources/images/bell.png" width = "30px" height = "30px">
+                            </a>
                         </span>
                         <span>|</span>
                         <span>

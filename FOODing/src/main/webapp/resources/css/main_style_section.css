@@ -70,12 +70,12 @@ section {
 
 .preBtn {
     margin-right : 3%;
-    background-image : url("../images/chefudding.png");
+    background-image : url("../images/preBtn.png");
 }
 
 .nextBtn {
     margin-left : 3%;
-    background-image : url("../images/chefudding.png");
+    background-image : url("../images/nextBtn.png");
 }
 
 .slider.active { display: block; }
@@ -89,6 +89,7 @@ section {
 }
 
 .preBtn, .nextBtn {
+    background-repeat : no-repeat;
     background-size: contain; /* 이미지를 버튼에 맞게 조정 */
     background-position: center; /* 이미지를 가운데 정렬 */
     border: none; /* 기본 테두리 제거 */
