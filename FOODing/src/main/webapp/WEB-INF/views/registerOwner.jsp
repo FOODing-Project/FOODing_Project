@@ -13,13 +13,14 @@
     <script src="${pageContext.request.contextPath}/resources/js/validation.js"></script>
 </head>
 <body>
-<c:import url = "/top.jsp" />
+<c:import url = "/topNoneNav.jsp" />
+
 <section>
-<form:form name="registrationForm" action="${pageContext.request.contextPath}/register/owner" modelAttribute="member" method="post" onsubmit="return validateForm()">
-    <div class="resister-container">
-    <div><h2>${memberType} 회원등록</h2></div>
+<form:form name="registrationForm" action="${pageContext.request.contextPath}/register/owner" modelAttribute="member" method="post" onsubmit="return validateForm()" >
+    <div class="register-container">
+    <div><h2 class="head">${memberType} 회원등록</h2></div>
     <div>
-        <table border="1" align="center">
+        <table class="table-form">
             <tr>
                 <td><form:label path="mid">ID</form:label></td>
                 <td><form:input path="mid" />

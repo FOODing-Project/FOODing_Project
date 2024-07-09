@@ -15,16 +15,16 @@
 
 <section>
     <div class="view-container">
-    <h1>회원 정보 조회</h1>
+    <h2 class="head">회원 정보 조회</h2>
         <form class="form-container">
-            <table border="1" align="center">
+            <table>
                 <tr>
                     <td><label for="mid">아이디</label></td>
                     <td><p>${member.mid}</p></td>
                 </tr>
                 <tr>
                     <td><label for="mname">이름</label></td>
-                    <td><input type="text" id="mname" value="${member.mname}" readonly></td>
+                    <td><p>${member.mname}</p></td>
                 </tr>
                 <tr>
                     <td><label for="mtype">타입</label></td>

@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
 
 <link rel = "stylesheet" href = "${pageContext.request.contextPath}/resources/css/main_style_header.css" type = "text/css">
 <link href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -31,24 +31,26 @@
                 <tr>
                     <td align = "center">
                         <span>
-                            종
+                            <a class = "bell" href = "#">
+                                <img src = "${pageContext.request.contextPath}/resources/images/bell.png" width = "30px" height = "30px">
+                            </a>
                         </span>
                         <span>|</span>
                         <span>
-                            <c:if test="${sessionScope.loggedInMember != null}">
-                               <a href="<%= request.getContextPath() %>/member/view?mid=${sessionScope.loggedInMember.mid}">개인정보</a>
-                            </c:if>
+                             <c:if test="${sessionScope.loggedInMember != null}">
+                                 <a class="helloBox" href="<%= request.getContextPath() %>/member/view?mid=${sessionScope.loggedInMember.mid}">개인정보</a>
+                             </c:if>
                             <c:if test="${sessionScope.loggedInMember == null}">
-                                <a class = "head" href = "registerSelect">회원가입</a>
+                                <a class="helloBox" href = "<%= request.getContextPath() %>/registerSelect">회원가입</a>
                             </c:if>
                         </span>
                         <span>|</span>
                         <span>
-                            <c:if test="${sessionScope.loggedInMember != null}">
-                               <a href="<%= request.getContextPath() %>/logout">로그아웃</a>
-                            </c:if>
+                           <c:if test="${sessionScope.loggedInMember != null}">
+                               <a class="helloBox" href="<%= request.getContextPath() %>/logout">로그아웃</a>
+                           </c:if>
                             <c:if test="${sessionScope.loggedInMember == null}">
-                                <a href="<%= request.getContextPath() %>/login">로그인</a>
+                                <a class="helloBox" href="<%= request.getContextPath() %>/login">로그인</a>
                             </c:if>
                         </span>
                     </td>
@@ -74,8 +76,13 @@
         <ul class = "snb">
             <div class = "submenu">
                 <li><a href = "#">한식</a></li>
-                <li><a href = "#">중식</a></li>
                 <li><a href = "#">일식</a></li>
+                <li><a href = "#">중식</a></li>
+                <li><a href = "#">양식</a></li>
+                <li><a href = "#">세계요리</a></li>
+                <li><a href = "#">빵/디저트</a></li>
+                <li><a href = "#">차/커피</a></li>
+                <li><a href = "#">술집</a></li>
             </div>
             <div class="submenu">
                 <li><a href="#">위치별</a></li>
@@ -91,11 +98,6 @@
                 <li><a href = "#">찜 기능1</a></li>
                 <li><a href = "#">찜 기능2</a></li>
                 <li><a href = "#">찜 기능3</a></li>
-            </div>
-            <div class = "submenu">
-                <li><a href = "#">검색 기능1</a></li>
-                <li><a href = "#">검색 기능2</a></li>
-                <li><a href = "#">검색 기능3</a></li>
             </div>
         </ul>
     </div>

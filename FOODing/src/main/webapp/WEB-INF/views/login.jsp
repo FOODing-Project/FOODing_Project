@@ -14,9 +14,11 @@
 </head>
 <body>
 <c:import url = "/topNoneNav.jsp" />
+
+<section>
 <div class="login-container">
 <div class="form-container">
-    <h1>로그인</h1>
+    <h2>로그인</h2>
 
     <%-- 에러 메시지가 있을 경우에만 표시 --%>
     <c:if test="${not empty error}">
@@ -31,8 +33,9 @@
         <div>
             <input class="button" type="submit" value="다음">
         </div>
-        <div class="helper-links">
+        <div class="find-links">
             <a href="${pageContext.request.contextPath}/find-id">회원ID 찾기</a>
+            <span>|</span>
             <a href="${pageContext.request.contextPath}/find-pass">비밀번호 찾기</a>
         </div>
     </form>
@@ -47,13 +50,13 @@
         <div>
             <input class="button" type="submit" value="로그인" onclick="submitSecondForm()">
         </div>
-        <div class="helper-links">
+        <div class="find-links">
             <a href="${pageContext.request.contextPath}/find-pass">비밀번호 찾기</a>
         </div>
     </form>
 </div>
 </div>
-
+</section>
 <c:import url = "/bottom.jsp" />
 
 

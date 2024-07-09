@@ -13,12 +13,14 @@
 </head>
 <body>
 <c:import url = "/top.jsp" />
-<h1>회원 정보 수정</h1>
+
+<div class="edit-container">
+<h2 class="head">회원 정보 수정</h2>
 <form:form action="${pageContext.request.contextPath}/member/edit" modelAttribute="member" method="post">
     <table border="1" align="center">
         <tr>
             <td><form:label path="mname">성명</form:label></td>
-            <td><form:input path="mname" /></td>
+            <td><p>${member.mid}</p></td>
         </tr>
         <tr>
             <td><form:label path="mpass">비밀번호</form:label></td>
@@ -59,5 +61,6 @@
     </table>
     <form:hidden path="mid" />
 </form:form>
+</div>
 
 <c:import url = "/bottom.jsp" />

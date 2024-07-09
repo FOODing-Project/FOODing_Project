@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
-<%@ include file="/WEB-INF/views/includes/cacheControl.jsp" %>
-
 <c:import url = "index_top.jsp" />
 <section>
     <div class = "section-div">

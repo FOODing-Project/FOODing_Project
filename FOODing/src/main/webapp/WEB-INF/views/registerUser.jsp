@@ -15,13 +15,13 @@
 </head>
 
 <body>
-<c:import url = "/top.jsp" />
+<c:import url = "/topNoneNav.jsp" />
 <section>
 <form:form name="registrationForm" action="${pageContext.request.contextPath}/register/user" modelAttribute="member" method="post" onsubmit="return validateForm()">
-<div class="resister-container">
-    <div><h1>${memberType} 회원등록</h1></div>
+<div class="register-container">
+    <div><h2 class="head">${memberType} 회원등록</h2></div>
     <div>
-        <table border="1">
+        <table class="table-form">
             <tr>
                 <td><form:label path="mid">ID</form:label></td>
                 <td><form:input path="mid" />

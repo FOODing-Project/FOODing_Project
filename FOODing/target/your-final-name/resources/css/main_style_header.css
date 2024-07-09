@@ -31,10 +31,10 @@ header {
     font-weight : bold;
 }
 
-.header1:link { color : yellow; text-decoration : none; }
-.header1:visited { color : yellow; text-decoration : none; }
-.header1:active { color : yellow; text-decoration : none; }
-.header1:hover { color : yellow; text-decoration : none; }
+.header1:link { color : #ffea00; text-decoration : none; }
+.header1:visited { color : #ffea00; text-decoration : none; }
+.header1:active { color : #ffea00; text-decoration : none; }
+.header1:hover { color : #ffea00; text-decoration : none; }
 
 
 .header2:link { color : saddlebrown; text-decoration : none; }
@@ -70,3 +70,8 @@ header {
     margin-right : 15%;
     margin-top : 7%;
 }
+
+.helloBox:link { color : saddlebrown; text-decoration : none; }
+.helloBox:visited { color : saddlebrown; text-decoration : none; }
+.helloBox:active { color : orange; text-decoration : none; }
+.helloBox:hover { color : #ffea00;; text-decoration : none; }

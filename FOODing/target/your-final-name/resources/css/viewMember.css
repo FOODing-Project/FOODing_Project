@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .view-container {
-    width: 60%;
+    width: 650px;
     margin: 50px auto; /* 가운데 정렬을 위해 margin 사용 */
     background-color: white;
     padding: 20px;
@@ -9,12 +9,16 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-container {
-    width: 100%;
+.head {
+    color : saddlebrown;
+    font-weight: bold;
+    text-align: center;
 }
 
-.view-container table {
-    width: 100%;
+.form-container table {
+    border: 1px solid #ddd;
+    align-items: center;
+    width: 600px;
     border-collapse: collapse;
     margin: 20px 0;
 }
@@ -22,6 +26,7 @@
 .view-container td, th {
     padding: 10px;
     text-align: left;
+    border: 1px solid #ddd;
 }
 
 .view-container input[type="text"], input[type="password"] {

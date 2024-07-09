@@ -64,14 +64,3 @@ function validateForm() {
     return valid;
 }
 
-/* 뒤로가기 해도 캐시 남는거 삭제 */
-
-window.onload = function() {
-    if (window.history && window.history.pushState) {
-        window.history.pushState('forward', null, './#forward');
-
-        window.onpopstate = function() {
-            window.location.reload();
-        };
-    }
-};
