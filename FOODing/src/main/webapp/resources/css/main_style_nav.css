@@ -56,20 +56,22 @@ a { text-decoration : none; }
     display : none;
     position : absolute;
     top : 100%;
+    left : 3%;
     background-color : white;
     border : 1px solid rgb(222, 201, 171);
-    width : 92%;
+    width : 76%;
     text-align : center;
     border-radius : 0 0 20px 20px;
     z-index : 1;
     margin-top : 0;
-    justify-content : center;
-    align-items : center;
+    justify-content : space-between;
+    align-items : flex-start;
+    padding : 0 5%;
 }
 
 .snb .submenu {
     text-align : center;
-    margin : 20px 7%;
+    margin : 20px;
     vertical-align : top;
     font-size : 20px;
     font-weight : normal;
@@ -85,7 +87,7 @@ a { text-decoration : none; }
 
 .nav-div:hover .snb {
     display: flex;
-    justify-content : center;
+    justify-content : space-between;
 }
 
 .d-flex {

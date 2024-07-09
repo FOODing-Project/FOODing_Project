@@ -78,11 +78,6 @@
                 <li><a href = "#">찜 기능2</a></li>
                 <li><a href = "#">찜 기능3</a></li>
             </div>
-            <div class = "submenu">
-                <li><a href = "#">검색 기능1</a></li>
-                <li><a href = "#">검색 기능2</a></li>
-                <li><a href = "#">검색 기능3</a></li>
-            </div>
         </ul>
     </div>
 </nav>
