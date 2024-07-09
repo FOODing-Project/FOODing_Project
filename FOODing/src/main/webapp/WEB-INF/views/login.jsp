@@ -12,15 +12,15 @@
 
 </head>
 <body>
-<c:import url = "/top.jsp" />
+<c:import url = "/topNoneNav.jsp" />
 <div class="login-container">
+<div class="form-container">
     <h1>로그인</h1>
 
     <%-- 에러 메시지가 있을 경우에만 표시 --%>
     <c:if test="${not empty error}">
         <p class="error-message">${error}</p>
     </c:if>
-
     <!-- 첫 번째 폼 -->
     <form id="first-form" onsubmit="return saveIdAndShowSecondForm()">
         <div>
@@ -50,6 +50,7 @@
             <a href="${pageContext.request.contextPath}/find-pass">비밀번호 찾기</a>
         </div>
     </form>
+</div>
 </div>
 
 <c:import url = "/bottom.jsp" />
