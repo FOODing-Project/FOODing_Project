@@ -14,21 +14,20 @@
     <div><h2>리뷰 작성</h2></div>
 
     <div>
-        <form:form method="post" action="${pageContext.request.contextPath}/review" modelAttribute="review">
+        <form:form method="post" action="${pageContext.request.contextPath}/review" modelAttribute="review" id="review">
             <form:hidden path="store.sno" value="${sno}" />
             <div class="form-group">
-                <label for="rstar">별점:</label>
-                <form:select path="rstar" id="rstar">
-                    <form:option value="1">1</form:option>
-                    <form:option value="2">2</form:option>
-                    <form:option value="3">3</form:option>
-                    <form:option value="4">4</form:option>
-                    <form:option value="5">5</form:option>
-                </form:select>
+                <div class="rating">
+                    <span data-value="1">☆</span>
+                    <span data-value="2">☆</span>
+                    <span data-value="3">☆</span>
+                    <span data-value="4">☆</span>
+                    <span data-value="5">☆</span>
+                </div>
+                <input type="hidden" name="rstar" id="rstar" value="0"/>
             </div>
             <div class="form-group">
-                <label for="rcomm">리뷰 내용:</label>
-                <form:textarea path="rcomm" id="rcomm" rows="4" cols="50"></form:textarea>
+                <form:textarea path="rcomm" id="rcomm" class="custom-textarea" placeholder="리뷰 내용을 입력하세요."></form:textarea>
             </div>
             <div class="form-group">
                 <button type="submit">리뷰 작성</button>
@@ -59,6 +58,34 @@
 </section>
 
 <c:import url="/bottom.jsp" />
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const stars = document.querySelectorAll('.rating > span');
+        const hiddenInput = document.getElementById('rstar');
+        let isRatingFixed = false;
+
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                if (!isRatingFixed) {
+                    const value = parseInt(star.getAttribute('data-value'));
+                    hiddenInput.value = value;
+                    stars.forEach((s, i) => {
+                        if (i+2 <= value) {
+                            s.textContent = '☆';
+                        } else {
+                            s.textContent = '★';
+                        }
+                    });
+                    isRatingFixed = true;
+                    stars.forEach(s => {
+                        s.style.pointerEvents = 'none'; // 별의 클릭 이벤트 비활성화
+                    });
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
-
