@@ -46,7 +46,7 @@
 <nav>
     <div class = "nav-div">
         <a class = "nav" href = "#">음식점 카테고리</a>
-        <a class = "nav" href = "#">가게리스트</a>
+        <a class = "nav" href="${pageContext.request.contextPath}/storeList">가게리스트</a>
         <a class = "nav" href = "#">모임</a>
         <a class = "nav" href = "#">찜</a>
         <form class="d-flex">
