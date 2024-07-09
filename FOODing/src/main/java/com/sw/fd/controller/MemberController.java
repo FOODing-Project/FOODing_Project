@@ -110,31 +110,13 @@ public class MemberController {
     public String showEditForm(@PathVariable("mid") String mid, Model model) {
         Optional<Member> memberOpt = memberService.findMemberById(mid);
         if (memberOpt.isPresent()) {
+
             model.addAttribute("member", memberOpt.get());
             return "editMember"; // 수정 폼으로 이동
         } else {
             return "redirect:/member/view";
         }
     }
-
-    // 회원 정보 수정 처리
-//    @PostMapping("/member/edit")
-//    public String updateMember(@ModelAttribute("member") @Valid Member member,
-//                               BindingResult bindingResult, Model model) {
-//        if (bindingResult.hasErrors()) {
-//            return "editMember"; // 입력 폼으로 다시 이동
-//        }
-//
-//        Optional<Member> existingMemberOpt = memberService.findMemberById(member.getMid());
-//        if (existingMemberOpt.isPresent()) {
-//            Member existingMember = existingMemberOpt.get();
-//            member.setMdate(existingMember.getMdate()); // 기존 `mdate` 값을 유지
-//        }
-//
-//        memberService.updateMember(member); // 회원 정보 업데이트
-//        model.addAttribute("message", "회원 정보가 성공적으로 수정되었습니다.");
-//        return "redirect:/dashboard";
-//    }
 
     @PostMapping("/member/edit")
     public String updateMember(@ModelAttribute("member") @Valid Member updatedMember,
@@ -148,7 +130,6 @@ public class MemberController {
             Member existingMember = existingMemberOpt.get();
 
             // 기존 정보를 새로 입력된 정보로 업데이트
-            existingMember.setMname(updatedMember.getMname());
             existingMember.setMpass(updatedMember.getMpass());
             existingMember.setMnick(updatedMember.getMnick());
             existingMember.setMbirth(updatedMember.getMbirth());
@@ -158,7 +139,7 @@ public class MemberController {
 
             memberService.updateMember(existingMember); // 회원 정보 업데이트
             model.addAttribute("message", "회원 정보가 성공적으로 수정되었습니다.");
-            return "redirect:/dashboard";
+            return "redirect:/member/view?mid=" + updatedMember.getMid();
         } else {
             model.addAttribute("error", "회원 정보를 찾을 수 없습니다.");
             return "error";

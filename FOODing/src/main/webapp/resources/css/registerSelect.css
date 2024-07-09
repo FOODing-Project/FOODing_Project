@@ -57,4 +57,7 @@
 a:hover {
     background-color: rgb(222, 201, 171);
 }
-
+.button-container a:link { color : white; text-decoration : none }
+.button-container a:visited { color : white; text-decoration : none }
+.button-container a:active { color : orange; text-decoration : none }
+.button-container a:hover { color : #ffea00; text-decoration : none }

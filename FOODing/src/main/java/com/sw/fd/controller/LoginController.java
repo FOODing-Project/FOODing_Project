@@ -33,18 +33,13 @@ public class LoginController {
             model.addAttribute("member", member);
             model.addAttribute("message", "로그인 성공!!");
 
-            return "redirect:/dashboard"; // 대시보드 페이지로 리다이렉트
+            return "redirect:/main"; // 대시보드 페이지로 리다이렉트
         } else {
             // 로그인 실패 처리
             model.addAttribute("error", "아이디 또는 비밀번호가 <br> 일치하지 않습니다.");
             return "login"; // 다시 로그인 화면으로
         }
     }
-
-//    @GetMapping("/dashboard")
-//    public String showDashboard() {
-//        return "dashboard"; // 대시보드 페이지로 이동
-//    }
 
     @GetMapping("/dashboard")
     public String showDashboard(HttpServletRequest request, Model model) {
@@ -69,4 +64,6 @@ public class LoginController {
 
         return "redirect:/main";
     }
+
+
 }

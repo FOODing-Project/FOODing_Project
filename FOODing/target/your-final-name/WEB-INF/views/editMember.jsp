@@ -19,8 +19,8 @@
 <form:form action="${pageContext.request.contextPath}/member/edit" modelAttribute="member" method="post">
     <table border="1" align="center">
         <tr>
-            <td><form:label path="mname">성명</form:label></td>
-            <td><p>${member.mid}</p></td>
+            <td><label for="mname">이름</label></td>
+            <td><p>${member.mname}</p></td>
         </tr>
         <tr>
             <td><form:label path="mpass">비밀번호</form:label></td>
