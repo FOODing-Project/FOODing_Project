@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <div class = "all-review-div">
 <form:form method="post" action="${pageContext.request.contextPath}/review" modelAttribute="review" id="review">
-    <form:hidden path="store.sno" value="${sno}"/>
+    <input type="hidden" name="sno" id="sno" value="${sno}" />
     <div class="form-group">
         <div class="rating">
             <span data-value="1">☆</span>
@@ -28,7 +28,7 @@
 
 <c:forEach var="review" items="${reviews}">
     <div class="review-container">
-        <div class="review-item review-item-left"><strong>닉네임 여기다 표시</strong></div>
+        <div class="review-item review-item-left"><strong>${review.member.mnick}</strong></div>
         <div class="review-item review-item-right"><strong>작성 날짜 : </strong> ${review.rdate}</div>
         <div class="review-item review-item-left" style="top: 30px;"><strong>별점 : </strong>
             <span class="star-rating">
