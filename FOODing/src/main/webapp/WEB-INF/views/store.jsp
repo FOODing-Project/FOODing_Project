@@ -16,7 +16,7 @@
         <h2>임시 가게 목록</h2>
         <c:forEach var="store" items="${stores}">
             <div class="store-item">
-                <a href="${pageContext.request.contextPath}/showReviews?sno=${store.sno}">${store.sname}</a>
+                <a href="${pageContext.request.contextPath}/review?sno=${store.sno}">${store.sname}</a>
             </div>
         </c:forEach>
     </div>
