@@ -23,7 +23,7 @@ public class StoreService {
         return storeRepository.findAll();
     }
 
-    public Store getStoreBySno(int sno) {
+    public Store getStoreById(int sno) {
         return storeRepository.findBySno(sno).orElse(null);
     }
 }

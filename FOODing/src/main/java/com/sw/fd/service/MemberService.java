@@ -32,6 +32,10 @@ public class MemberService {
         return null; // 로그인 실패
     }
 
+    public Member findMemberByMno(int mno) {
+        return memberRepository.findByMno(mno).orElse(null);
+    }
+
     public Member findMemberById(String mid) {
         return memberRepository.findByMid(mid).orElse(null);
     }

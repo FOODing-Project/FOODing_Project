@@ -21,6 +21,7 @@ public class Review {
     @JoinColumn(name = "mno")
     private Member member;
 
+
     @ManyToOne
     @JoinColumn(name = "sno")
     private Store store;
