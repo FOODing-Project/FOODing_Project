@@ -77,6 +77,8 @@ section {
 }
 
 .store-info h2 {
+    text-align: center;
+    color: #b17f5e;
     font-weight: bold;
     margin-top: 40px; /* 제목 위의 여백 추가 */
 }

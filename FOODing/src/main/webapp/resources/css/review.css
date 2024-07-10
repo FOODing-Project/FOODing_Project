@@ -107,3 +107,8 @@ h2 {
         border-radius: 5px;
         margin-top: 50px;
 }
+
+.all-review-div {
+        display: flex;
+        flex-direction: column;
+}
