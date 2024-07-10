@@ -16,6 +16,7 @@ import java.util.List;
 
 @Controller
 public class ReviewController {
+
     @Autowired
     private ReviewService reviewService;
 
@@ -25,12 +26,13 @@ public class ReviewController {
     @GetMapping("/review")
     public String review(@RequestParam("sno") int sno, Model model) {
         List<Review> reviews = reviewService.getReviewsBySno(sno);
+        Store store = storeService.getStoreById(sno);
         model.addAttribute("reviews", reviews);
         model.addAttribute("review", new Review()); // 모델에 빈 Review 객체 추가
         model.addAttribute("sno", sno); // sno도 모델에 추가
+        model.addAttribute("store", store); // 가게 정보도 모델에 추가
         return "review";
     }
-
 
     @PostMapping("/review")
     public String addReview(@ModelAttribute Review review, @RequestParam("sno") int sno) {
@@ -54,16 +56,4 @@ public class ReviewController {
         // 리뷰 저장 후 해당 가게의 리뷰 페이지로 리다이렉션
         return "redirect:/review?sno=" + sno;
     }
-
-
-
-    /*
-    @GetMapping("/showReviews")
-    public String showAllReviews(@RequestParam("sno") int sno, Model model) {
-        List<Review> reviews = reviewService.getReviewsBySno(sno);
-        model.addAttribute("reviews", reviews);
-        return "showReviews";
-    }
-
-    */
 }

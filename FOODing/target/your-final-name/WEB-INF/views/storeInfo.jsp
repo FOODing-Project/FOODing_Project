@@ -28,12 +28,12 @@
     </div>
     <div id="map-container">
         <p id="store-address">${store.saddr}</p>
-        <div id="map"></div>
+        <div id="map" style="width:100%;height:400px;"></div>
     </div>
 </div>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // 지도 생성 코드
+    function initializeMap() {
         var mapContainer = document.getElementById('map'),
             mapOption = {
                 center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -69,7 +69,7 @@
                 var storeInfoHeight = storeInfo.offsetHeight;
                 var storeAddressHeight = storeAddress.offsetHeight;
                 mapContainer.style.height = storeInfoHeight + 'px';
-                map.style.height = (storeInfoHeight - storeAddressHeight -10) + 'px';
+                map.style.height = (storeInfoHeight - storeAddressHeight - 10) + 'px';
             }
         }
 
@@ -78,5 +78,9 @@
 
         // 창 크기 변경 시 지도 높이 재조정
         window.addEventListener('resize', adjustMapHeight);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        loadKakaoMapScript(initializeMap);
     });
 </script>

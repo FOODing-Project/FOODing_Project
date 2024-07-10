@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/storeDetail.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/review.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=573fb4487497eb28636a2f91b5ca8f70&libraries=services"></script> <!-- Kakao 지도 API -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=573fb4487497eb28636a2f91b5ca8f70&libraries=services"></script>
 </head>
 <body>
 <!-- 상단 내비게이션 바 -->
@@ -49,15 +49,21 @@
         </div>
     </div>
 </section>
-
-<!-- 하단 내비게이션 바 -->
-<c:import url="/bottom.jsp" />
+<script>
+    function loadKakaoMapScript(callback) {
+        var script = document.createElement('script');
+        script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=573fb4487497eb28636a2f91b5ca8f70&libraries=services";
+        script.async = true;
+        script.onload = callback;
+        document.head.appendChild(script);
+    }
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // 탭 클릭 이벤트 핸들러
         $('#store-info-tab').click(function() {
             console.log('가게 정보 탭 클릭');
-            loadContent('${pageContext.request.contextPath}/storeInfo.jsp');
+            loadContent('${pageContext.request.contextPath}/storeInfo?sno=${store.sno}');
             $('.tab').removeClass('active');
             $(this).addClass('active');
         });
@@ -81,5 +87,8 @@
         }
     });
 </script>
+
+<!-- 하단 내비게이션 바 -->
+<c:import url="/bottom.jsp" />
 </body>
 </html>
