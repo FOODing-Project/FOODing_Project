@@ -27,6 +27,7 @@ section {
     align-items : center;
     font-size : 30px;
     font-weight : bold;
+
     position : relative;
 }
 
@@ -97,4 +98,5 @@ section {
     height: 100px; /* 버튼의 높이 설정 */
     cursor: pointer; /* 마우스를 올리면 포인터 모양으로 변경 */
     background-color: transparent; /* 배경 색상 투명으로 설정 */
+
 }

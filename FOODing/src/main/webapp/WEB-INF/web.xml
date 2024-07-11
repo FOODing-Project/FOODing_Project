@@ -39,7 +39,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
-  <!-- (정희) 세션 타임아웃 설정 -->
+  <!-- 세션 타임아웃 설정 -->
   <session-config>
     <session-timeout>30</session-timeout> <!-- 30분 설정 -->
   </session-config>

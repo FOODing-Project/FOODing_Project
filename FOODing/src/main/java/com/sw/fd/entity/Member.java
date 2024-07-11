@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
@@ -14,7 +17,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mno;
 
     private String mid;

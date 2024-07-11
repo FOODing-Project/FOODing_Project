@@ -32,12 +32,8 @@ public class MemberService {
         return null; // 로그인 실패
     }
 
-    public Member findMemberByMno(int mno) {
-        return memberRepository.findByMno(mno).orElse(null);
-    }
-
-    public Member findMemberById(String mid) {
-        return memberRepository.findByMid(mid).orElse(null);
+    public Optional<Member> findMemberById(String mid) {
+        return memberRepository.findByMid(mid);
     }
 
     public void updateMember(Member member) {
@@ -52,6 +48,4 @@ public class MemberService {
     public boolean isMnickExists(String mnick) {
         return memberRepository.existsByMnick(mnick);
     }
-
-
 }
