@@ -95,30 +95,44 @@
     }
 
     function initializeReviewScript() {
-        const stars = document.querySelectorAll('.rating > span');
-        const hiddenInput = document.getElementById('rstar');
-        let isRatingFixed = false;
-
-        stars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                if (!isRatingFixed) {
-                    const value = parseInt(star.getAttribute('data-value'));
-                    hiddenInput.value = value;
-                    console.log("value 값 = ${hiddenInput.value}");
-                    stars.forEach((s, i) => {
-                        if (i+2 <= value) {
-                            s.textContent = '☆';
-                        } else {
-                            s.textContent = '★';
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('mouseover', function() {
+                    resetStars();
+                    this.classList.add('hover');
+                    let previousStar = this.previousElementSibling;
+                    while (previousStar) {
+                        if (previousStar.classList.contains('star')) {
+                            previousStar.classList.add('hover');
                         }
-                    });
-                    isRatingFixed = true;
-                    stars.forEach(s => {
-                        s.style.pointerEvents = 'none'; // 별의 클릭 이벤트 비활성화
-                    });
-                }
+                        previousStar = previousStar.previousElementSibling;
+                    }
+                });
+
+                star.addEventListener('mouseout', function() {
+                    resetStars();
+                });
+
+                star.addEventListener('click', function() {
+                    resetStars();
+                    this.classList.add('selected');
+                    let previousStar = this.previousElementSibling;
+                    while (previousStar) {
+                        if (previousStar.classList.contains('star')) {
+                            previousStar.classList.add('selected');
+                        }
+                        previousStar = previousStar.previousElementSibling;
+                    }
+                });
             });
+
+            function resetStars() {
+                document.querySelectorAll('.star').forEach(star => {
+                    star.classList.remove('hover', 'selected');
+                });
+            }
         });
+
     }
 
     document.addEventListener("DOMContentLoaded", function() {

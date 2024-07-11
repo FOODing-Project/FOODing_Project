@@ -5,12 +5,12 @@
 <form:form method="post" action="${pageContext.request.contextPath}/review" modelAttribute="review" id="review">
     <input type="hidden" name="sno" id="sno" value="${sno}" />
     <div class="form-group">
-        <div class="rating">
-            <span data-value="1">☆</span>
-            <span data-value="2">☆</span>
-            <span data-value="3">☆</span>
-            <span data-value="4">☆</span>
-            <span data-value="5">☆</span>
+        <div class="star-rating">
+            <input type="radio" name="rating" class="star" id="star1"><label for="star1"></label>
+            <input type="radio" name="rating" class="star" id="star2"><label for="star2"></label>
+            <input type="radio" name="rating" class="star" id="star3"><label for="star3"></label>
+            <input type="radio" name="rating" class="star" id="star4"><label for="star4"></label>
+            <input type="radio" name="rating" class="star" id="star5"><label for="star5"></label>
         </div>
         <input type="hidden" name="rstar" id="rstar" value="0"/>
     </div>
