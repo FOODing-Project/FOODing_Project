@@ -6,14 +6,14 @@
 <head>
     <meta charset = "UTF-8">
     <title>FOODing 메인화면</title>
+    <link rel = "stylesheet" href = "${pageContext.request.contextPath}/resources/css/main_style_section.css" type = "text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/slider.js"></script>
 </head>
 <body>
 <c:import url = "/top.jsp" />
 <section>
-    <link rel = "stylesheet" href = "${pageContext.request.contextPath}/resources/css/main_style_section.css" type = "text/css">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/slider.js"></script>
     <div class = "section-div">
         <button class = "preBtn"></button>
         <ul class = "mainSliderList">

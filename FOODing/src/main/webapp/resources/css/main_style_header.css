@@ -35,7 +35,6 @@ header {
 .header1:visited { color : #ffea00; text-decoration : none; }
 .header1:active { color : #ffea00; text-decoration : none; }
 .header1:hover { color : #ffea00; text-decoration : none; }
->>>>>>> jeongh
 
 
 .header2:link { color : saddlebrown; text-decoration : none; }
@@ -70,11 +69,9 @@ header {
 .hello2 table {
     margin-right : 15%;
     margin-top : 7%;
-
 }
 
 .helloBox:link { color : saddlebrown; text-decoration : none; }
 .helloBox:visited { color : saddlebrown; text-decoration : none; }
 .helloBox:active { color : orange; text-decoration : none; }
 .helloBox:hover { color : #ffea00;; text-decoration : none; }
-

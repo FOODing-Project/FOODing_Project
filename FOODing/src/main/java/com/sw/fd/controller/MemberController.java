@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 public class MemberController {
@@ -95,26 +94,26 @@ public class MemberController {
     // 회원 정보 조회
     @GetMapping("/member/view")
     public String viewMember(@RequestParam("mid") String mid, Model model) {
-        Optional<Member> member = memberService.findMemberById(mid);
-        if (member.isPresent()) {
-            model.addAttribute("member", member.get());
-            return "viewMember";
-        } else {
+        Member member = memberService.findMemberById(mid);
+        if (member == null) {
             model.addAttribute("error", "회원 정보를 찾을 수 없습니다.");
             return "error";
+        } else {
+            model.addAttribute("member", member);
+            return "viewMember";
         }
     }
 
     // 회원 정보 수정 폼 보여주기
     @GetMapping("/member/edit/{mid}")
     public String showEditForm(@PathVariable("mid") String mid, Model model) {
-        Optional<Member> memberOpt = memberService.findMemberById(mid);
-        if (memberOpt.isPresent()) {
-
-            model.addAttribute("member", memberOpt.get());
-            return "editMember"; // 수정 폼으로 이동
-        } else {
+        Member member = memberService.findMemberById(mid);
+        if (member == null) {
             return "redirect:/member/view";
+
+        } else {
+            model.addAttribute("member", member);
+            return "editMember"; // 수정 폼으로 이동
         }
     }
 
@@ -125,9 +124,12 @@ public class MemberController {
             return "editMember"; // 입력 폼으로 다시 이동
         }
 
-        Optional<Member> existingMemberOpt = memberService.findMemberById(updatedMember.getMid());
-        if (existingMemberOpt.isPresent()) {
-            Member existingMember = existingMemberOpt.get();
+        Member existingMemberOpt = memberService.findMemberById(updatedMember.getMid());
+        if (existingMemberOpt == null) {
+            model.addAttribute("error", "회원 정보를 찾을 수 없습니다.");
+            return "error";
+        } else {
+            Member existingMember = existingMemberOpt;
 
             // 기존 정보를 새로 입력된 정보로 업데이트
             existingMember.setMpass(updatedMember.getMpass());
@@ -140,9 +142,6 @@ public class MemberController {
             memberService.updateMember(existingMember); // 회원 정보 업데이트
             model.addAttribute("message", "회원 정보가 성공적으로 수정되었습니다.");
             return "redirect:/member/view?mid=" + updatedMember.getMid();
-        } else {
-            model.addAttribute("error", "회원 정보를 찾을 수 없습니다.");
-            return "error";
         }
     }
 }
