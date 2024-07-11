@@ -26,9 +26,6 @@ public class ReviewController {
     @Autowired
     private StoreService storeService;
 
-    @Autowired
-    private MemberService memberService;
-
     @GetMapping("/review")
     public String review(@RequestParam("sno") int sno, Model model) {
 
@@ -66,5 +63,22 @@ public class ReviewController {
 
         // 리뷰 저장 후 해당 가게의 리뷰 페이지로 리다이렉션
         return "redirect:/review?sno=" + sno;
+    }
+
+    @GetMapping("/myReviews")
+    public String showMyReviews(Model model, HttpSession session) {
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+
+        if (loggedInMember == null) {
+            // 로그인되지 않은 상태에서 접근 시 예외 처리 또는 로그인 페이지로 리다이렉트
+            return "redirect:/login"; // 예시로 로그인 페이지로 리다이렉트 설정
+        }
+
+        // 로그인한 회원의 mno를 가져와서 해당 회원이 작성한 리뷰들을 가져옵니다.
+        int mno = loggedInMember.getMno();
+        List<Review> reviews = reviewService.getReviewsByMno(mno);
+        model.addAttribute("reviews", reviews);
+
+        return "myReviews"; // 내가 쓴 리뷰 목록을 보여주는 JSP 파일명
     }
 }

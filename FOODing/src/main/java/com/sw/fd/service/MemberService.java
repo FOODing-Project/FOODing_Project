@@ -33,7 +33,7 @@ public class MemberService {
     }
 
     public Member findMemberByMno(int mno) {
-        return memberRepository.findByMno(mno).orElse(null);
+        return memberRepository.findByMno(mno);
     }
 
     public Member findMemberById(String mid) {

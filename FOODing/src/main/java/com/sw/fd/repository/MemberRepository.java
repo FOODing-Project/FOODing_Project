@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<Member, Integer> {
     Member findByMidAndMpass(String mid, String mpass);
 
-    Optional<Member> findByMno(int mno);
+    Member findByMno(int mno);
     Optional<Member> findByMid(String mid);
 
     boolean existsByMid(String mid);

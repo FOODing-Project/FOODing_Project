@@ -21,8 +21,8 @@
         <option value="JavaScript File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Jsp File" />
         <option value="CSS File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -215,6 +215,7 @@
       <workItem from="1720656753023" duration="1703000" />
       <workItem from="1720660240748" duration="95000" />
       <workItem from="1720660770006" duration="76000" />
+      <workItem from="1720664946442" duration="10360000" />
     </task>
     <task id="LOCAL-00001" summary="add menu entity">
       <option name="closed" value="true" />
