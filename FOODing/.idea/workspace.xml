@@ -19,10 +19,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Jsp File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -59,26 +59,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.34.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.Tomcat 9.0.90.executor&quot;: &quot;Run&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/spring_work/FOODing/src&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.10179153&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.32535365&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Tomcat Server.Tomcat 9.0.34.executor": "Run",
+    "Tomcat Server.Tomcat 9.0.90.executor": "Run",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/spring_work/FOODing/src",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.10179153",
+    "project.structure.side.proportion": "0.32535365",
+    "settings.editor.selected.configurable": "sshConsole",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\spring_work\FOODing\src" />
@@ -93,7 +93,8 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 9.0.34" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.34" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 9.0.34" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.34" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="corretto-17" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="FOODing:war exploded">
@@ -104,6 +105,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="9c114395-6a92-4281-8066-a8d58ad25395" />
+        <option name="DEPLOY_TOMCAT_APPS" value="true" />
         <option name="HTTP_PORT" value="8081" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
@@ -215,6 +217,13 @@
       <workItem from="1720656753023" duration="1703000" />
       <workItem from="1720660240748" duration="95000" />
       <workItem from="1720660770006" duration="76000" />
+      <workItem from="1720662413165" duration="1854000" />
+      <workItem from="1720664605931" duration="17515000" />
+      <workItem from="1720688878877" duration="73000" />
+      <workItem from="1720688966948" duration="1846000" />
+      <workItem from="1720690840622" duration="22000" />
+      <workItem from="1720744579646" duration="4292000" />
+      <workItem from="1720749090802" duration="14366000" />
     </task>
     <task id="LOCAL-00001" summary="add menu entity">
       <option name="closed" value="true" />
@@ -325,5 +334,9 @@
     <MESSAGE value="combine team file" />
     <MESSAGE value="menu table error clear" />
     <option name="LAST_COMMIT_MESSAGE" value="menu table error clear" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
