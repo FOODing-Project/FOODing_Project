@@ -47,9 +47,6 @@
     border-radius: 3px;
 }
 
-.login-container .form-step {
-    display: none; /* 초기에는 두 번째 폼 숨김 */
-}
 
 .button {
     margin-top: 10px;

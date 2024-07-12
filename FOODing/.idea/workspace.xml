@@ -65,7 +65,7 @@
     &quot;Tomcat Server.Tomcat 9.0.34.executor&quot;: &quot;Run&quot;,
     &quot;Tomcat Server.Tomcat 9.0.90.executor&quot;: &quot;Run&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/spring_work/FOODing/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/FOODing_Project/FOODing&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -216,6 +216,9 @@
       <workItem from="1720660240748" duration="95000" />
       <workItem from="1720660770006" duration="76000" />
       <workItem from="1720664946442" duration="10360000" />
+      <workItem from="1720743917094" duration="19000" />
+      <workItem from="1720743948017" duration="88000" />
+      <workItem from="1720746909646" duration="857000" />
     </task>
     <task id="LOCAL-00001" summary="add menu entity">
       <option name="closed" value="true" />
