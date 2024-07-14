@@ -26,9 +26,6 @@ public class ReviewController {
     @Autowired
     private StoreService storeService;
 
-    @Autowired
-    private MemberService memberService;
-
     @GetMapping("/review")
     public String review(@RequestParam("sno") int sno, Model model) {
 
@@ -36,6 +33,7 @@ public class ReviewController {
         Store store = storeService.getStoreById(sno);
         model.addAttribute("reviews", reviews);
         model.addAttribute("review", new Review()); // 모델에 빈 Review 객체 추가
+        model.addAttribute("isEmpty", reviews.isEmpty());
         model.addAttribute("sno", sno); // sno도 모델에 추가
         model.addAttribute("store", store); // 가게 정보도 모델에 추가
         return "review";
@@ -61,10 +59,15 @@ public class ReviewController {
         review.setMember(member);
         review.setStore(store); // Store 객체 설정
 
+        System.out.println("Received rstar value: " + review.getRstar());
+
+
+
         // 리뷰를 DB에 저장
         reviewService.saveReview(review);
 
         // 리뷰 저장 후 해당 가게의 리뷰 페이지로 리다이렉션
-        return "storeDetail"; // 여기가 storeDetail로 가야함
+        return "redirect:/storeDetail?sno=" + sno; // 여기가 storeDetail로 가야함
+
     }
 }

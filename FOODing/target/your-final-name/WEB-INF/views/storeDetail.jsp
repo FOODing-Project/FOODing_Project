@@ -99,7 +99,6 @@
             document.querySelectorAll('.star').forEach(star => {
                 star.addEventListener('mouseover', function() {
                     resetStars();
-                    this.classList.add('hover');
                     let previousStar = this.previousElementSibling;
                     while (previousStar) {
                         if (previousStar.classList.contains('star')) {
@@ -123,6 +122,7 @@
                         }
                         previousStar = previousStar.previousElementSibling;
                     }
+                    document.querySelector('input[name="rstar"][value="' + this.value + '"]').checked = true;
                 });
             });
 
@@ -132,9 +132,9 @@
                 });
             }
         });
-
     }
 
+    initializeReviewScript();
     document.addEventListener("DOMContentLoaded", function() {
         initializeMap('${store.saddr}');
         initializeReviewScript();
@@ -172,6 +172,7 @@
         }
     });
 </script>
+
 <!-- 하단 내비게이션 바 -->
 <c:import url="/bottom.jsp" />
 

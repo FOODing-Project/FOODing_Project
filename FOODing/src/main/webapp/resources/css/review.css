@@ -61,9 +61,9 @@ h2 {
 .star:hover + label::before {
         content: "★";
 }
-/* 커서가 올라간 곳 이후 (오른쪽) 별 */
+/* 커서가 올라간 곳 이후 (왼쪽) 별 */
 .star:hover ~ .star + label::before {
-        content: "★"; /* 선택된 별 및 마우스를 올린 별의 상태를 채워진 별로 변경 */
+        content: "★";
 }
 
 .star:checked ~ .star + label::before {
@@ -98,7 +98,7 @@ h2 {
 
 .review-item .review-content {
         border: 1px solid #ddd;
-        padding: 10px;
+        padding: 30px;
         border-radius: 5px;
         background-color: #f9f9f9;
 }
@@ -106,17 +106,16 @@ h2 {
 .review-item-left {
         position: absolute;
         top: 10px;
-        left: 10px;
+        left: 30px;
 }
 
 .review-item-right {
         position: absolute;
         top: 10px;
-        right: 10px;
+        right: 30px;
 }
 
 .review-item-content {
-        border: 1px solid #ccc;
         padding: 10px;
         margin: 10px;
         max-width: 680px;
@@ -127,4 +126,11 @@ h2 {
 .all-review-div {
         display: flex;
         flex-direction: column;
+}
+
+.no-reviews-message {
+        color: darkgray;
+        font-weight: bold;
+        text-align: center;
+        font-size: 23px;
 }
