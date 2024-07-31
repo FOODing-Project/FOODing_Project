@@ -1,11 +1,10 @@
 package com.sw.fd.controller;
 
-import com.sw.fd.entity.Member;
-import com.sw.fd.entity.Review;
-import com.sw.fd.entity.Store;
+import com.sw.fd.entity.*;
 import com.sw.fd.service.MemberService;
 import com.sw.fd.service.ReviewService;
 import com.sw.fd.service.StoreService;
+import com.sw.fd.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +23,9 @@ public class ReviewController {
     private StoreService storeService;
 
     @Autowired
+    private TagService tagService;
+
+    @Autowired
     private MemberService memberService;
 
     @GetMapping("/review")
@@ -31,11 +33,14 @@ public class ReviewController {
 
         List<Review> reviews = reviewService.getReviewsBySno(sno);
         Store store = storeService.getStoreById(sno);
+        List<Tag> tags = tagService.getAllTags();
+
         model.addAttribute("reviews", reviews);
         model.addAttribute("review", new Review()); // 모델에 빈 Review 객체 추가
         model.addAttribute("sno", sno); // sno도 모델에 추가
         model.addAttribute("store", store); // 가게 정보도 모델에 추가
         model.addAttribute("isEmpty", reviews.isEmpty());
+        model.addAttribute("tags", tags);
         return "review";
     }
 
