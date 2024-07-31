@@ -9,10 +9,7 @@ import com.sw.fd.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -85,4 +82,33 @@ public class ReviewController {
 
         return "myReviews"; // 내가 쓴 리뷰 목록을 보여주는 JSP 파일명
     }
+
+    @PostMapping("/review/delete")
+    public String deleteReview(@RequestParam("rno") int rno, HttpSession session) {
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+
+        if (loggedInMember == null) {
+            // 회원 정보가 없으면 에러 처리
+            return "error"; // 적절한 에러 페이지로 리다이렉션
+        }
+
+        Review review = reviewService.getReviewByRno(rno);
+        if (review == null) {
+            // 리뷰가 존재하지 않음
+            return "error"; // 적절한 에러 페이지로 리다이렉션
+        }
+
+        if (review.getMember().getMno() != loggedInMember.getMno()) {
+            // 작성자가 아님
+            return "error"; // 적절한 에러 페이지로 리다이렉션
+        }
+
+        // 리뷰 삭제
+        reviewService.deleteReviewByRno(rno);
+
+        // 리뷰 삭제 후 해당 가게의 리뷰 페이지로 리다이렉션
+        return "redirect:/storeDetail?sno=" + review.getStore().getSno();
+    }
+
+
 }

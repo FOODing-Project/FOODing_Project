@@ -40,4 +40,8 @@ public class ReviewService {
     public List<Review> getReviewsByMno(int mno) {
         return reviewRepository.findByMember_Mno(mno);
     }
+
+    public void deleteReviewByRno(int rno) {
+        reviewRepository.delete(rno);
+    }
 }

@@ -12,7 +12,6 @@
                 <input type="radio" name="rstar" class="star" id="star2" value="2"><label for="star2"></label>
                 <input type="radio" name="rstar" class="star" id="star1" value="1"><label for="star1"></label>
             </div>
-            <!-- input type="hidden" name="rstar" id="rstar" value="0"/-->
         </div>
         <div class="form-group">
             <form:textarea path="rcomm" id="rcomm" class="custom-textarea" placeholder="리뷰 내용을 입력하세요."></form:textarea>
@@ -41,6 +40,10 @@
                         <div class="review-item"><strong>리뷰 내용 : </strong></div>
                         <div class="review-item review-content">${review.rcomm}</div>
                     </div>
+                    <form method="post" action="${pageContext.request.contextPath}/review/delete">
+                        <input type="hidden" name="rno" value="${review.rno}" />
+                        <button type="submit">삭제</button>
+                    </form>
                 </div>
             </c:forEach>
         </c:when>
