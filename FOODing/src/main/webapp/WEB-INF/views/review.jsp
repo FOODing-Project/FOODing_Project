@@ -17,7 +17,7 @@
             <form:textarea path="rcomm" id="rcomm" class="custom-textarea" placeholder="리뷰 내용을 입력하세요."></form:textarea>
         </div>
         <div class="form group">
-            태그를 선택하세요
+            <p>태그를 선택하세요</p>
             <div class="tag-buttons">
                 <c:forEach var="tag" items="${tags}">
                     <button type="button" class="tag-button">${tag.ttag}</button>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="FOODing:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2d781d0f-b515-4fd6-9a94-f607f6238cdf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/review.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/review.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/review.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/StoreDataLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/StoreDataLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/StoreDataLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/StoreDataLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/review.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/review.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/storeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/storeDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/review.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2k07LvHmVK4hEEUzECiPsXgRR5l" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Tomcat Server.Tomcat 9.0.34.executor": "Run",
+    "git-widget-placeholder": "dahyeon",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.34" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.34" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="corretto-17" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="FOODing:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/FOODing" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="02f3d08a-d8d3-4072-a462-cc110c5fe10b" />
+        <option name="HTTP_PORT" value="8081" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="58446" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="FOODing:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2d781d0f-b515-4fd6-9a94-f607f6238cdf" name="Changes" comment="" />
+      <created>1722408588495</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722408588495</updated>
+      <workItem from="1722408589850" duration="3261000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

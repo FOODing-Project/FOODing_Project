@@ -132,6 +132,11 @@
                     star.classList.remove('hover', 'selected');
                 });
             }
+            document.querySelectorAll('.tag-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.classList.toggle('selected');
+                });
+            });
         });
     }
 

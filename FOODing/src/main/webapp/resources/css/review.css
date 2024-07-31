@@ -70,6 +70,43 @@ h2 {
         content: "★";
 }
 
+/* 공통 스타일 */
+button {
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        margin: 3px;
+}
+
+/* 태그 버튼 스타일 */
+.tag-button {
+        background-color: rgba(255,186,51,0.53);
+        color: #333;
+        border-radius: 3px;
+        <!-- 여기가 기본 설정이라 눌렸을때 배경색도 여기서 설정하면 될듯 -->
+}
+
+.tag-button:hover {
+        background-color: #f5ba00;
+}
+
+.tag-button:checked {
+        background-color: rgba(255,186,51,0.53);
+        border: 1px;
+
+}
+
+/* 리뷰 작성 버튼 스타일 */
+.submit-button {
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 3px;
+}
+
+.submit-button:hover {
+        background-color: #45a049;
+}
+
 
 .review-container {
         border: 1px solid #ccc;

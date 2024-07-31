@@ -132,6 +132,7 @@
                     star.classList.remove('hover', 'selected');
                 });
             }
+
         });
     }
 
