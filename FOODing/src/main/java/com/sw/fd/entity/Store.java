@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "store_t")
@@ -38,4 +39,7 @@ public class Store {
     private String spark;
     @Transient
     private String photoUrl; // @Transient 어노테이션을 추가해서 DB에 저장되지 않음
+
+    @OneToMany(mappedBy = "store")
+    private List<StoreTag> storeTags;
 }

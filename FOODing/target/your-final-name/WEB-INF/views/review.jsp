@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="form-group">
-            <form:textarea path="rcomm" id="rcomm" class="custom-textarea" placeholder="안녕! 리뷰 내용을 입력하세요."></form:textarea>
+            <form:textarea path="rcomm" id="rcomm" class="custom-textarea" placeholder="리뷰 내용을 입력하세요."></form:textarea>
         </div>
         <div class="form-group">
             <button type="submit">리뷰 작성</button>
@@ -28,7 +28,7 @@
         <c:when test="${not empty reviews}">
             <c:forEach var="review" items="${reviews}">
                 <div class="review-container">
-                    <div class="review-item review-item-left"><strong>닉네임: ${review.member.mnick}</strong></div>
+                    <div class="review-item review-item-left"><strong>${review.member.mnick}</strong></div>
                     <div class="review-item review-item-right">${review.rdate}</div>
                     <div class="review-item review-item-left" style="top: 30px;">
                         <span class="star-rating">

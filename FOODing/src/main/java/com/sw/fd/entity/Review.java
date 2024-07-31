@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "review_t") // 데이터베이스 테이블과 매핑
@@ -29,6 +30,9 @@ public class Review {
     private int rstar;
     private String rcomm;
     private LocalDate rdate;
+
+    @OneToMany(mappedBy = "review")
+    private List<ReviewTag> reviewTags;
 
     @PrePersist
     protected void onCreate() { rdate = LocalDate.now(); }
