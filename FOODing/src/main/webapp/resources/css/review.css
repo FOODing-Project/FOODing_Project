@@ -19,7 +19,7 @@ h2 {
 
 .form-group {
         text-align: left;
-        margin-bottom: 100px;
+        margin-bottom: 20px;
         width: 100%;
 }
 
@@ -37,6 +37,7 @@ h2 {
         display: flex;
         direction: rtl;
         justify-content: left;
+        margin-bottom: 0px;
 }
 
 .star {
@@ -47,6 +48,7 @@ h2 {
         font-size: 2em;
         cursor: pointer;
         color: gold;
+        margin-bottom: 0px;
 }
 
 .star + label::before {
@@ -76,25 +78,33 @@ button {
         cursor: pointer;
         padding: 5px 10px;
         margin: 3px;
+        color: black;
 }
 
 /* 태그 버튼 스타일 */
 .tag-button {
         background-color: rgba(255,186,51,0.53);
-        color: #333;
-        border-radius: 3px;
-        <!-- 여기가 기본 설정이라 눌렸을때 배경색도 여기서 설정하면 될듯 -->
+        border-radius: 30px;
+        border: 2px solid transparent;
+}
+
+.tag-button:focus {
+        outline: none; /* 기본 포커스 스타일 제거 */
 }
 
 .tag-button:hover {
         background-color: #f5ba00;
 }
 
-.tag-button:checked {
-        background-color: rgba(255,186,51,0.53);
-        border: 1px;
-
+.tag-button:active {
+        border: 2px solid darkgray;
 }
+
+.tag-button.selected {
+        background-color: #f5ba00;
+        border: 2px solid darkgray;
+}
+
 
 /* 리뷰 작성 버튼 스타일 */
 .submit-button {

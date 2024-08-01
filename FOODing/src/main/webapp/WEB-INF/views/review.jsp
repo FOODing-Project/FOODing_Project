@@ -20,13 +20,15 @@
             <p>태그를 선택하세요</p>
             <div class="tag-buttons">
                 <c:forEach var="tag" items="${tags}">
-                    <button type="button" class="tag-button">${tag.ttag}</button>
+                    <button type="button" class="tag-button" onclick="toggleTag(${tag.tno}, this)">${tag.ttag}</button>
                 </c:forEach>
             </div>
         </div>
         <div class="form-group">
             <button type="submit">리뷰 작성</button>
         </div>
+        <input type="hidden" name="tnos" id="tnos" />
+
     </form:form>
 
 

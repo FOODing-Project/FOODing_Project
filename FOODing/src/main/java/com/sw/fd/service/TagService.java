@@ -13,6 +13,10 @@ public class TagService {
     @Autowired
     private TagRepository tagRepository;
 
+    public Tag getTagByTno(int tno) {
+        return tagRepository.findByTno(tno);
+    }
+
     public List<Tag> getAllTags() {
         return tagRepository.findAll();
     }

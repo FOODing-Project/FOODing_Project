@@ -36,6 +36,7 @@ public class ReviewService {
         return reviewRepository.findByStore_Sno(sno);
     }
 
+
     @Transactional
     public List<Review> getReviewsByMno(int mno) {
         return reviewRepository.findByMember_Mno(mno);

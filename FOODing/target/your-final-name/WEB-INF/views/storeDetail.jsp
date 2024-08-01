@@ -95,6 +95,23 @@
         window.addEventListener('resize', adjustMapHeight);
     }
 
+    var selectedTags = [];
+
+    function toggleTag(tno, button) {
+        var index = selectedTags.indexOf(tno);
+        if (index === -1) {
+            // 태그가 선택되지 않았으면 추가
+            selectedTags.push(tno);
+            button.classList.add('selected');
+        } else {
+            // 태그가 이미 선택되었으면 제거
+            selectedTags.splice(index, 1);
+            button.classList.remove('selected');
+        }
+        // 선택된 태그 ID를 hidden input에 설정
+        document.getElementById('tnos').value = selectedTags.join(',');
+    }
+
     function initializeReviewScript() {
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.star').forEach(star => {
@@ -132,13 +149,10 @@
                     star.classList.remove('hover', 'selected');
                 });
             }
-            document.querySelectorAll('.tag-button').forEach(button => {
-                button.addEventListener('click', function() {
-                    this.classList.toggle('selected');
-                });
-            });
+
         });
     }
+
 
     initializeReviewScript();
 

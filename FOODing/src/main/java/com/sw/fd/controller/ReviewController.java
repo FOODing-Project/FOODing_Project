@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -45,7 +46,7 @@ public class ReviewController {
     }
 
     @PostMapping("/review")
-    public String addReview(@ModelAttribute Review review, @RequestParam("sno") int sno, HttpSession session) {
+    public String addReview(@ModelAttribute Review review, @RequestParam("sno") int sno, @RequestParam("tnos") List<Integer> tnos, HttpSession session) {
         Member member = (Member) session.getAttribute("loggedInMember");
 
         if (member == null) {
@@ -63,6 +64,16 @@ public class ReviewController {
         // 설정자 사용하여 필요한 필드 설정
         review.setMember(member);
         review.setStore(store); // Store 객체 설정
+
+        List<ReviewTag> reviewTags = new ArrayList<>();
+        for (Integer tno : tnos) {
+            Tag tag = tagService.getTagByTno(tno);
+            ReviewTag reviewTag = new ReviewTag();
+            reviewTag.setReview(review);
+            reviewTag.setTag(tag);
+            reviewTags.add(reviewTag);
+        }
+        review.setReviewTags(reviewTags);
 
         // 리뷰를 DB에 저장
         reviewService.saveReview(review);
