@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -31,7 +30,6 @@ public class ReviewController {
 
     @GetMapping("/review")
     public String review(@RequestParam("sno") int sno, Model model) {
-
         List<Review> reviews = reviewService.getReviewsBySno(sno);
         Store store = storeService.getStoreById(sno);
         List<Tag> tags = tagService.getAllTags();
@@ -65,18 +63,17 @@ public class ReviewController {
         review.setMember(member);
         review.setStore(store); // Store 객체 설정
 
-        List<ReviewTag> reviewTags = new ArrayList<>();
-        for (Integer tno : tnos) {
-            Tag tag = tagService.getTagByTno(tno);
-            ReviewTag reviewTag = new ReviewTag();
-            reviewTag.setReview(review);
-            reviewTag.setTag(tag);
-            reviewTags.add(reviewTag);
-        }
-        review.setReviewTags(reviewTags);
-
         // 리뷰를 DB에 저장
-        reviewService.saveReview(review);
+        Review savedReview = reviewService.saveReview(review);
+
+        // 선택된 태그를 ReviewTag로 변환하여 저장
+        for (Integer tno : tnos) {
+            Tag tag = reviewService.getTagByTno(tno);
+            ReviewTag reviewTag = new ReviewTag();
+            reviewTag.setReview(savedReview);
+            reviewTag.setTag(tag);
+            reviewService.saveReviewTag(reviewTag); // 각 태그를 저장
+        }
 
         // 리뷰 저장 후 해당 가게의 리뷰 페이지로 리다이렉션
         return "redirect:/storeDetail?sno=" + sno; // 여기가 storeDetail로 가야함
@@ -125,6 +122,4 @@ public class ReviewController {
         // 리뷰 삭제 후 해당 가게의 리뷰 페이지로 리다이렉션
         return "redirect:/storeDetail?sno=" + review.getStore().getSno();
     }
-
-
 }
