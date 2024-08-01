@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="form-group">
-            <button type="submit">리뷰 작성</button>
+            <button type="submit" class="submit-button">리뷰 작성</button>
         </div>
         <input type="hidden" name="tnos" id="tnos" />
 
