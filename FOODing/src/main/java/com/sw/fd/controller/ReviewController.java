@@ -68,11 +68,11 @@ public class ReviewController {
 
         // 선택된 태그를 ReviewTag로 변환하여 저장
         for (Integer tno : tnos) {
-            Tag tag = reviewService.getTagByTno(tno);
+            Tag tag = tagService.getTagByTno(tno);
             ReviewTag reviewTag = new ReviewTag();
             reviewTag.setReview(savedReview);
             reviewTag.setTag(tag);
-            reviewService.saveReviewTag(reviewTag); // 각 태그를 저장
+            tagService.saveReviewTag(reviewTag); // 각 태그를 저장
         }
 
         // 리뷰 저장 후 해당 가게의 리뷰 페이지로 리다이렉션

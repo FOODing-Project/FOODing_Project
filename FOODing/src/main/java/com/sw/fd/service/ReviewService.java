@@ -57,12 +57,4 @@ public class ReviewService {
         reviewRepository.delete(rno);
     }
 
-    public Tag getTagByTno(int tno) {
-        return tagRepository.findByTno(tno);
-    }
-
-    public void saveReviewTag(ReviewTag reviewTag) {
-        reviewTagRepository.save(reviewTag);
-    }
-
 }
