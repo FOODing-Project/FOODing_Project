@@ -50,6 +50,11 @@
                         <div class="review-item"><strong>리뷰 내용 : </strong></div>
                         <div class="review-item review-content">${review.rcomm}</div>
                     </div>
+                        <div class="review-tags">
+                            <c:forEach var="tag" items="${review.tags}">
+                                <span class="tag-label">${tag.ttag}</span>
+                            </c:forEach>
+                        </div>
                     <form method="post" action="${pageContext.request.contextPath}/review/delete">
                         <input type="hidden" name="rno" value="${review.rno}" />
                         <button type="submit">삭제</button>

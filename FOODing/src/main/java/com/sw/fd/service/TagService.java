@@ -30,4 +30,8 @@ public class TagService {
         return tagRepository.findAll();
     }
 
+    public List<Tag> getTagsByRno(int rno) {
+        return tagRepository.findTagsByRno(rno);
+    }
+
 }

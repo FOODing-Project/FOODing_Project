@@ -34,6 +34,9 @@ public class Review {
     @OneToMany(mappedBy = "review")
     private List<ReviewTag> reviewTags;
 
+    @Transient
+    private List<Tag> tags;
+
     @PrePersist
     protected void onCreate() { rdate = LocalDate.now(); }
 

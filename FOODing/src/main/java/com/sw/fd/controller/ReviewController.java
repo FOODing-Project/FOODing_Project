@@ -32,14 +32,19 @@ public class ReviewController {
     public String review(@RequestParam("sno") int sno, Model model) {
         List<Review> reviews = reviewService.getReviewsBySno(sno);
         Store store = storeService.getStoreById(sno);
-        List<Tag> tags = tagService.getAllTags();
+        List<Tag> allTags = tagService.getAllTags();
+
+        for (Review review : reviews) {
+            List<Tag> tags = tagService.getTagsByRno(review.getRno());
+            review.setTags(tags);
+        }
 
         model.addAttribute("reviews", reviews);
         model.addAttribute("review", new Review()); // 모델에 빈 Review 객체 추가
         model.addAttribute("sno", sno); // sno도 모델에 추가
         model.addAttribute("store", store); // 가게 정보도 모델에 추가
         model.addAttribute("isEmpty", reviews.isEmpty());
-        model.addAttribute("tags", tags);
+        model.addAttribute("tags", allTags);
         return "review";
     }
 
