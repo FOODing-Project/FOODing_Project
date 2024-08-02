@@ -34,6 +34,7 @@ public class ReviewController {
         Store store = storeService.getStoreById(sno);
         List<Tag> allTags = tagService.getAllTags();
 
+        // 작성된 리뷰에 태그를 띄워줌
         for (Review review : reviews) {
             List<Tag> tags = tagService.getTagsByRno(review.getRno());
             review.setTags(tags);

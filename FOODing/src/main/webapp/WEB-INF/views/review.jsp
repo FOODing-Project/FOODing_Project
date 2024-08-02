@@ -38,27 +38,36 @@
         <c:when test="${not empty reviews}">
             <c:forEach var="review" items="${reviews}">
                 <div class="review-container">
-                    <div class="review-item review-item-left"><strong>${review.member.mnick}</strong></div>
-                    <div class="review-item review-item-right">${review.rdate}</div>
-                    <div class="review-item review-item-left" style="top: 30px;">
+                    <div class="review-item review-item-left">${review.rdate}</div>
+                    <div class="review-item review-item-left" style="top: 35px;"><strong>${review.member.mnick}</strong></div>
+                    <div class="review-item review-item-left" style="top: 60px;">
                         <span class="star-rating">
                             <c:forEach begin="${review.rstar + 1}" end="5" var="i">☆</c:forEach>
                             <c:forEach begin="1" end="${review.rstar}" var="i">★</c:forEach>
                         </span>
                     </div>
                     <div class="review-item-content">
-                        <div class="review-item"><strong>리뷰 내용 : </strong></div>
                         <div class="review-item review-content">${review.rcomm}</div>
+                        <div class="review-actions-right">
+                            <form method="post" action="${pageContext.request.contextPath}/review/edit" style="display: inline;">
+                                <input type="hidden" name="rno" value="${review.rno}" />
+                                <button type="submit">수정</button>
+                            </form>
+                            <form method="post" action="${pageContext.request.contextPath}/review/delete" style="display: inline;">
+                                <input type="hidden" name="rno" value="${review.rno}" />
+                                <button type="submit">삭제</button>
+                            </form>
+                        </div>
                     </div>
-                        <div class="review-tags">
+                    <%--<div class="review-item-content">
+
+                        <div class="review-item review-content">${review.rcomm}</div>
+                    </div>--%>
+                    <div class="review-tags">
                             <c:forEach var="tag" items="${review.tags}">
                                 <span class="tag-label">${tag.ttag}</span>
                             </c:forEach>
-                        </div>
-                    <form method="post" action="${pageContext.request.contextPath}/review/delete">
-                        <input type="hidden" name="rno" value="${review.rno}" />
-                        <button type="submit">삭제</button>
-                    </form>
+                    </div>
                 </div>
             </c:forEach>
         </c:when>
