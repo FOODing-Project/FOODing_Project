@@ -31,7 +31,7 @@ public class Review {
     private String rcomm;
     private LocalDate rdate;
 
-    @OneToMany(mappedBy = "review")
+    @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE)
     private List<ReviewTag> reviewTags;
 
     @Transient

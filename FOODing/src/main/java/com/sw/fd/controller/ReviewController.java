@@ -106,21 +106,7 @@ public class ReviewController {
     public String deleteReview(@RequestParam("rno") int rno, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
 
-        if (loggedInMember == null) {
-            // 회원 정보가 없으면 에러 처리
-            return "error"; // 적절한 에러 페이지로 리다이렉션
-        }
-
         Review review = reviewService.getReviewByRno(rno);
-        if (review == null) {
-            // 리뷰가 존재하지 않음
-            return "error"; // 적절한 에러 페이지로 리다이렉션
-        }
-
-        if (review.getMember().getMno() != loggedInMember.getMno()) {
-            // 작성자가 아님
-            return "error"; // 적절한 에러 페이지로 리다이렉션
-        }
 
         // 리뷰 삭제
         reviewService.deleteReviewByRno(rno);
@@ -128,4 +114,30 @@ public class ReviewController {
         // 리뷰 삭제 후 해당 가게의 리뷰 페이지로 리다이렉션
         return "redirect:/storeDetail?sno=" + review.getStore().getSno();
     }
+
+    /*@GetMapping("/review/edit")
+    public String editReviewForm(@RequestParam("rno") int rno, Model model, HttpSession session) {
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+
+        Review review = reviewService.getReviewByRno(rno);
+
+        model.addAttribute("review", review);
+        model.addAttribute("editMode", true);
+        return "review"; // review.jsp 파일로 반환
+    }
+
+    @PostMapping("/review/update")
+    public String updateReview(@ModelAttribute Review review, HttpSession session) {
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+
+        Review existingReview = reviewService.getReviewByRno(review.getRno());
+
+        review.setMember(existingReview.getMember());
+        review.setStore(existingReview.getStore());
+
+        reviewService.saveReview(review);
+
+        return "redirect:/storeDetail?sno=" + review.getStore().getSno();
+    }*/
+
 }

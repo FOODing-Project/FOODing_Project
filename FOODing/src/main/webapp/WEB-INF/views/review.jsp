@@ -49,14 +49,16 @@
                     <div class="review-item-content">
                         <div class="review-item review-content">${review.rcomm}</div>
                         <div class="review-actions-right">
-                            <form method="post" action="${pageContext.request.contextPath}/review/edit" style="display: inline;">
-                                <input type="hidden" name="rno" value="${review.rno}" />
-                                <button type="submit">수정</button>
-                            </form>
-                            <form method="post" action="${pageContext.request.contextPath}/review/delete" style="display: inline;">
-                                <input type="hidden" name="rno" value="${review.rno}" />
-                                <button type="submit">삭제</button>
-                            </form>
+                            <c:if test="${loggedInMember != null && review.member.mno == loggedInMember.mno}">
+                                <form method="post" action="${pageContext.request.contextPath}/review/edit" style="display: inline;">
+                                    <input type="hidden" name="rno" value="${review.rno}" />
+                                    <button type="submit">수정</button>
+                                </form>
+                                <form method="post" action="${pageContext.request.contextPath}/review/delete" style="display: inline;">
+                                    <input type="hidden" name="rno" value="${review.rno}" />
+                                    <button type="submit">삭제</button>
+                                </form>
+                            </c:if>
                         </div>
                     </div>
                     <%--<div class="review-item-content">
