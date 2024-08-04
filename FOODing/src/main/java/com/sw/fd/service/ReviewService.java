@@ -57,4 +57,6 @@ public class ReviewService {
         reviewRepository.delete(rno);
     }
 
+
+
 }

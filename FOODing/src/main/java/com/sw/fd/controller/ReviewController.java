@@ -42,9 +42,9 @@ public class ReviewController {
 
         model.addAttribute("reviews", reviews);
         model.addAttribute("review", new Review()); // 모델에 빈 Review 객체 추가
-        model.addAttribute("sno", sno); // sno도 모델에 추가
-        model.addAttribute("store", store); // 가게 정보도 모델에 추가
-        model.addAttribute("isEmpty", reviews.isEmpty());
+        model.addAttribute("sno", sno);
+        model.addAttribute("store", store);
+        model.addAttribute("isEmpty", reviews.isEmpty()); // 작성된 리뷰가 존재하는지 확인
         model.addAttribute("tags", allTags);
         return "review";
     }
@@ -115,22 +115,38 @@ public class ReviewController {
         return "redirect:/storeDetail?sno=" + review.getStore().getSno();
     }
 
-    /*@GetMapping("/review/edit")
+    // 수정 폼을 표시하는 GET 요청
+    @GetMapping("/review/edit")
     public String editReviewForm(@RequestParam("rno") int rno, Model model, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
 
-        Review review = reviewService.getReviewByRno(rno);
+        if (loggedInMember == null) {
+            return "error";
+        }
 
+        Review review = reviewService.getReviewByRno(rno);
+        if (review == null || review.getMember().getMno() != loggedInMember.getMno()) {
+            return "error";
+        }
+
+        List<Tag> tags = tagService.getAllTags(); // 태그 리스트를 가져옴
+        model.addAttribute("tags", tags);
         model.addAttribute("review", review);
-        model.addAttribute("editMode", true);
-        return "review"; // review.jsp 파일로 반환
+        return "editReview"; // editReview.jsp 파일로 반환
     }
 
     @PostMapping("/review/update")
     public String updateReview(@ModelAttribute Review review, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
 
+        if (loggedInMember == null) {
+            return "error";
+        }
+
         Review existingReview = reviewService.getReviewByRno(review.getRno());
+        if (existingReview == null || existingReview.getMember().getMno() != loggedInMember.getMno()) {
+            return "error";
+        }
 
         review.setMember(existingReview.getMember());
         review.setStore(existingReview.getStore());
@@ -138,6 +154,7 @@ public class ReviewController {
         reviewService.saveReview(review);
 
         return "redirect:/storeDetail?sno=" + review.getStore().getSno();
-    }*/
+    }
+
 
 }
