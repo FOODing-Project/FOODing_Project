@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,7 @@ public class ReviewController {
     @GetMapping("/review")
     public String review(@RequestParam("sno") int sno, Model model) {
         List<Review> reviews = reviewService.getReviewsBySno(sno);
+        reviews.sort(Comparator.comparing(Review::getRdate).reversed());
         Store store = storeService.getStoreById(sno);
         List<Tag> allTags = tagService.getAllTags();
 
