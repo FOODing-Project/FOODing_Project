@@ -9,6 +9,7 @@ import com.sw.fd.repository.ReviewTagRepository;
 import com.sw.fd.repository.StoreRepository;
 import com.sw.fd.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +46,7 @@ public class ReviewService {
     }
 
     public List<Review> getReviewsBySno(int sno) {
-        return reviewRepository.findByStore_Sno(sno);
+        return reviewRepository.findByStore_Sno(sno, new Sort(Sort.Direction.DESC, "rdate"));
     }
 
 
@@ -63,4 +64,5 @@ public class ReviewService {
         reviewTagRepository.deleteTags(review);
     }
 
+    
 }
