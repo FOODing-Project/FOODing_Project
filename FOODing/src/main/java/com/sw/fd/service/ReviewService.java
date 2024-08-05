@@ -30,6 +30,7 @@ public class ReviewService {
     @Autowired
     private ReviewTagRepository reviewTagRepository;
 
+    @Transactional
     public Review saveReview(Review review) {
         review.setRdate(LocalDate.now());
         return reviewRepository.save(review);
@@ -57,6 +58,9 @@ public class ReviewService {
         reviewRepository.delete(rno);
     }
 
-
+    @Transactional
+    public void deleteReviewTags(Review review) {
+        reviewTagRepository.deleteTags(review);
+    }
 
 }

@@ -156,7 +156,7 @@
     function openEditWindow(rno) {
         var url = "${pageContext.request.contextPath}/review/edit?rno=" + rno;
         var name = "editReview";
-        var specs = "width=600,height=400";
+        var specs = "width=750,height=600";
         window.open(url, name, specs);
     }
 

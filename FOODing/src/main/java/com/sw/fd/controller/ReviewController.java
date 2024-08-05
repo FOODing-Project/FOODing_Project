@@ -11,7 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.zip.CheckedOutputStream;
 
 @Controller
 public class ReviewController {
@@ -121,11 +124,13 @@ public class ReviewController {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
 
         if (loggedInMember == null) {
+            System.out.println("로그인된 회원 정보가 없습니다.");
             return "error";
         }
 
         Review review = reviewService.getReviewByRno(rno);
         if (review == null || review.getMember().getMno() != loggedInMember.getMno()) {
+            System.out.println("리뷰가 없거나 작성자가 아닙니다. 리뷰 번호: " + rno);
             return "error";
         }
 
@@ -136,25 +141,49 @@ public class ReviewController {
     }
 
     @PostMapping("/review/update")
-    public String updateReview(@ModelAttribute Review review, HttpSession session) {
+    @ResponseBody
+    public Map<String, String> updateReview(@ModelAttribute Review review, @RequestParam("tnos") List<Integer> tnos, HttpSession session) {
+        Map<String, String> response = new HashMap<>();
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
 
         if (loggedInMember == null) {
-            return "error";
+            response.put("status", "error");
+            response.put("message", "로그인된 회원 정보가 없습니다.");
+            return response;
         }
 
         Review existingReview = reviewService.getReviewByRno(review.getRno());
         if (existingReview == null || existingReview.getMember().getMno() != loggedInMember.getMno()) {
-            return "error";
+            response.put("status", "error");
+            response.put("message", "리뷰가 없거나 작성자가 아닙니다.");
+            return response;
         }
 
-        review.setMember(existingReview.getMember());
-        review.setStore(existingReview.getStore());
+        try {
+            existingReview.setRstar(review.getRstar());
+            existingReview.setRcomm(review.getRcomm());
 
-        reviewService.saveReview(review);
+            reviewService.deleteReviewTags(existingReview);
 
-        return "redirect:/storeDetail?sno=" + review.getStore().getSno();
+            for (Integer tno : tnos) {
+                Tag tag = tagService.getTagByTno(tno);
+                ReviewTag reviewTag = new ReviewTag();
+                reviewTag.setReview(existingReview);
+                reviewTag.setTag(tag);
+                tagService.saveReviewTag(reviewTag);
+            }
+
+            reviewService.saveReview(existingReview);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("status", "error");
+            response.put("message", "리뷰 업데이트 중 오류 발생: " + e.getMessage());
+            return response;
+        }
+
+        response.put("status", "success");
+        response.put("message", "리뷰가 성공적으로 업데이트되었습니다.");
+        return response;
     }
-
 
 }

@@ -2,28 +2,52 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/editReview.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     var selectedTags = [];
 
     function toggleTag(tno, button) {
         var index = selectedTags.indexOf(tno);
         if (index === -1) {
-            // 태그가 선택되지 않았으면 추가
             selectedTags.push(tno);
             button.classList.add('selected');
         } else {
-            // 태그가 이미 선택되었으면 제거
             selectedTags.splice(index, 1);
             button.classList.remove('selected');
         }
-        // 선택된 태그 ID를 hidden input에 설정
         document.getElementById('tnos').value = selectedTags.join(',');
     }
+
+    function submitReview(event) {
+        event.preventDefault(); // 폼 기본 제출 막기
+        var formData = $("#review").serialize();
+        console.log("Submitting review with data: ", formData);
+        $.ajax({
+            type: "POST",
+            url: "${pageContext.request.contextPath}/review/update",
+            data: formData,
+            success: function(response) {
+                console.log("AJAX success response: ", response);
+                alert("수정이 완료되었습니다");
+                window.opener.location.reload(); // 부모 창 새로고침
+                window.close(); // 팝업 창 닫기
+            },
+            error: function(xhr, status, error) {
+                console.log("AJAX error response: ", xhr, status, error);
+                alert("리뷰 수정 중 오류가 발생했습니다: " + error);
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        $("#review").on("submit", submitReview);
+    });
+
 </script>
 <div class = "edit-container">
     <h2>리뷰 수정</h2>
-    <form:form method="post" action="${pageContext.request.contextPath}/review" modelAttribute="review" id="review">
-        <input type="hidden" name="sno" id="sno" value="${sno}" />
+    <form:form method="post" action="${pageContext.request.contextPath}/review/update" modelAttribute="review" id="review">
+        <input type="hidden" name="rno" value="${review.rno}" />
         <div class="form-group">
             <div class="star-rating">
                 <input type="radio" name="rstar" class="star" id="star5" value="5"><label for="star5"></label>
