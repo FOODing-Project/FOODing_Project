@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -33,7 +34,9 @@ public class ReviewService {
 
     @Transactional
     public Review saveReview(Review review) {
-        review.setRdate(LocalDate.now());
+        if (review.getRno() == 0) {
+            review.setRdate(LocalDateTime.now());
+        }
         return reviewRepository.save(review);
     }
 

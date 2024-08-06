@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -29,7 +30,7 @@ public class Review {
 
     private int rstar;
     private String rcomm;
-    private LocalDate rdate;
+    private LocalDateTime rdate;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE)
     private List<ReviewTag> reviewTags;
@@ -38,6 +39,6 @@ public class Review {
     private List<Tag> tags;
 
     @PrePersist
-    protected void onCreate() { rdate = LocalDate.now(); }
+    protected void onCreate() { rdate = LocalDateTime.now(); }
 
 }
