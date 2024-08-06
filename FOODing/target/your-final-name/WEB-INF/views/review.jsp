@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <div class = "all-review-div">
     <form:form method="post" action="${pageContext.request.contextPath}/review" modelAttribute="review" id="review">
         <input type="hidden" name="sno" id="sno" value="${sno}" />
@@ -38,7 +39,9 @@
         <c:when test="${not empty reviews}">
             <c:forEach var="review" items="${reviews}">
                 <div class="review-container">
-                    <div class="review-item review-item-left">${review.rdate}</div>
+                    <div class="review-item review-item-left">
+                            ${review.dateToString}
+                    </div>
                     <div class="review-item review-item-left" style="top: 35px;"><strong>${review.member.mnick}</strong></div>
                     <div class="review-item review-item-left" style="top: 60px;">
                         <span class="star-rating">

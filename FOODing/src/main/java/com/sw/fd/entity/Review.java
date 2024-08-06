@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -38,7 +41,17 @@ public class Review {
     @Transient
     private List<Tag> tags;
 
+    @Transient
+    private String dateToString;
+
     @PrePersist
-    protected void onCreate() { rdate = LocalDateTime.now(); }
+    protected void onCreate() {
+        rdate = LocalDateTime.now();
+        /*rsdate = rdate.toString();
+        String[] parts = rsdate.split("T");
+        rsdate = parts[0];
+        rstime = parts[1].substring(0, parts[1].indexOf('.'));*/
+    }
+
 
 }

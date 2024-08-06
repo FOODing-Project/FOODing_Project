@@ -49,7 +49,7 @@ public class ReviewService {
     }
 
     public List<Review> getReviewsBySno(int sno) {
-        return reviewRepository.findByStore_Sno(sno, new Sort(Sort.Direction.DESC, "rdate"));
+        return reviewRepository.findByStore_Sno(sno);
     }
 
 
@@ -67,5 +67,5 @@ public class ReviewService {
         reviewTagRepository.deleteTags(review);
     }
 
-    
+
 }

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +40,10 @@ public class ReviewController {
         Store store = storeService.getStoreById(sno);
         List<Tag> allTags = tagService.getAllTags();
 
+        for (Review review : reviews){
+            review.setDateToString(review.getRdate().format(DateTimeFormatter.ofPattern("yy-MM-dd")));
+            System.out.println("DateToString = " + review.getDateToString());
+        }
         // 작성된 리뷰에 태그를 띄워줌
         for (Review review : reviews) {
             List<Tag> tags = tagService.getTagsByRno(review.getRno());
