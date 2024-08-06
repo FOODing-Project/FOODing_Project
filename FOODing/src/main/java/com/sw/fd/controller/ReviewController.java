@@ -34,9 +34,24 @@ public class ReviewController {
     private MemberService memberService;
 
     @GetMapping("/review")
-    public String review(@RequestParam("sno") int sno, Model model) {
+    public String review(@RequestParam("sno") int sno, @RequestParam(value = "sort", defaultValue = "latest") String sort, Model model) {
         List<Review> reviews = reviewService.getReviewsBySno(sno);
-        reviews.sort(Comparator.comparing(Review::getRdate).reversed());
+        switch (sort) {
+            case "oldest":
+                reviews.sort(Comparator.comparing(Review::getRdate));
+                break;
+            case "lowRating":
+                reviews.sort(Comparator.comparing(Review::getRstar));
+                break;
+            case "highRating":
+                reviews.sort(Comparator.comparing(Review::getRstar).reversed());
+                break;
+            case "latest":
+            default:
+                reviews.sort(Comparator.comparing(Review::getRdate).reversed());
+                break;
+        }
+        /*reviews.sort(Comparator.comparing(Review::getRdate).reversed());*/
         Store store = storeService.getStoreById(sno);
         List<Tag> allTags = tagService.getAllTags();
 
