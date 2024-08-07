@@ -18,7 +18,7 @@
             <form:textarea path="rcomm" id="rcomm" class="custom-textarea" placeholder="리뷰 내용을 입력하세요."></form:textarea>
         </div>
         <div class="form group">
-            <p>태그를 선택하세요</p>
+            <h6>태그를 선택하세요</h6>
             <div class="tag-buttons">
                 <c:forEach var="tag" items="${tags}">
                     <button type="button" class="tag-button" onclick="toggleTag(${tag.tno}, this)">${tag.ttag}</button>
@@ -45,10 +45,12 @@
         </ul>
     </div>--%>
     <div class="sort-area">
-        <a class = "sort-element" id="sort_by_latest" href="#">최신순</a>
-        <a class = "sort-element" id="sort_by_oldest" href="#">작성순</a>
-        <a class = "sort-element" id="sort_by_highest" href="#">별점 높은 순</a>
-        <a class = "sort-element" id="sort_by_lowest" href="#">별점 낮은 순</a>
+        <select id="sort-options" class="sort-element">
+            <option value="latest">최신순</option>
+            <option value="oldest">작성순</option>
+            <option value="highest">별점 높은 순</option>
+            <option value="lowest">별점 낮은 순</option>
+        </select>
     </div>
 
 
@@ -113,42 +115,13 @@
             });
         }
 
-        $('#sort_by_latest').click(function(event) {
-            event.preventDefault();
-            loadReviewList('latest');
-        });
-
-        $('#sort_by_oldest').click(function(event) {
-            event.preventDefault();
-            loadReviewList('oldest');
-        });
-
-        $('#sort_by_lowest').click(function(event) {
-            event.preventDefault();
-            loadReviewList('lowest');
-        });
-
-        $('#sort_by_highest').click(function(event) {
-            event.preventDefault();
-            loadReviewList('highest');
+        // 새로운 select 태그의 change 이벤트 리스너
+        $('#sort-options').change(function() {
+            const sortBy = $(this).val();
+            loadReviewList(sortBy);
         });
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const dropdownBtn = document.querySelector('.dropdown-btn');
-        const dropdownContent = document.querySelector('.dropdown-content');
-
-        dropdownBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-        });
-
-        window.addEventListener('click', function () {
-            if (dropdownContent.style.display === 'block') {
-                dropdownContent.style.display = 'none';
-            }
-        });
-    });
 </script>
 
 

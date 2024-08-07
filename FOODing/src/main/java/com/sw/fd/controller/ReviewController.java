@@ -40,7 +40,6 @@ public class ReviewController {
 
         List<Review> reviews = reviewService.getReviewsBySno(sno);
 
-        System.out.println("sortBy = " + sortBy);
         if ("latest".equals(sortBy)) {
             reviews.sort(Comparator.comparing(Review::getRdate).reversed());
         } else if ("oldest".equals(sortBy)) {
@@ -53,14 +52,6 @@ public class ReviewController {
             reviews.sort(Comparator.comparing(Review::getRdate).reversed());
         }
 
-        /*if ("score".equals(sortBy)) {
-            reviews.sort(Comparator.comparing(Review::getRdate).reversed());
-        }
-        else if ("score".equals(sortBy)) {
-            reviews.sort(Comparator.comparing(Review::getRdate).reversed());
-        }*/
-
-        /*reviews.sort(Comparator.comparing(Review::getRdate).reversed());*/
         Store store = storeService.getStoreById(sno);
         List<Tag> allTags = tagService.getAllTags();
 

@@ -13,7 +13,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/ReviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/review.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/review.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeDetail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/review.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/ReviewController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/ReviewController.class" afterDir="false" />
@@ -197,7 +196,7 @@
       <workItem from="1722573662151" duration="668000" />
       <workItem from="1722574347748" duration="13161000" />
       <workItem from="1722842658814" duration="2877000" />
-      <workItem from="1722994933504" duration="17065000" />
+      <workItem from="1722994933504" duration="20805000" />
     </task>
     <servers />
   </component>

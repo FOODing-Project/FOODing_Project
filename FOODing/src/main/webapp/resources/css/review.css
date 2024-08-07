@@ -6,6 +6,7 @@ h2 {
         text-align: left;
         color: #333;
         margin-left: 20px;
+        margin-top: 30px;
 }
 
 .form-group {
@@ -95,7 +96,7 @@ h2 {
 
 /* 리뷰 작성 버튼 스타일 */
 .submit-button {
-        width: 700px;
+        width: 90%;
         padding: 10px;
         margin: 20px;
         background-color: saddlebrown;
@@ -167,6 +168,7 @@ h2 {
 .all-review-div {
         display: flex;
         flex-direction: column;
+        width: 100%;
 }
 
 .review-tags {
@@ -269,7 +271,11 @@ h2 {
         margin-bottom: 10px;
 }
 
-.store-table {
-        width: 100%;
-        height: 30px;
+.sort-area {
+        text-align: right;
+}
+
+.h6, h6 {
+        text-align: left;
+        margin-left: 20px;
 }
