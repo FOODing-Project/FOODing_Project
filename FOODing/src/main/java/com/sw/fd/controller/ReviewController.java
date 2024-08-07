@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
@@ -34,33 +35,37 @@ public class ReviewController {
     private MemberService memberService;
 
     @GetMapping("/review")
-    public String review(@RequestParam("sno") int sno, @RequestParam(value = "sort", defaultValue = "latest") String sort, Model model) {
+    public String review(@RequestParam("sno") int sno, @RequestParam(value = "sortBy", required = false) String sortBy, Model model, HttpServletRequest request) {
+
+
         List<Review> reviews = reviewService.getReviewsBySno(sno);
-        switch (sort) {
-            case "oldest":
-                reviews.sort(Comparator.comparing(Review::getRdate));
-                break;
-            case "lowRating":
-                reviews.sort(Comparator.comparing(Review::getRstar));
-                break;
-            case "highRating":
-                reviews.sort(Comparator.comparing(Review::getRstar).reversed());
-                break;
-            case "latest":
-            default:
-                reviews.sort(Comparator.comparing(Review::getRdate).reversed());
-                break;
+
+        System.out.println("sortBy = " + sortBy);
+        if ("latest".equals(sortBy)) {
+            reviews.sort(Comparator.comparing(Review::getRdate).reversed());
+        } else if ("oldest".equals(sortBy)) {
+            reviews.sort(Comparator.comparing(Review::getRdate));
+        } else if ("highest".equals(sortBy)) {
+            reviews.sort(Comparator.comparing(Review::getRstar).reversed());
+        } else if ("lowest".equals(sortBy)) {
+            reviews.sort(Comparator.comparing(Review::getRstar));
+        } else {
+            reviews.sort(Comparator.comparing(Review::getRdate).reversed());
         }
+
+        /*if ("score".equals(sortBy)) {
+            reviews.sort(Comparator.comparing(Review::getRdate).reversed());
+        }
+        else if ("score".equals(sortBy)) {
+            reviews.sort(Comparator.comparing(Review::getRdate).reversed());
+        }*/
+
         /*reviews.sort(Comparator.comparing(Review::getRdate).reversed());*/
         Store store = storeService.getStoreById(sno);
         List<Tag> allTags = tagService.getAllTags();
 
         for (Review review : reviews){
             review.setDateToString(review.getRdate().format(DateTimeFormatter.ofPattern("yy-MM-dd")));
-            System.out.println("DateToString = " + review.getDateToString());
-        }
-        // 작성된 리뷰에 태그를 띄워줌
-        for (Review review : reviews) {
             List<Tag> tags = tagService.getTagsByRno(review.getRno());
             review.setTags(tags);
         }
@@ -71,8 +76,12 @@ public class ReviewController {
         model.addAttribute("store", store);
         model.addAttribute("isEmpty", reviews.isEmpty()); // 작성된 리뷰가 존재하는지 확인
         model.addAttribute("tags", allTags);
+        model.addAttribute("sortBy", sortBy);
+
         return "review";
     }
+
+
 
     @PostMapping("/review")
     public String addReview(@ModelAttribute Review review, @RequestParam("sno") int sno, @RequestParam("tnos") List<Integer> tnos, HttpSession session) {

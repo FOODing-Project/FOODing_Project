@@ -265,7 +265,11 @@ h2 {
 }
 
 .review-item {
-        border: 1px solid #ddd;
         padding: 10px;
         margin-bottom: 10px;
+}
+
+.store-table {
+        width: 100%;
+        height: 30px;
 }

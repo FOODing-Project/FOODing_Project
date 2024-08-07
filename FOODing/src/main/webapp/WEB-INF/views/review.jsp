@@ -35,7 +35,7 @@
 
     <h2>리뷰 목록</h2>
 
-    <div class="dropdown" style="float: right;">
+<%--    <div class="dropdown" style="float: right;">
         <button class="dropdown-btn">최신순</button>
         <ul class="dropdown-content">
             <li><a href="?sort=latest">최신순</a></li>
@@ -43,48 +43,112 @@
             <li><a href="?sort=lowRating">별점 낮은순</a></li>
             <li><a href="?sort=highRating">별점 높은순</a></li>
         </ul>
+    </div>--%>
+    <div class="sort-area">
+        <a class = "sort-element" id="sort_by_latest" href="#">최신순</a>
+        <a class = "sort-element" id="sort_by_oldest" href="#">작성순</a>
+        <a class = "sort-element" id="sort_by_highest" href="#">별점 높은 순</a>
+        <a class = "sort-element" id="sort_by_lowest" href="#">별점 낮은 순</a>
     </div>
+
 
     <c:choose>
         <c:when test="${not empty reviews}">
-            <c:forEach var="review" items="${reviews}">
-                <div class="review-container">
-                    <div class="review-item review-item-left">${review.dateToString}</div>
-                    <div class="review-item review-item-left" style="top: 35px;"><strong>${review.member.mnick}</strong></div>
-                    <div class="review-item review-item-left" style="top: 60px;">
-                        <span class="star-rating">
-                            <c:forEach begin="${review.rstar + 1}" end="5" var="i">☆</c:forEach>
-                            <c:forEach begin="1" end="${review.rstar}" var="i">★</c:forEach>
-                        </span>
-                    </div>
-                    <div class="review-item-content">
-                        <div class="review-item review-content">${review.rcomm}</div>
-                        <div class="review-actions-right">
-                            <c:if test="${loggedInMember != null && review.member.mno == loggedInMember.mno}">
-                                <%--<form method="post" action="${pageContext.request.contextPath}/review/edit" style="display: inline;">
-                                    <input type="hidden" name="rno" value="${review.rno}" />
-                                    <button type="submit">수정</button>
-                                </form>--%>
-                                <button type="button" onclick="openEditWindow(${review.rno})">수정</button>
-                                <form method="post" action="${pageContext.request.contextPath}/review/delete" style="display: inline;">
-                                    <input type="hidden" name="rno" value="${review.rno}" />
-                                    <button type="submit">삭제</button>
-                                </form>
-                            </c:if>
+            <div id="review-list">
+                <c:forEach var="review" items="${reviews}">
+                    <div class="review-container">
+                        <div class="review-item review-item-left">${review.dateToString}</div>
+                        <div class="review-item review-item-left" style="top: 35px;"><strong>${review.member.mnick}</strong></div>
+                        <div class="review-item review-item-left" style="top: 60px;">
+                            <span class="star-rating">
+                                <c:forEach begin="${review.rstar + 1}" end="5" var="i">☆</c:forEach>
+                                <c:forEach begin="1" end="${review.rstar}" var="i">★</c:forEach>
+                            </span>
                         </div>
-                    </div>
-                    <div class="review-tags">
+                        <div class="review-item-content">
+                            <div class="review-item review-content">${review.rcomm}</div>
+                            <div class="review-actions-right">
+                                <c:if test="${loggedInMember != null && review.member.mno == loggedInMember.mno}">
+                                    <button type="button" onclick="openEditWindow(${review.rno})">수정</button>
+                                    <form method="post" action="${pageContext.request.contextPath}/review/delete" style="display: inline;">
+                                        <input type="hidden" name="rno" value="${review.rno}" />
+                                        <button type="submit">삭제</button>
+                                    </form>
+                                </c:if>
+                            </div>
+                        </div>
+                        <div class="review-tags">
                             <c:forEach var="tag" items="${review.tags}">
                                 <span class="tag-label">${tag.ttag}</span>
                             </c:forEach>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </div>
         </c:when>
         <c:otherwise>
             <p class="no-reviews-message">작성된 리뷰가 없습니다.</p>
         </c:otherwise>
     </c:choose>
 </div>
+<script>
+    $(document).ready(function() {
+        function loadReviewList(sortBy) {
+            const sno = '${store.sno}';
+            $.ajax({
+                url: '${pageContext.request.contextPath}/review',
+                type: 'GET',
+                data: { sno: sno, sortBy: sortBy },
+                success: function(response) {
+                    // 받은 전체 페이지에서 필요한 부분만 추출하여 업데이트
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(response, 'text/html');
+                    const reviewList = doc.querySelector('#review-list').innerHTML;
+                    $('#review-list').html(reviewList);
+                    initializeReviewScript();
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error loading reviews:', status, error);
+                }
+            });
+        }
+
+        $('#sort_by_latest').click(function(event) {
+            event.preventDefault();
+            loadReviewList('latest');
+        });
+
+        $('#sort_by_oldest').click(function(event) {
+            event.preventDefault();
+            loadReviewList('oldest');
+        });
+
+        $('#sort_by_lowest').click(function(event) {
+            event.preventDefault();
+            loadReviewList('lowest');
+        });
+
+        $('#sort_by_highest').click(function(event) {
+            event.preventDefault();
+            loadReviewList('highest');
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdownBtn = document.querySelector('.dropdown-btn');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        dropdownBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        window.addEventListener('click', function () {
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+            }
+        });
+    });
+</script>
 
 
