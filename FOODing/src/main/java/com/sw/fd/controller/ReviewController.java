@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -80,7 +81,7 @@ public class ReviewController {
 
         if (member == null) {
             // 회원 정보가 없으면 에러 처리
-            return "error"; // 적절한 에러 페이지로 리다이렉션
+            return "redirect:/login?message=login_required"; // 적절한 에러 페이지로 리다이렉션
         }
 
         // sno를 이용하여 Store 객체를 가져오기
@@ -89,6 +90,10 @@ public class ReviewController {
             // Store 객체가 없으면 에러 처리
             return "error"; // 적절한 에러 페이지로 리다이렉션
         }
+
+        /*if (rstar == 0) {
+            return "&message=rstar_required";
+        }*/
 
         // 설정자 사용하여 필요한 필드 설정
         review.setMember(member);
@@ -128,7 +133,7 @@ public class ReviewController {
     }
 
     @PostMapping("/review/delete")
-    public String deleteReview(@RequestParam("rno") int rno, HttpSession session) {
+    public String deleteReview(@RequestParam("rno") int rno, HttpSession session, RedirectAttributes redirectAttributes) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
 
         Review review = reviewService.getReviewByRno(rno);
@@ -136,8 +141,10 @@ public class ReviewController {
         // 리뷰 삭제
         reviewService.deleteReviewByRno(rno);
 
+        /*redirectAttributes.addFlashAttribute("message", "삭제가 완료되었습니다.");*/
+
         // 리뷰 삭제 후 해당 가게의 리뷰 페이지로 리다이렉션
-        return "redirect:/storeDetail?sno=" + review.getStore().getSno();
+        return "redirect:/storeDetail?sno=" + review.getStore().getSno()+ "&message=deleted";
     }
 
     // 수정 폼을 표시하는 GET 요청

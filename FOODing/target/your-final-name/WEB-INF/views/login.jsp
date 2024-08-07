@@ -42,4 +42,13 @@
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var message = urlParams.get('message');
+        if (message === 'login_required') {
+            alert('로그인 후 이용 가능합니다.');
+        }
+    });
+</script>
 <c:import url = "/bottom.jsp" />

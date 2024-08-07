@@ -97,6 +97,35 @@
         window.addEventListener('resize', adjustMapHeight);
     }
 
+    /*function validateReviewForm(event) {
+        // 별점 선택 여부 확인
+        var starSelected = document.querySelector('input[name="rstar"]:checked');
+        if (!starSelected) {
+            alert("별점을 선택하세요.");
+            event.preventDefault(); // 폼 제출을 막음
+            return false;
+        }
+        // 태그 선택 처리 (예: 선택된 태그 값을 히든 필드에 설정)
+        var selectedTags = document.querySelectorAll('.tag-button.selected');
+        var tnos = [];
+        selectedTags.forEach(function(tagButton) {
+            tnos.push(tagButton.dataset.tno);
+        });
+        document.getElementById('tnos').value = tnos.join(',');
+
+        return true; // 폼 제출 허용
+    }*/
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('review').addEventListener('submit', function(event) {
+            var starSelected = document.querySelector('input[name="rstar"]:checked');
+            if (!starSelected) {
+                alert("별점을 선택하세요.");
+                event.preventDefault(); // 폼 제출을 막음
+            }
+        });
+    });
+
     var selectedTags = [];
 
     function toggleTag(tno, button) {
@@ -151,13 +180,22 @@
                     star.classList.remove('hover', 'selected');
                 });
             }
-
         });
     }
 
-
-
-
+    document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var message = urlParams.get('message');
+        if (message === 'deleted') {
+            alert('삭제가 완료되었습니다.');
+        }
+        if (message === 'login_required') {
+            alert('로그인 후 이용 가능합니다.');
+        }
+        /*if (message === 'rstar_required') {
+            alert('별점을 선택해야 합니다.')
+        }*/
+    });
 
     function openEditWindow(rno) {
         var url = "${pageContext.request.contextPath}/review/edit?rno=" + rno;
@@ -230,6 +268,7 @@
                     starArea.innerHTML = '<img class="pickStar" src="${pageContext.request.contextPath}/resources/images/starE.png" alt="StarE"/>'; // 빈 별 모양
                 } else {
                     alert("찜 기능을 사용하려면 로그인이 필요합니다.");
+                    window.location.href = "${pageContext.request.contextPath}/login";
                 }
             });
         });

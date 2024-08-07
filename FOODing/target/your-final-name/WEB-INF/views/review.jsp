@@ -63,8 +63,8 @@
                         <div class="review-item review-item-left" style="top: 35px;"><strong>${review.member.mnick}</strong></div>
                         <div class="review-item review-item-left" style="top: 60px;">
                             <span class="star-rating">
-                                <c:forEach begin="${review.rstar + 1}" end="5" var="i">☆</c:forEach>
-                                <c:forEach begin="1" end="${review.rstar}" var="i">★</c:forEach>
+                                <c:forEach begin="${review.rstar + 1}" end="5" var="i">☆</c:forEach><!--
+                                --><c:forEach begin="1" end="${review.rstar}" var="i">★</c:forEach>
                             </span>
                         </div>
                         <div class="review-item-content">
@@ -74,7 +74,7 @@
                                     <button type="button" onclick="openEditWindow(${review.rno})">수정</button>
                                     <form method="post" action="${pageContext.request.contextPath}/review/delete" style="display: inline;">
                                         <input type="hidden" name="rno" value="${review.rno}" />
-                                        <button type="submit">삭제</button>
+                                        <button type="submit" onclick="return confirmDelete()">삭제</button>
                                     </form>
                                 </c:if>
                             </div>
@@ -94,6 +94,16 @@
     </c:choose>
 </div>
 <script>
+    /*document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('review').addEventListener('submit', function(event) {
+            var starSelected = document.querySelector('input[name="rstar"]:checked');
+            if (!starSelected) {
+                alert("별점을 선택하세요.");
+                event.preventDefault(); // 폼 제출을 막음
+            }
+        });
+    });*/
+
     $(document).ready(function() {
         function loadReviewList(sortBy) {
             const sno = '${store.sno}';
@@ -121,6 +131,11 @@
             loadReviewList(sortBy);
         });
     });
+
+    function confirmDelete() {
+        return confirm("정말 삭제하시겠습니까?");
+    }
+
 
 </script>
 
