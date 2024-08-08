@@ -51,7 +51,35 @@
             <c:import url="/WEB-INF/views/storeInfo.jsp" />
         </div>
     </div>
+    <div class="container">
+        <h2>Store Detail</h2>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#details">Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#reviews">Reviews</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="details" class="tab-pane fade show active">
+                <h3>Details</h3>
+                <p>가게 상세 정보</p>
+            </div>
+            <div id="reviews" class="tab-pane fade">
+                <h3>Reviews</h3>
+                <p>리뷰 내용</p>
+                <!-- 리뷰 내용 표시 부분 -->
+            </div>
+        </div>
+    </div>
+
+
 </section>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <script>
     function initializeMap(address) {
@@ -97,26 +125,8 @@
         window.addEventListener('resize', adjustMapHeight);
     }
 
-    /*function validateReviewForm(event) {
-        // 별점 선택 여부 확인
-        var starSelected = document.querySelector('input[name="rstar"]:checked');
-        if (!starSelected) {
-            alert("별점을 선택하세요.");
-            event.preventDefault(); // 폼 제출을 막음
-            return false;
-        }
-        // 태그 선택 처리 (예: 선택된 태그 값을 히든 필드에 설정)
-        var selectedTags = document.querySelectorAll('.tag-button.selected');
-        var tnos = [];
-        selectedTags.forEach(function(tagButton) {
-            tnos.push(tagButton.dataset.tno);
-        });
-        document.getElementById('tnos').value = tnos.join(',');
 
-        return true; // 폼 제출 허용
-    }*/
-
-    document.addEventListener('DOMContentLoaded', function() {
+    /*document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('review').addEventListener('submit', function(event) {
             var starSelected = document.querySelector('input[name="rstar"]:checked');
             if (!starSelected) {
@@ -124,7 +134,7 @@
                 event.preventDefault(); // 폼 제출을 막음
             }
         });
-    });
+    });*/
 
     var selectedTags = [];
 
@@ -142,6 +152,8 @@
         // 선택된 태그 ID를 hidden input에 설정
         document.getElementById('tnos').value = selectedTags.join(',');
     }
+
+
 
     function initializeReviewScript() {
         document.addEventListener('DOMContentLoaded', function() {
@@ -272,6 +284,8 @@
                 }
             });
         });
+
+
     });
 </script>
 <!-- 하단 내비게이션 바 -->

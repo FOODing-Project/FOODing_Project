@@ -215,4 +215,9 @@ public class ReviewController {
         return response;
     }
 
+    @PostMapping("/review/report")
+    public String reportReview(@ModelAttribute Review review, @RequestParam("sno") int sno, HttpSession session) {
+        return "redirect:/review?sno=" + sno + "&message=report_completed"; // 수정해야 함
+    }
+
 }

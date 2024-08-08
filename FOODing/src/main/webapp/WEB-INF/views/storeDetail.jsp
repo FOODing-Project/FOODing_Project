@@ -97,26 +97,8 @@
         window.addEventListener('resize', adjustMapHeight);
     }
 
-    /*function validateReviewForm(event) {
-        // 별점 선택 여부 확인
-        var starSelected = document.querySelector('input[name="rstar"]:checked');
-        if (!starSelected) {
-            alert("별점을 선택하세요.");
-            event.preventDefault(); // 폼 제출을 막음
-            return false;
-        }
-        // 태그 선택 처리 (예: 선택된 태그 값을 히든 필드에 설정)
-        var selectedTags = document.querySelectorAll('.tag-button.selected');
-        var tnos = [];
-        selectedTags.forEach(function(tagButton) {
-            tnos.push(tagButton.dataset.tno);
-        });
-        document.getElementById('tnos').value = tnos.join(',');
 
-        return true; // 폼 제출 허용
-    }*/
-
-    document.addEventListener('DOMContentLoaded', function() {
+    /*document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('review').addEventListener('submit', function(event) {
             var starSelected = document.querySelector('input[name="rstar"]:checked');
             if (!starSelected) {
@@ -124,7 +106,7 @@
                 event.preventDefault(); // 폼 제출을 막음
             }
         });
-    });
+    });*/
 
     var selectedTags = [];
 
@@ -142,6 +124,8 @@
         // 선택된 태그 ID를 hidden input에 설정
         document.getElementById('tnos').value = selectedTags.join(',');
     }
+
+
 
     function initializeReviewScript() {
         document.addEventListener('DOMContentLoaded', function() {
@@ -272,6 +256,8 @@
                 }
             });
         });
+
+
     });
 </script>
 <!-- 하단 내비게이션 바 -->

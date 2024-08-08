@@ -5,7 +5,8 @@ body {
 h2 {
     text-align: left;
     color: #333;
-    margin-left: 20px;
+    background-color: cornsilk;
+    padding: 5px;
 }
 
 .form-group {

@@ -77,6 +77,16 @@
                                         <button type="submit" onclick="return confirmDelete()">삭제</button>
                                     </form>
                                 </c:if>
+                                <c:if test="${loggedInMember != null && review.member.mno != loggedInMember.mno}">
+                                    <form method="post" action="${pageContext.request.contextPath}/review/report" style="display: inline;">
+                                        <input type="hidden" name="rno" value="${review.rno}" />
+                                        <input type="hidden" name="sno" value="${sno}" />
+                                        <button type="submit" onclick="return confirmReport()">신고하기</button>
+                                    </form>
+                                </c:if>
+                                <c:if test="${loggedInMember == null}">
+                                    <button type="submit" onclick="alert('로그인 후 이용 가능합니다.'); window.location.href='${pageContext.request.contextPath}/login';">신고하기</button>
+                                </c:if>
                             </div>
                         </div>
                         <div class="review-tags">
@@ -136,6 +146,34 @@
         return confirm("정말 삭제하시겠습니까?");
     }
 
+    function confirmReport(){
+        return confirm("리뷰를 신고하시겠습니까?");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('review').addEventListener('submit', function(event) {
+            var starSelected = document.querySelector('input[name="rstar"]:checked');
+            if (!starSelected) {
+                alert("별점을 선택하세요.");
+                event.preventDefault(); // 폼 제출을 막음
+            }
+
+            // 선택된 태그 값을 히든 필드에 설정 (이미 toggleTag 함수에서 설정하고 있지만 추가로 확인)
+            var selectedTags = [];
+            document.querySelectorAll('.tag-button.selected').forEach(function(button) {
+                selectedTags.push(button.getAttribute('data-tno'));
+            });
+            document.getElementById('tnos').value = selectedTags.join(',');
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var message = urlParams.get('message');
+        if (message === 'report_completed') {
+            alert('신고가 접수되었습니다.');
+        }
+    });
 
 </script>
 
