@@ -85,12 +85,12 @@
             </div>
             <div class="submenu">
                 <li><a href="${pageContext.request.contextPath}/storeListByLocation">위치별</a></li>
-                <li><a href="#">순위별</a></li>
+                <li><a href="${pageContext.request.contextPath}/storeListByRank">순위별</a></li>
                 <li><a href="#">태그별</a></li>
             </div>
             <div class = "submenu">
-                <li><a href = "#">모임 기능</a></li>
-                <li><a href = "#"></a></li>
+                <li><a href = "${pageContext.request.contextPath}/groupList">내 모임</a></li>
+                <li><a href = "${pageContext.request.contextPath}/groupManage">모임 관리</a></li>
                 <li><a href = "#"></a></li>
             </div>
             <div class = "submenu">

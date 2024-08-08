@@ -35,15 +35,15 @@
 
     <h2>리뷰 목록</h2>
 
-<%--    <div class="dropdown" style="float: right;">
-        <button class="dropdown-btn">최신순</button>
-        <ul class="dropdown-content">
-            <li><a href="?sort=latest">최신순</a></li>
-            <li><a href="?sort=oldest">오래된순</a></li>
-            <li><a href="?sort=lowRating">별점 낮은순</a></li>
-            <li><a href="?sort=highRating">별점 높은순</a></li>
-        </ul>
-    </div>--%>
+    <%--    <div class="dropdown" style="float: right;">
+            <button class="dropdown-btn">최신순</button>
+            <ul class="dropdown-content">
+                <li><a href="?sort=latest">최신순</a></li>
+                <li><a href="?sort=oldest">오래된순</a></li>
+                <li><a href="?sort=lowRating">별점 낮은순</a></li>
+                <li><a href="?sort=highRating">별점 높은순</a></li>
+            </ul>
+        </div>--%>
     <div class="sort-area">
         <select id="sort-options" class="sort-element">
             <option value="latest">최신순</option>

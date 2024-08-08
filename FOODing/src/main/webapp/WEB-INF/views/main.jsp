@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri = "http://java.sun.com/jstl/core_rt" prefix = "c"%>
-
+<%@ include file="/WEB-INF/views/includes/cacheControl.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +12,12 @@
 </head>
 <body>
 <c:import url = "/top.jsp" />
+<c:if test="${not empty error}">
+<script>
+    alert('${error}');
+</script>
+</c:if>
 <section>
-
     <div class = "section-div">
         <button class = "preBtn"></button>
         <ul class = "mainSliderList">

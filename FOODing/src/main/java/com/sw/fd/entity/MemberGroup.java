@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "join_t")
@@ -18,13 +20,22 @@ public class MemberGroup {
     private int jno;
 
     @ManyToOne
-    @JoinColumn(name = "gno")
+    @JoinColumn(name = "gno", nullable = false)
     private Group group;
 
     @ManyToOne
-    @JoinColumn(name = "mno")
+    @JoinColumn(name = "mno", nullable = false)
     private Member member;
 
     @Column(name = "jauth")
     private int jauth;
+
+    // 새로 추가된 부분
+    @Column(name = "jdate", nullable = false)
+    private LocalDateTime jdate;
+
+    @PrePersist
+    protected void onCreate() {
+        jdate = LocalDateTime.now();
+    }
 }

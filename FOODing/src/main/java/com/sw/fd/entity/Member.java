@@ -36,6 +36,8 @@ public class Member {
     private String maddr;
     private LocalDate mdate;
 
+    private int mwarning;
+
     @PrePersist
     protected void onCreate() {
         mdate = LocalDate.now();
@@ -48,5 +50,4 @@ public class Member {
     public void setMpassConfirm(String mpassConfirm) {
         this.mpassConfirm = mpassConfirm;
     }
-
 }
