@@ -126,6 +126,15 @@
         });
     });*/
 
+    function toggleTagList() {
+        var tagList = document.getElementById('tagList');
+        if (tagList.style.display === 'none' || tagList.style.display === '') {
+            tagList.style.display = 'block';
+        } else {
+            tagList.style.display = 'none';
+        }
+    }
+
     var selectedTags = [];
 
     function toggleTag(tno, button) {

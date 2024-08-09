@@ -11,132 +11,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2d781d0f-b515-4fd6-9a94-f607f6238cdf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/GroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/PickContainer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/StoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/StoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/MemberGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/MemberGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/StoreTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/StoreTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/MemberGroupRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/MemberGroupRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/PickRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/PickRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/ReviewRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/ReviewTagRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/ReviewTagRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/GroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/GroupService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/LocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/MemberGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/MemberGroupService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/ReviewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/StoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/StoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/dashboard.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/editMember.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/editMember.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/groupList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/groupList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/myPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/myPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/myReviews.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/myReviews.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/registerSelect.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/registerSelect.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/review.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/review.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeListByLocation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeListByLocation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/viewMember.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/viewMember.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/editMember.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/editMember.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/groupList.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/groupList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/myReviews.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/myReviews.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/mypage.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/mypage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/registerSelect.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/registerSelect.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/storeDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/storeDetail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/storeList.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/storeList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/viewMember.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/viewMember.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/js/nav_hover.js" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/js/nav_hover.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/top.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/topNoneNav.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/topNoneNav.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/GroupController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/MemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/PickContainer.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/StoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/StoreController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Group.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Group.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/MemberGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/MemberGroup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Store.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Store.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/StoreTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/StoreTag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/MemberGroupRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/MemberGroupRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/MemberRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/MemberRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/PickRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/PickRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/ReviewRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/ReviewRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/ReviewTagRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/ReviewTagRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/GroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/GroupService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/LocationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/LocationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/MemberGroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/MemberGroupService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/MemberService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/StoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/StoreService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name.war" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/GroupController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/MemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/PickContainer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/ReviewController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/StoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/StoreController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Group.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Group.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/MemberGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/MemberGroup.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Store.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Store.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/StoreTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/StoreTag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/MemberGroupRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/MemberGroupRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/MemberRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/MemberRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/PickRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/PickRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/ReviewRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/ReviewRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/ReviewTagRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/ReviewTagRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/GroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/GroupService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/LocationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/LocationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/MemberGroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/MemberGroupService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/MemberService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/StoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/StoreService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/lib/slf4j-api-1.7.32.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/lib/spring-data-commons-2.7.12.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/lib/spring-data-jpa-2.7.12.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/dashboard.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/editMember.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/editMember.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/groupList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/groupList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/myPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/myPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/myReviews.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/myReviews.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/registerSelect.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/registerSelect.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/review.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/review.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/store.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/storeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/storeDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/storeListByLocation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/storeListByLocation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/viewMember.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/viewMember.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/editMember.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/editMember.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/groupList.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/groupList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/myReviews.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/myReviews.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/mypage.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/mypage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/registerSelect.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/registerSelect.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/storeDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/storeDetail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/storeList.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/storeList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/viewMember.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/viewMember.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/js/nav_hover.js" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/js/nav_hover.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/top.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/topNoneNav.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/topNoneNav.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,29 +56,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.FOODing [clean].executor": "Run",
-    "Maven.FOODing [install].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 9.0.34.executor": "Run",
-    "Tomcat Server.Tomcat 9.0.90.executor": "Run",
-    "git-widget-placeholder": "dahyeon",
-    "kotlin-language-version-configured": "true",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.18906605",
-    "project.structure.side.proportion": "0.32535365",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.FOODing [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.FOODing [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.34.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.90.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dahyeon&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.18906605&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.32535365&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views" />

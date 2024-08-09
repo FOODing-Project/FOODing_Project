@@ -18,7 +18,7 @@
             <form:textarea path="rcomm" id="rcomm" class="custom-textarea" placeholder="리뷰 내용을 입력하세요."></form:textarea>
         </div>
         <div class="form group">
-            <h6>태그를 선택하세요</h6>
+            <button type="button" class="toggle-button" onclick="toggleTagList()">▼ 태그를 선택하세요</button>
             <div class="tag-buttons">
                 <c:forEach var="tag" items="${tags}">
                     <button type="button" class="tag-button" onclick="toggleTag(${tag.tno}, this)">${tag.ttag}</button>
