@@ -18,7 +18,8 @@
             <form:textarea path="rcomm" id="rcomm" class="custom-textarea" placeholder="리뷰 내용을 입력하세요."></form:textarea>
         </div>
         <div class="form-group">
-            <button type="button" class="toggle-button" onclick="toggleTagList()">▼ 태그를 선택하세요</button>
+            <button type="button" class="toggle-button" onclick="toggleTagList()">태그를 선택하세요 ▼</button>
+            <button type="submit" class="submit-button">리뷰 작성</button>
             <div class="tag-buttons" id="tagList">
                 <div class="tag-group">
                     <c:forEach var="tag" items="${tags}">
@@ -46,25 +47,10 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <button type="submit" class="submit-button">리뷰 작성</button>
-        </div>
         <input type="hidden" name="tnos" id="tnos" />
-
     </form:form>
 
 
-    <h2>리뷰 목록</h2>
-
-    <%--    <div class="dropdown" style="float: right;">
-            <button class="dropdown-btn">최신순</button>
-            <ul class="dropdown-content">
-                <li><a href="?sort=latest">최신순</a></li>
-                <li><a href="?sort=oldest">오래된순</a></li>
-                <li><a href="?sort=lowRating">별점 낮은순</a></li>
-                <li><a href="?sort=highRating">별점 높은순</a></li>
-            </ul>
-        </div>--%>
     <div class="sort-area">
         <select id="sort-options" class="sort-element">
             <option value="latest">최신순</option>
