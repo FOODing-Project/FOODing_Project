@@ -85,11 +85,7 @@
                                     </form>
                                 </c:if>
                                 <c:if test="${loggedInMember != null && review.member.mno != loggedInMember.mno}">
-                                    <form method="post" action="${pageContext.request.contextPath}/review/report" style="display: inline;">
-                                        <input type="hidden" name="rno" value="${review.rno}" />
-                                        <input type="hidden" name="sno" value="${sno}" />
-                                        <button type="submit" onclick="return confirmReport()">신고하기</button>
-                                    </form>
+                                        <button type="button" onclick="openReportWindow(${review.rno}, ${sno})">신고</button>
                                 </c:if>
                                 <c:if test="${loggedInMember == null}">
                                     <button type="submit" onclick="alert('로그인 후 이용 가능합니다.'); window.location.href='${pageContext.request.contextPath}/login';">신고하기</button>

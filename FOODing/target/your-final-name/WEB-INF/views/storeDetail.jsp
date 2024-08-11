@@ -212,6 +212,13 @@
         window.open(url, name, specs);
     }
 
+    function openReportWindow(rno, sno) {
+        var url = "${pageContext.request.contextPath}/review/report?rno=" + rno +  "&sno=" + sno;
+        var name = "reportReview";
+        var specs = "width=450,height=400";
+        window.open(url, name, specs);
+    }
+
     initializeReviewScript();
 
     document.addEventListener("DOMContentLoaded", function() {

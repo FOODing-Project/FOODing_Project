@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "report_t")
@@ -29,10 +29,10 @@ public class Report {
     private int rptype;
 
     @Column(name = "rpdate", nullable = false)
-    private LocalDate rpdate;
+    private LocalDateTime rpdate;
 
     @PrePersist
     protected void onCreate() {
-        rpdate = LocalDate.now();
+        rpdate = LocalDateTime.now();
     }
 }
