@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="submit-button">신고 제출</button>
+            <button type="submit" class="submit-button">신고 접수</button>
         </div>
     </form:form>
 </div>

@@ -219,6 +219,10 @@
         window.open(url, name, specs);
     }
 
+    function openPickWindow(mno) {
+
+    }
+
     initializeReviewScript();
 
     document.addEventListener("DOMContentLoaded", function() {

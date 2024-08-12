@@ -45,8 +45,8 @@ h2 {
 }
 
 .report-type input[type="radio"] {
-    margin-bottom: 10px; /* 항목 간 여백 추가 */
-    margin-right: 10px; /* 라디오 버튼과 텍스트 사이의 여백 */
+    margin-bottom: 13px;
+    margin-right: 10px;
     cursor: pointer;
 }
 

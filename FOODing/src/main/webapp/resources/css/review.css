@@ -160,7 +160,7 @@ h2 {
 
 }*/
 .toggle-button {
-        left: 110px;
+        left: 10%;
         position: absolute;
         border: 2px solid #ccc;
         background-color: #f8f9fa;
