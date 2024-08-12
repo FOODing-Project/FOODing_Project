@@ -1,6 +1,7 @@
 package com.sw.fd.controller;
 
 import com.sw.fd.entity.*;
+import com.sw.fd.repository.ReportRepository;
 import com.sw.fd.service.MemberService;
 import com.sw.fd.service.ReviewService;
 import com.sw.fd.service.StoreService;
@@ -36,6 +37,9 @@ public class ReviewController {
 
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private ReportRepository reportRepository;
 
     @GetMapping("/review")
     public String review(@RequestParam("sno") int sno, @RequestParam(value = "sortBy", required = false) String sortBy, Model model, HttpServletRequest request) {
@@ -220,39 +224,23 @@ public class ReviewController {
     @GetMapping("/review/report")
     public String reportReview(@ModelAttribute Review review, @RequestParam("sno") int sno, HttpSession session) {
         Store store = storeService.getStoreById(sno);
-
-
         return "reportReview";
     }
 
     @Transactional
     @PostMapping("/review/reportConfirm")
     public String reportReviewConfirm(@RequestParam("rno") int rno, @RequestParam("sno") int sno, @RequestParam("rptype") int rptype, HttpSession session) {
-        try {
-            System.out.println("reportReviewConfirm 메서드가 호출되었습니다.");
+        Review review = reviewService.getReviewByRno(rno);
+        Member member = review.getMember();
 
-            Review review = reviewService.getReviewByRno(rno);
-            System.out.println("Review 객체: " + review);
+        Report report = new Report();
+        report.setMember(member);
+        report.setReview(review);
+        report.setRptype(rptype);
+        report.setRpdate(LocalDateTime.now());
 
-            Report report = new Report();
-            report.setReview(review);
-            report.setRptype(rptype);
-            report.setRpdate(LocalDateTime.now());
+        reportRepository.save(report);
 
-            Member member = review.getMember();
-            if (member == null) {
-                System.out.println("Member is null");
-            } else {
-                System.out.println("Member is not null");
-            }
-            member.setMwarning(member.getMwarning() + 1);
-            memberService.updateMember(member);
-
-            return "redirect:/review?sno=" + sno + "&message=report_completed";
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return "error";
-        }
+        return "redirect:/review?sno=" + sno + "&message=report_completed";
     }
 }
