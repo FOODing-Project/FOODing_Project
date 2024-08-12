@@ -4,20 +4,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/report.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    var selectedTags = [];
-
-    function toggleTag(tno, button) {
-        var index = selectedTags.indexOf(tno);
-        if (index === -1) {
-            selectedTags.push(tno);
-            button.classList.add('selected');
-        } else {
-            selectedTags.splice(index, 1);
-            button.classList.remove('selected');
-        }
-        document.getElementById('tnos').value = selectedTags.join(',');
-    }
-
     function submitReview(event) {
         event.preventDefault(); // 폼 기본 제출 막기
         var formData = $("#review").serialize();

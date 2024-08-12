@@ -215,7 +215,7 @@
     function openReportWindow(rno, sno) {
         var url = "${pageContext.request.contextPath}/review/report?rno=" + rno +  "&sno=" + sno;
         var name = "reportReview";
-        var specs = "width=450,height=400";
+        var specs = "width=500,height=350";
         window.open(url, name, specs);
     }
 

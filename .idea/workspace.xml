@@ -10,25 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d781d0f-b515-4fd6-9a94-f607f6238cdf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/ReportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/report.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/ReviewTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/ReviewTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/ReviewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Review.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Review.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/ReviewTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/ReviewTag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/ReportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/ReportService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/ReviewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Review.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Review.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/ReviewTag.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/ReviewTag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/ReportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/ReportService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/ReportService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/reportReview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/reportReview.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/storeDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/review.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/ReportService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/ReportService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/reportReview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/reportReview.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/storeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/storeDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/review.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/review.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +33,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -212,7 +204,7 @@
       <workItem from="1722994933504" duration="26902000" />
       <workItem from="1723077486572" duration="7131000" />
       <workItem from="1723088047832" duration="1991000" />
-      <workItem from="1723422858311" duration="3794000" />
+      <workItem from="1723422858311" duration="7213000" />
     </task>
     <servers />
   </component>
