@@ -37,10 +37,9 @@
         <input type="hidden" name="sno" value="${param.sno}" />
         <div class="form-group">
             <div class="report-type">
-                <input type="radio" name="rptype" value="1">음란성, 욕설 등 부적절한 내용</label><br>
-                <input type="radio" name="rptype" value="2">부적절한 홍보 또는 광고</label><br>
-                <input type="radio" name="rptype" value="3">개인정보 유출 위험</label><br>
-                <input type="radio" name="rptype" value="4">주문과 관련 없는 내용</label><br>
+                <c:forEach var="report" items="${reportTypes}">
+                    <input type="radio" name="rptype" value="${report.rpno}">${report.rptype}</label><br>
+                </c:forEach>
             </div>
         </div>
         <div class="form-group">
