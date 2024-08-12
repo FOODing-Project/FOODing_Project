@@ -2,6 +2,7 @@ package com.sw.fd.controller;
 
 import com.sw.fd.entity.*;
 import com.sw.fd.repository.ReportRepository;
+import com.sw.fd.repository.ReviewReportRepository;
 import com.sw.fd.service.MemberService;
 import com.sw.fd.service.ReviewService;
 import com.sw.fd.service.StoreService;
@@ -21,7 +22,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.CheckedOutputStream;
 
 @Controller
 public class ReviewController {
@@ -40,6 +40,9 @@ public class ReviewController {
 
     @Autowired
     private ReportRepository reportRepository;
+
+    @Autowired
+    private ReviewReportRepository reviewReportRepository;
 
     @GetMapping("/review")
     public String review(@RequestParam("sno") int sno, @RequestParam(value = "sortBy", required = false) String sortBy, Model model, HttpServletRequest request) {
@@ -224,6 +227,7 @@ public class ReviewController {
     @GetMapping("/review/report")
     public String reportReview(@ModelAttribute Review review, @RequestParam("sno") int sno, HttpSession session) {
         Store store = storeService.getStoreById(sno);
+        /*List<Report> reportTypes = reportRepository.findAll();*/
         return "reportReview";
     }
 
@@ -233,13 +237,16 @@ public class ReviewController {
         Review review = reviewService.getReviewByRno(rno);
         Member member = review.getMember();
 
-        Report report = new Report();
-        report.setMember(member);
-        report.setReview(review);
-        report.setRptype(rptype);
-        report.setRpdate(LocalDateTime.now());
+        ReviewReport reviewReport = new ReviewReport();
+        reviewReport.setMember(member);
+        reviewReport.setReview(review);
 
-        reportRepository.save(report);
+        Report report = reportRepository.findByRpno(rptype);
+        reviewReport.setReport(report);
+
+        reviewReport.setRrdate(LocalDateTime.now());
+
+        reviewReportRepository.save(reviewReport);
 
         return "redirect:/review?sno=" + sno + "&message=report_completed";
     }

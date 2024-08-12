@@ -17,22 +17,5 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int rpno;
 
-    @ManyToOne
-    @JoinColumn(name = "rno", nullable = false)
-    private Review review;
-
-    @ManyToOne
-    @JoinColumn(name = "mno", nullable = false)
-    private Member member;
-
-    @Column(name = "rptype", nullable = false)
-    private int rptype;
-
-    @Column(name = "rpdate", nullable = false)
-    private LocalDateTime rpdate;
-
-    @PrePersist
-    protected void onCreate() {
-        rpdate = LocalDateTime.now();
-    }
+    private String rptype;
 }
