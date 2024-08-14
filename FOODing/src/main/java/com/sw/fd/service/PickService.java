@@ -9,7 +9,6 @@ import com.sw.fd.repository.PfolderRepository;
 import com.sw.fd.repository.PickRepository;
 import com.sw.fd.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
