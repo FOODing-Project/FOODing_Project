@@ -11,6 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2d781d0f-b515-4fd6-9a94-f607f6238cdf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Pfolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/entity/Pfolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Pfolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Pfolder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +208,7 @@
       <workItem from="1723515774315" duration="8000" />
       <workItem from="1723515791532" duration="1070000" />
       <workItem from="1723777345673" duration="8854000" />
-      <workItem from="1723794172827" duration="1220000" />
+      <workItem from="1723794172827" duration="1780000" />
     </task>
     <servers />
   </component>
