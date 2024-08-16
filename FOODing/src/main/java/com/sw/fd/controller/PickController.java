@@ -1,7 +1,9 @@
 package com.sw.fd.controller;
 
 import com.sw.fd.entity.Member;
+import com.sw.fd.entity.Pfolder;
 import com.sw.fd.entity.Pick;
+import com.sw.fd.service.PfolderService;
 import com.sw.fd.service.PickService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.persistence.ManyToOne;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -20,6 +23,9 @@ public class PickController {
     @Autowired
     private PickService pickService;
 
+    @Autowired
+    private PfolderService pfolderService;
+
     @GetMapping("/pickList")
     public String pickList(HttpSession session, Model model) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
@@ -27,10 +33,15 @@ public class PickController {
             return "redirect:/login";
         }
 
+        List<Pfolder> pfolderList = pfolderService.getPfoldersByMno(loggedInMember.getMno());
         List<Pick> pickList = pickService.getPicksByMno(loggedInMember.getMno());
+
         model.addAttribute("pickList", pickList);
+        model.addAttribute("pfolderList", pfolderList);
+
         return "pickPage";
     }
+
 
     @PostMapping("/pick")
     @ResponseBody

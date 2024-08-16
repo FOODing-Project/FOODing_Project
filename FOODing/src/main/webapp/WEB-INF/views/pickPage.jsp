@@ -8,21 +8,30 @@
 <div class="pick-container">
     <div class="pickList-container">
         <h4>전체 찜 목록</h4>
-        <c:forEach var="pick" items="${pickList}">
             <table class="pick-table">
-
-                <button class="storeName">${pick.store.sname}</button>
+                <c:forEach var="pick" items="${pickList}">
+                <tr>
+                    <td>
+                        <button class="storeName">${pick.store.sname}</button>
+                    </td>
+                </tr>
+                </c:forEach>
             </table>
-        </c:forEach>
         <div class="pickList-button-container">
             <button class="delete-pick">-삭제</button>
         </div>
     </div>
     <div class="pickFolders-container">
         <h4>찜 폴더 관리</h4>
-        <div class="pickFolderList">
-            여기에 찜 폴더 목록 출력
-        </div>
+            <table class="folder-table">
+                <c:forEach var="pfolder" items="${pfolderList}">
+                    <tr>
+                        <td>
+                            <button class="folderName">${pfolder.pfname}</button>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
         <div class="pickFolders-button-container">
             <button class="add-folder">+추가</button>
             <button class="delete-folder">-삭제</button>

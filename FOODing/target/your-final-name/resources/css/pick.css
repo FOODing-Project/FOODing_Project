@@ -12,31 +12,32 @@
     box-sizing: border-box;
 }
 
-.storeName {
+.pick-table, .folder-table {
+    border: 1px solid #ccc;
+    width: 95%;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px;
+}
+
+.storeName, .folderName {
     border: none;
     background-color: white;
     cursor: pointer;
 }
 
-.storeName:hover {
+.storeName:hover, .folderName:hover {
     text-decoration: underline;
 }
 
-.pickList-button-container {
+.pickList-button-container, .pickFolders-button-container {
     text-align: right;
     color: lightgray;
     border: none;
     background-color: white;
 }
 
-.pickFolders-button-container {
-    text-align: right;
-    color: lightgray;
-    border: none;
-    background-color: white;
-}
-
-.pickList-button-container button {
+.pickList-button-container button, .pickFolders-button-container button {
     color: lightgray;
     border: none;
     background-color: white;
