@@ -4,19 +4,30 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/pick.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <c:import url="/top.jsp" />
+<h2>찜 폴더 관리</h2>
 <div class="pick-container">
-    <h2>찜 폴더 관리</h2>
     <div class="pickList-container">
+        <h4>전체 찜 목록</h4>
         <c:forEach var="pick" items="${pickList}">
-            <div class="pick-item">
-                <h3>${pick.store.sname}</h3>
-                <p>${pick.store.saddr}</p>
-                <p>${pick.store.stel}</p>
-                <%--<button class="remove-pick" data-pno="${pick.pno}">삭제</button>--%>
-            </div>
-        </c:forEach>
-    </div>
+            <table class="pick-table">
 
+                <button class="storeName">${pick.store.sname}</button>
+            </table>
+        </c:forEach>
+        <div class="pickList-button-container">
+            <button class="delete-pick">-삭제</button>
+        </div>
+    </div>
+    <div class="pickFolders-container">
+        <h4>찜 폴더 관리</h4>
+        <div class="pickFolderList">
+            여기에 찜 폴더 목록 출력
+        </div>
+        <div class="pickFolders-button-container">
+            <button class="add-folder">+추가</button>
+            <button class="delete-folder">-삭제</button>
+        </div>
+    </div>
 </div>
 <script>
     /*$(document).on('click', '.remove-pick', function() {

@@ -34,7 +34,6 @@ public class PickService {
         Store store = storeRepository.findBySno(sno).orElseThrow(() -> new RuntimeException("가게 정보를 불러오는 데 실패했습니다."));;
         Pfolder pfolder = pfolderRepository.findByPfno(pfno).orElseThrow(() -> new RuntimeException("폴더 정보를 불러오는 데 실패했습니다."));;
 
-
         Pick existingPick = pickRepository.findByMemberAndStore(member, store);
         if (existingPick != null) {
             pickRepository.delete(existingPick);
@@ -57,8 +56,8 @@ public class PickService {
     public List<Pick> getPicksByMno(int mno) {
         return pickRepository.findByMemberMno(mno);
     }
-
-/*    public void removePickByPno(int pno) {
+    /*    public void removePickByPno(int pno) {
         pickRepository.(pno);
     }*/
+
 }
