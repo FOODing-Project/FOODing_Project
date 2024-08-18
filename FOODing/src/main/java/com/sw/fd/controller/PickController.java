@@ -8,10 +8,7 @@ import com.sw.fd.service.PickService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.ManyToOne;
 import javax.servlet.http.HttpSession;
@@ -78,5 +75,28 @@ public class PickController {
         } catch (Exception e) {
             return "error";
         }
+        return "redirect:/pickList";
     }*/
+
+    @PostMapping("/createFolder")
+    public String createFolder(@RequestParam("pfname") String pfname, HttpSession session) {
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+
+
+        Pfolder pfolder = new Pfolder();
+        pfolder.setPfname(pfname);
+        pfolder.setMember(loggedInMember);
+
+        pfolderService.savePfolder(pfolder);
+
+        return "redirect:/pickList";
+    }
+
+    @PostMapping("/deleteFolder")
+    public String deleteFolder(@RequestParam("selectedFolders") List<Integer> selectedFolders, HttpSession session) {
+        for (Integer pfno : selectedFolders) {
+            pfolderService.deletePfolderByPfno(pfno);
+        }
+        return "redirect:/pickList";
+    }
 }

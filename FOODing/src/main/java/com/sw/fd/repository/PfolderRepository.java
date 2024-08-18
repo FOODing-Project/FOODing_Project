@@ -1,7 +1,6 @@
 package com.sw.fd.repository;
 
 import com.sw.fd.entity.Pfolder;
-import com.sw.fd.entity.Pick;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -14,4 +13,6 @@ public interface PfolderRepository extends JpaRepository<Pfolder, Integer> {
     Optional<Pfolder> findByPfno(int pfno);
 
     List<Pfolder> findByMemberMno(@Param("mno") int mno);
+
+
 }

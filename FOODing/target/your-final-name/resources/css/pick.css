@@ -12,12 +12,14 @@
     box-sizing: border-box;
 }
 
+.pickFolderList, .
+
 .pick-table, .folder-table {
     border: 1px solid #ccc;
     width: 95%;
     border-radius: 5px;
     padding: 5px;
-    margin: 2px;
+    margin: 5px;
 }
 
 .storeName, .folderName {

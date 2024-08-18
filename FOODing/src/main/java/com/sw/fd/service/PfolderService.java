@@ -28,4 +28,12 @@ public class PfolderService {
     public List<Pfolder> getPfoldersByMno(int mno) {
         return pfolderRepository.findByMemberMno(mno);
     }
+
+    public void savePfolder(Pfolder pfolder) {
+        pfolderRepository.save(pfolder);
+    }
+
+    public void deletePfolderByPfno(int pfno) {
+        pfolderRepository.delete(pfno);
+    }
 }

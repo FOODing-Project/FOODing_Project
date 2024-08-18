@@ -12,6 +12,7 @@
                 <c:forEach var="pick" items="${pickList}">
                 <tr>
                     <td>
+                        <input type="checkbox" name="selectedStore" value="${pick.store.sname}" />
                         <button class="storeName">${pick.store.sname}</button>
                     </td>
                 </tr>
@@ -23,20 +24,24 @@
     </div>
     <div class="pickFolders-container">
         <h4>찜 폴더 관리</h4>
-        <div class="pickFolderList">
             <table class="folder-table">
                 <c:forEach var="pfolder" items="${pfolderList}">
                     <tr>
                         <td>
+                            <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
                             <button class="folderName">${pfolder.pfname}</button>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
-        </div>
         <div class="pickFolders-button-container">
-            <button class="add-folder">+추가</button>
-            <button class="delete-folder">-삭제</button>
+            <form method="post" action="${pageContext.request.contextPath}/createFolder">
+                <input type="hidden" name="pfname" value="새 폴더" />
+                <button type="submit">+새 폴더</button>
+            </form>
+            <form id="deleteFolderForm" method="post" action="${pageContext.request.contextPath}/deleteFolder">
+                <button type="button" id="deleteButton">삭제</button>
+            </form>
         </div>
     </div>
 </div>
@@ -57,5 +62,15 @@
             }
         });
     });*/
+</script>
+<script>
+    document.getElementById("deleteButton").addEventListener("click", function() {
+        var checkboxes = document.querySelectorAll(".folder-checkbox:checked");
+        if (checkboxes.length === 0) {
+            alert("삭제할 폴더를 선택하세요");
+        } else {
+            document.getElementById("deleteFolderForm").submit(); // 폼 제출
+        }
+    });
 </script>
 <c:import url="/bottom.jsp" />
