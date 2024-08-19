@@ -43,14 +43,22 @@
 }
 
 
-.storeName, .folderName {
+.storeName, .folderName, .pfolderName {
     border: none;
     background-color: white;
     cursor: pointer;
 }
 
-.storeName:hover, .folderName:hover {
+.pfolderName {
+    width: 150px;
+    text-align: left;
+    padding-bottom: 5px;
+    margin-left: 5px;
+}
+
+.storeName:hover, .folderName:hover, pfolderName:hover {
     text-decoration: underline;
+    border: none;
 }
 
 .createFolder {
@@ -58,7 +66,6 @@
 }
 
 .addFolder-container {
-    text-align: right;
     display: flex;
     flex-direction: row-reverse;
 }

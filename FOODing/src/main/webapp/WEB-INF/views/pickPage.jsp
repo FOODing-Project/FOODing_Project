@@ -41,7 +41,8 @@
                             <div class="folder-items">
                             <div class="folder-items folder-items-left">
                                 <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
-                                <label>${pfolder.pfname}</label>
+
+                                <button type="button" class="pfolderName">${pfolder.pfname}</button>
                             </div>
                             <div class="folder-items folder-items-right">
                                 <button type="button" class="edit-button">

@@ -7,6 +7,7 @@ import com.sw.fd.service.PfolderService;
 import com.sw.fd.service.PickService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -100,6 +101,11 @@ public class PickController {
                 pfolderService.deletePfolderByPfno(pfno);
             }
         }
+        return "redirect:/pickList";
+    }
+
+    @PostMapping("/updateFolderName")
+    public String updateFolderName(@RequestParam("pfname") String pfname, HttpSession session) {
         return "redirect:/pickList";
     }
 }
