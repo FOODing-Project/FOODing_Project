@@ -18,33 +18,44 @@
                 </tr>
                 </c:forEach>
             </table>
-        <button type="submit" id="deletePick" class="deletePick">삭제</button>
+        <div class="removeButton-container">
+            <button type="submit" id="deletePick" class="deletePick">삭제</button>
+        </div>
+    </div>
+    <div class="addToFolder-container">
+        <button type="button" class="add-button"><img src="${pageContext.request.contextPath}/resources/images/addToFolder.png"></button>
     </div>
     <div class="pickFolders-container">
         <h4>찜 폴더 관리</h4>
+        <div class="addFolder-container">
+            <form method="post" action="${pageContext.request.contextPath}/createFolder">
+                <input type="hidden" name="pfname" value="새 폴더" />
+                <button type="submit" class="createFolder">+새 폴더</button>
+            </form>
+        </div>
         <form id="deleteFolderForm" method="post" action="${pageContext.request.contextPath}/deleteFolder">
             <table class="folder-table">
                 <c:forEach var="pfolder" items="${pfolderList}">
                     <tr>
                         <td>
                             <div class="folder-items">
-                                <div class="folder-items folder-items-left">
-                                    <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
-                                    <label>${pfolder.pfname}</label>
-                                </div>
-                                <div class="folder-items folder-items-right">
-                                <button type="button" class="edit-button"><img src="${pageContext.request.contextPath}/resources/images/edit_icon.png"></button>
-                                </div>
+                            <div class="folder-items folder-items-left">
+                                <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
+                                <label>${pfolder.pfname}</label>
+                            </div>
+                            <div class="folder-items folder-items-right">
+                                <button type="button" class="edit-button">
+                                    <img src="${pageContext.request.contextPath}/resources/images/edit_icon.png">
+                                </button>
+                            </div>
                             </div>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
-            <button type="submit" id="deleteFolder" class="deleteFolder">삭제</button>
-        </form>
-        <form method="post" action="${pageContext.request.contextPath}/createFolder">
-            <input type="hidden" name="pfname" value="새 폴더" />
-            <button type="submit" class="createFolder">+새 폴더</button>
+            <div class="removeButton-container">
+                <button type="submit" id="deleteFolder" class="deleteFolder">삭제</button>
+            </div>
         </form>
     </div>
 </div>
