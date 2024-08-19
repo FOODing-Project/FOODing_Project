@@ -10,17 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d781d0f-b515-4fd6-9a94-f607f6238cdf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/images/addToFolder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/images/edit_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/PickController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/controller/PickController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/PfolderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/repository/PfolderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/PfolderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/PfolderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/PickService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/java/com/sw/fd/service/PickService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/pickPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/pickPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/pick.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/pick.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/PickController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/PickController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/PfolderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/PfolderService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/PickController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/PickController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/PfolderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/classes/com/sw/fd/service/PfolderService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/pickPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/pickPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/pick.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/pick.css" afterDir="false" />
     </list>
@@ -92,12 +90,13 @@
       <recent name="C:\Users\User\Desktop\Fooding\FOODing\src\main\webapp\resources\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\Fooding\FOODing\src\main\webapp\resources\images" />
       <recent name="C:\Users\User\Desktop\Fooding\FOODing\src\main\webapp\WEB-INF\views" />
       <recent name="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 9.0.90" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.90" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 9.0.34" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.34" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8 " />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -219,6 +218,7 @@
       <workItem from="1723515791532" duration="1070000" />
       <workItem from="1723777345673" duration="8854000" />
       <workItem from="1723794172827" duration="5909000" />
+      <workItem from="1724029690547" duration="8779000" />
     </task>
     <servers />
   </component>

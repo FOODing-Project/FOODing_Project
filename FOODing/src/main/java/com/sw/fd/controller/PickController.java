@@ -6,6 +6,7 @@ import com.sw.fd.entity.Pick;
 import com.sw.fd.service.PfolderService;
 import com.sw.fd.service.PickService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -93,9 +94,11 @@ public class PickController {
     }
 
     @PostMapping("/deleteFolder")
-    public String deleteFolder(@RequestParam("selectedFolders") List<Integer> selectedFolders, HttpSession session) {
-        for (Integer pfno : selectedFolders) {
-            pfolderService.deletePfolderByPfno(pfno);
+    public String deleteFolder(@RequestParam(value = "selectedFolders", required = false) List<Integer> selectedFolders, HttpSession session) {
+        if (selectedFolders != null && !selectedFolders.isEmpty()) {
+            for (Integer pfno : selectedFolders) {
+                pfolderService.deletePfolderByPfno(pfno);
+            }
         }
         return "redirect:/pickList";
     }

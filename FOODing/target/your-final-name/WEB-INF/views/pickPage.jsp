@@ -18,31 +18,34 @@
                 </tr>
                 </c:forEach>
             </table>
-        <div class="pickList-button-container">
-            <button class="delete-pick">-삭제</button>
-        </div>
+        <button type="submit" id="deletePick" class="deletePick">삭제</button>
     </div>
     <div class="pickFolders-container">
         <h4>찜 폴더 관리</h4>
+        <form id="deleteFolderForm" method="post" action="${pageContext.request.contextPath}/deleteFolder">
             <table class="folder-table">
                 <c:forEach var="pfolder" items="${pfolderList}">
                     <tr>
                         <td>
-                            <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
-                            <button class="folderName">${pfolder.pfname}</button>
+                            <div class="folder-items">
+                                <div class="folder-items folder-items-left">
+                                    <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
+                                    <label>${pfolder.pfname}</label>
+                                </div>
+                                <div class="folder-items folder-items-right">
+                                <button type="button" class="edit-button"><img src="${pageContext.request.contextPath}/resources/images/edit_icon.png"></button>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
-        <div class="pickFolders-button-container">
-            <form method="post" action="${pageContext.request.contextPath}/createFolder">
-                <input type="hidden" name="pfname" value="새 폴더" />
-                <button type="submit">+새 폴더</button>
-            </form>
-            <form id="deleteFolderForm" method="post" action="${pageContext.request.contextPath}/deleteFolder">
-                <button type="button" id="deleteButton">삭제</button>
-            </form>
-        </div>
+            <button type="submit" id="deleteFolder" class="deleteFolder">삭제</button>
+        </form>
+        <form method="post" action="${pageContext.request.contextPath}/createFolder">
+            <input type="hidden" name="pfname" value="새 폴더" />
+            <button type="submit" class="createFolder">+새 폴더</button>
+        </form>
     </div>
 </div>
 <script>
@@ -64,11 +67,13 @@
     });*/
 </script>
 <script>
-    document.getElementById("deleteButton").addEventListener("click", function() {
+    document.getElementById("deleteFolder").addEventListener("click", function() {
         var checkboxes = document.querySelectorAll(".folder-checkbox:checked");
         if (checkboxes.length === 0) {
-            alert("삭제할 폴더를 선택하세요");
+            alert("삭제할 폴더를 선택하세요.");
         } else {
+            checkboxes.forEach(function(checkbox) {
+            });
             document.getElementById("deleteFolderForm").submit(); // 폼 제출
         }
     });
