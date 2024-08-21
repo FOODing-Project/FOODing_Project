@@ -41,13 +41,13 @@
                             <div class="folder-items">
                             <div class="folder-items folder-items-left">
                                 <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
-                                <button type="button" class="pfolderName">${pfolder.pfname}</button>
-                                <button type="button" class="pfolderName" id="pfolderName_${pfolder.pfno}" onclick="enableEdit('${pfolder.pfno}')">${pfolder.pfname}</button>
-                                <input type="text" class="edit-input" id="editInput_${pfolder.pfno}" value="${pfolder.pfname}" style="display:none;" onblur="disableEdit('${pfolder.pfno}')" />
-                                <button type="submit" class="save-button" id="saveButton_${pfolder.pfno}" style="display:none;">저장</button>
+                                <button type="button" class="pfolderName" id="pfname_${pfolder.pfno}">${pfolder.pfname}</button>
+                                <input type="text" class="edit-input" id="edit_${pfolder.pfno}" value="${pfolder.pfname}" style="display: none" />
+                                <button type="button" class="save-pfname" id="save_${pfolder.pfno}" style="display: none" onclick="savePfname('${pfolder.pfno}')">저장</button>
+                                <button type="button" class="cancel-pfname" id="cancel_${pfolder.pfno}" style="display: none" onclick="cancelEdit('${pfolder.pfno}')">취소</button>
                             </div>
                             <div class="folder-items folder-items-right">
-                                <button type="button" class="edit-button">
+                                <button type="button" class="edit-button" onclick="editPfname('${pfolder.pfno}')">
                                     <img src="${pageContext.request.contextPath}/resources/images/edit_icon.png">
                                 </button>
                             </div>
@@ -81,24 +81,6 @@
     });*/
 </script>
 <script>
-    function enableEdit(pfno) {
-        document.getElementById('pfolderName_' + pfno).style.display = 'none';
-        document.getElementById('editInput_' + pfno).style.display = 'inline';
-        document.getElementById('editInput_' + pfno).focus();
-        document.getElementById('saveButton_' + pfno).style.display = 'inline';
-    }
-
-    function disableEdit(pfno) {
-        var input = document.getElementById('editInput_' + pfno);
-        if (input.value.trim() === '') {
-            input.value = document.getElementById('pfolderName_' + pfno).innerText;
-        }
-        document.getElementById('pfolderName_' + pfno).innerText = input.value;
-        document.getElementById('pfolderName_' + pfno).style.display = 'inline';
-        document.getElementById('editInput_' + pfno).style.display = 'none';
-        document.getElementById('saveButton_' + pfno).style.display = 'none';
-    }
-    
     document.getElementById("deleteFolder").addEventListener("click", function() {
         var checkboxes = document.querySelectorAll(".folder-checkbox:checked");
         if (checkboxes.length === 0) {
@@ -109,5 +91,44 @@
             document.getElementById("deleteFolderForm").submit(); // 폼 제출
         }
     });
+
+    function editPfname(pfno) {
+        document.getElementById('pfname_' + pfno).style.display = 'none';
+        document.getElementById('edit_' + pfno).style.display = 'inline';
+        document.getElementById('edit_' + pfno).focus();
+        document.getElementById('save_' + pfno).style.display = 'inline';
+        document.getElementById('cancel_' + pfno).style.display = 'inline';
+    }
+
+    function savePfname(pfno) {
+        var newName = document.getElementById('edit_' + pfno).value;
+        // AJAX를 이용해 서버로 새로운 폴더 이름 전송
+        $.ajax({
+            type: 'POST',
+            url: '${pageContext.request.contextPath}/updateFolderName', // 폴더 이름 업데이트를 처리하는 엔드포인트
+            data: {
+                pfno: pfno,
+                pfname: newName
+            },
+            success: function(response) {
+                if (response === 'success') {
+                    document.getElementById('pfname_' + pfno).innerText = newName;
+                    document.getElementById('pfname_' + pfno).style.display = 'inline';
+                    document.getElementById('edit_' + pfno).style.display = 'none';
+                    document.getElementById('save_' + pfno).style.display = 'none';
+                    document.getElementById('cancel_' + pfno).style.display = 'none';
+                } else {
+                    alert('폴더 이름 변경 중 오류가 발생했습니다.');
+                }
+            }
+        });
+    }
+
+    function cancelEdit(pfno) {
+        document.getElementById('edit_' + pfno).style.display = 'none';
+        document.getElementById('save_' + pfno).style.display = 'none';
+        document.getElementById('cancel_' + pfno).style.display = 'none';
+        document.getElementById('pfname_' + pfno).style.display = 'inline';
+    }
 </script>
 <c:import url="/bottom.jsp" />

@@ -36,4 +36,8 @@ public class PfolderService {
     public void deletePfolderByPfno(int pfno) {
         pfolderRepository.delete(pfno);
     }
+
+    public Pfolder findByPfno(int pfno) {
+        return pfolderRepository.findByPfno(pfno).orElse(null);
+    }
 }

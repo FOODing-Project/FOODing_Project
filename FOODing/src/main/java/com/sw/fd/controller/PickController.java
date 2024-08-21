@@ -105,7 +105,15 @@ public class PickController {
     }
 
     @PostMapping("/updateFolderName")
-    public String updateFolderName(@RequestParam("pfname") String pfname, HttpSession session) {
-        return "redirect:/pickList";
+    @ResponseBody
+    public String updateFolderName(@RequestParam("pfno") Integer pfno, @RequestParam("pfname") String pfname, HttpSession session) {
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+        Pfolder pfolder = pfolderService.findByPfno(pfno);
+
+        pfolder.setPfname(pfname);
+        pfolderService.savePfolder(pfolder);
+        return "success";
+/*
+        return "redirect:/pickList";*/
     }
 }

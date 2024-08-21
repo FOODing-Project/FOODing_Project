@@ -171,7 +171,6 @@ public class StoreService {
     }
 
     public Store getStoreById(int sno) {
-        System.out.println("getStoreById에 진입");
         Store store = storeRepository.findBySno(sno).orElse(null);
         if (store != null) {
             updateStoreTags(store);
