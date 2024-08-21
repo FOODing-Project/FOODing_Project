@@ -11,6 +11,7 @@ import com.sw.fd.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -56,9 +57,17 @@ public class PickService {
     public List<Pick> getPicksByMno(int mno) {
         return pickRepository.findByMemberMno(mno);
     }
-    /*    public void removePickByPno(int pno) {
-        pickRepository.(pno);
-    }*/
 
+    public List<Pick> getPicksByPfolder(Pfolder pfolder) {
+        return pickRepository.findByPfolder(pfolder);
+    }
 
+    public Pick findPickByMemberAndStore(Member member, Store store) {
+        return pickRepository.findByMemberAndStore(member, store);
+    }
+
+    @Transactional
+    public Pick savePick(Pick pick) {
+        return pickRepository.save(pick);
+    }
 }

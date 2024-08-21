@@ -8,7 +8,9 @@ import com.sw.fd.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PfolderService {
@@ -39,5 +41,11 @@ public class PfolderService {
 
     public Pfolder findByPfno(int pfno) {
         return pfolderRepository.findByPfno(pfno).orElse(null);
+    }
+
+    public List<Pfolder> findPfoldersByPfno(String pfnos) {
+        String[] pfnoArray = pfnos.split(",");
+        List<Integer> pfnoList = Arrays.stream(pfnoArray).map(Integer::parseInt).collect(Collectors.toList());
+        return pfolderRepository.findByPfno(pfnoList);
     }
 }

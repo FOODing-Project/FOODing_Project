@@ -11,4 +11,5 @@ public interface StoreRepository extends JpaRepository<Store, Integer> {
     Optional<Store> findBySno(int sno);
     List<Store> findByScate(String scate);
     List<Store> findAll();
+    List<Store> findBySno(List<Integer> snoList);
 }

@@ -3,8 +3,10 @@ package com.sw.fd.controller;
 import com.sw.fd.entity.Member;
 import com.sw.fd.entity.Pfolder;
 import com.sw.fd.entity.Pick;
+import com.sw.fd.entity.Store;
 import com.sw.fd.service.PfolderService;
 import com.sw.fd.service.PickService;
+import com.sw.fd.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.security.core.parameters.P;
@@ -24,6 +26,9 @@ public class PickController {
 
     @Autowired
     private PfolderService pfolderService;
+
+    @Autowired
+    private StoreService storeService;
 
     @GetMapping("/pickList")
     public String pickList(HttpSession session, Model model) {
@@ -112,8 +117,56 @@ public class PickController {
 
         pfolder.setPfname(pfname);
         pfolderService.savePfolder(pfolder);
+
         return "success";
-/*
-        return "redirect:/pickList";*/
+    }
+
+    @PostMapping("/addPickToFolder")
+    public String addPickToFolder(@RequestParam("pfnos") String pfnos, @RequestParam("snos") String snos, HttpSession httpSession) {
+        Member loggedInMember = (Member) httpSession.getAttribute("loggedInMember");
+        /*Store store = storeService.getStoreById(sno);
+        Pfolder pfolder = pfolderService.findByPfno(pfno);*/
+
+        List<Pfolder> pfolders = pfolderService.findPfoldersByPfno(pfnos);
+        List<Store> stores = storeService.findStoresBySnos(snos);
+
+        for(Pfolder pfolder : pfolders) {
+            if(!pfolder.getMember().equals(loggedInMember)) {
+                continue;
+            }
+
+            for (Store store : stores) {
+                Pick newPick = new Pick();
+                newPick.setPfolder(pfolder);
+                newPick.setStore(store);
+                newPick.setMember(loggedInMember);
+
+                pickService.savePick(newPick);
+            }
+        }
+
+        return "success";
+    }
+
+    @GetMapping("/getFolderContent")
+    @ResponseBody
+    public String getFolderContent(@RequestParam("pfno") Integer pfno, HttpSession session) {
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+        Pfolder pfolder = pfolderService.findByPfno(pfno);
+
+        List<Pick> picks = pickService.getPicksByPfolder(pfolder);
+        if (picks == null || picks.isEmpty()) {
+            return "폴더가 비어있습니다.";
+        }
+
+        StringBuilder contentHtml = new StringBuilder("<ul>");
+        for (Pick pick : picks) {
+            Pick specificPick = pickService.findPickByMemberAndStore(loggedInMember, pick.getStore());
+            if (specificPick != null) {
+                contentHtml.append("<li>").append(specificPick.getStore().getSname()).append("</li>");
+            }
+        }
+        contentHtml.append("</ul>");
+        return contentHtml.toString();
     }
 }

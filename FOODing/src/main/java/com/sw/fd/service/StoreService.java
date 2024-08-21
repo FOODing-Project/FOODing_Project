@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class StoreService {
@@ -213,4 +211,9 @@ public class StoreService {
         return nearbyStores;
     }
 
+    public List<Store> findStoresBySnos(String snos) {
+        String[] snoArray = snos.split(",");
+        List<Integer> snoList = Arrays.stream(snoArray).map(Integer::parseInt).collect(Collectors.toList());
+        return storeRepository.findBySno(snoList);
+    }
 }

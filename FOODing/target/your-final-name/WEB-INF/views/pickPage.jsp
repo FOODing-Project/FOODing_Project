@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="addToFolder-container">
-        <button type="button" class="add-button"><img src="${pageContext.request.contextPath}/resources/images/addToFolder.png"></button>
+        <button type="button" class="add-button" onclick="addPickToFolder()"><img src="${pageContext.request.contextPath}/resources/images/addToFolder.png"></button>
     </div>
     <div class="pickFolders-container">
         <h4>찜 폴더 관리</h4>
@@ -39,21 +39,34 @@
                     <tr>
                         <td>
                             <div class="folder-items">
-                            <div class="folder-items folder-items-left">
-                                <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
-                                <button type="button" class="pfolderName" id="pfname_${pfolder.pfno}">${pfolder.pfname}</button>
-                                <input type="text" class="edit-input" id="edit_${pfolder.pfno}" value="${pfolder.pfname}" style="display: none" />
-                                <button type="button" class="save-pfname" id="save_${pfolder.pfno}" style="display: none" onclick="savePfname('${pfolder.pfno}')">저장</button>
-                                <button type="button" class="cancel-pfname" id="cancel_${pfolder.pfno}" style="display: none" onclick="cancelEdit('${pfolder.pfno}')">취소</button>
-                            </div>
-                            <div class="folder-items folder-items-right">
-                                <button type="button" class="edit-button" onclick="editPfname('${pfolder.pfno}')">
-                                    <img src="${pageContext.request.contextPath}/resources/images/edit_icon.png">
-                                </button>
-                            </div>
+                                <div class="folder-items folder-items-left">
+                                    <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
+                                    <button type="button" class="pfolderName" id="pfname_${pfolder.pfno}">${pfolder.pfname}</button>
+                                    <input type="text" class="edit-input" id="edit_${pfolder.pfno}" value="${pfolder.pfname}" style="display: none" />
+                                    <button type="button" class="save-pfname" id="save_${pfolder.pfno}" style="display: none" onclick="savePfname('${pfolder.pfno}')">저장</button>
+                                    <button type="button" class="cancel-pfname" id="cancel_${pfolder.pfno}" style="display: none" onclick="cancelEdit('${pfolder.pfno}')">취소</button>
+                                </div>
+                                <div class="folder-items folder-items-right">
+                                    <button type="button" class="edit-button" onclick="editPfname('${pfolder.pfno}')">
+                                        <img src="${pageContext.request.contextPath}/resources/images/edit_icon.png">
+                                    </button>
+                                </div>
                             </div>
                         </td>
                     </tr>
+                    <tr id="folder-content-${pfolder.pfno}" style="display:none;">
+                        <%--<h4>${pfolder.pfname}</h4>--%>
+                        <td>
+                            <input type="checkbox" name="selectedStores" value="${pfolder.pfno}" class="folder-checkbox"/>
+                            <a>${pick.store.sname}</a>
+                        </td>
+                    </tr>
+                    <%--<tr>
+                        <td>
+                            <input type="checkbox" name="selectedStore" value="${pick.store.sname}" />
+                            <button class="storeName">${pick.store.sname}</button>
+                        </td>
+                    </tr>--%>
                 </c:forEach>
             </table>
             <div class="removeButton-container">
@@ -130,5 +143,43 @@
         document.getElementById('cancel_' + pfno).style.display = 'none';
         document.getElementById('pfname_' + pfno).style.display = 'inline';
     }
+
+    function loadFolderContent(pfno) {
+        var contentRow = document.getElementById('folder-content-' + pfno);
+        if (contentRow.style.display === 'table-row') {
+            contentRow.style.display = 'none';
+            return;
+        }
+
+        $.ajax({
+            type: 'GET',
+            url: '${pageContext.request.contextPath}/getFolderContent',
+            data: { pfno: pfno },
+            success: function(response) {
+                contentRow.style.display = 'table-row';
+                contentRow.querySelector('td').innerHTML = response;
+            },
+            error: function() {
+                alert('폴더 내용을 불러오는 중 오류가 발생했습니다.');
+            }
+        });
+    }
+
+    function addPickToFolder() {
+        var selectedStores = document.querySelectorAll('.pickList-container input[name="selectedStore"]:checked');
+        var selectedFolders = document.querySelectorAll('.pickFolders-container input[name="selectedFolders"]:checked');
+
+        if (selectedStores.length === 0) {
+            alert('추가할 가게를 선택하세요.');
+            return;
+        }
+
+        if (selectedFolders.length === 0) {
+            alert('추가할 찜 폴더를 선택하세요.');
+            return;
+        }
+
+    }
+
 </script>
 <c:import url="/bottom.jsp" />

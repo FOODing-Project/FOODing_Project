@@ -1,6 +1,7 @@
 package com.sw.fd.repository;
 
 import com.sw.fd.entity.Member;
+import com.sw.fd.entity.Pfolder;
 import com.sw.fd.entity.Pick;
 import com.sw.fd.entity.Store;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,4 +22,7 @@ public interface PickRepository extends JpaRepository<Pick, Integer> {
     // pick수 계산을 위해 추가한 부분 (다혜)
     @Query("SELECT COUNT(p) FROM Pick p WHERE p.store.sno = :sno")
     int countBySno(@Param("sno") int sno);
+
+    List<Pick> findByPfolder(Pfolder pfolder);
+
 }

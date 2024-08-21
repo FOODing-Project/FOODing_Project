@@ -22,4 +22,5 @@ public class Pfolder {
     @ManyToOne
     @JoinColumn(name = "mno", nullable = true)
     public Member member;
+
 }
