@@ -212,6 +212,10 @@ public class StoreService {
     }
 
     public List<Store> findStoresBySnos(String snos) {
+        if (snos == null || snos.isEmpty()) {
+            return Collections.emptyList();
+        }
+
         String[] snoArray = snos.split(",");
         List<Integer> snoList = Arrays.stream(snoArray).map(Integer::parseInt).collect(Collectors.toList());
         return storeRepository.findBySno(snoList);
