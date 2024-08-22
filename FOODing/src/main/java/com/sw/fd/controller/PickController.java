@@ -37,8 +37,9 @@ public class PickController {
             return "redirect:/login";
         }
 
+        int pfno = 1;
+        List<Pick> pickList = pickService.getPicksByPfnoAndMno(pfno, loggedInMember.getMno());
         List<Pfolder> pfolderList = pfolderService.getPfoldersByMno(loggedInMember.getMno());
-        List<Pick> pickList = pickService.getPicksByMno(loggedInMember.getMno());
 
         model.addAttribute("pickList", pickList);
         model.addAttribute("pfolderList", pfolderList);
@@ -84,6 +85,15 @@ public class PickController {
         }
         return "redirect:/pickList";
     }*/
+
+    @PostMapping("/removePick")
+    @ResponseBody
+    public String removePick(@RequestParam("snos") List<Integer> snos) {
+        for (int sno : snos) {
+            pickService.removePicksBySno(sno);
+        }
+        return "success";
+    }
 
     @PostMapping("/createFolder")
     public String createFolder(@RequestParam("pfname") String pfname, HttpSession session) {

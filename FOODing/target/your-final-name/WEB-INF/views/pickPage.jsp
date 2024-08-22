@@ -19,7 +19,7 @@
                 </c:forEach>
             </table>
         <div class="removeButton-container">
-            <button type="submit" id="deletePick" class="deletePick">삭제</button>
+            <button type="submit" id="removePick" class="removePick">삭제</button>
         </div>
     </div>
     <div class="addToFolder-container">
@@ -103,6 +103,39 @@
             });
             document.getElementById("deleteFolderForm").submit(); // 폼 제출
         }
+    });
+
+    document.getElementById("removePick").addEventListener("click", function() {
+        var selectedStores = document.querySelectorAll('.pickList-container input[name="selectedStore"]:checked');
+
+        if (selectedStores.length === 0) {
+            alert("삭제할 가게를 선택하세요.");
+            return;
+        }
+
+        var snos = [];
+        selectedStores.forEach(function(store) {
+            snos.push(store.value);
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: '${pageContext.request.contextPath}/removePick',
+            data: {
+                snos: snos.join(',')  // 선택된 sno들을 쉼표로 구분하여 전송
+            },
+            success: function(response) {
+                if (response === "success") {
+                    alert('선택된 가게들이 삭제되었습니다.');
+                    location.reload(); // 페이지 새로고침
+                } else {
+                    alert('삭제 중 오류가 발생했습니다.');
+                }
+            },
+            error: function() {
+                alert('삭제 중 오류가 발생했습니다.');
+            }
+        });
     });
 
     function editPfname(pfno) {

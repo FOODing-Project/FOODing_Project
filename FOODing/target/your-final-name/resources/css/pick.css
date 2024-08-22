@@ -76,7 +76,7 @@
     flex-direction: row-reverse;
 }
 
-.deletePick, .deleteFolder, .createFolder {
+.removePick, .deleteFolder, .createFolder {
     text-align: right;
     color: gray;
     border: none;

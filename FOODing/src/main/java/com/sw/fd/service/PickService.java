@@ -70,4 +70,13 @@ public class PickService {
     public void savePick(Pick pick) {
         pickRepository.save(pick);
     }
+
+    public List<Pick> getPicksByPfnoAndMno(int pfno, int mno) {
+        return pickRepository.findByPfolder_PfnoAndMember_Mno(pfno, mno);
+    }
+
+    @Transactional
+    public void removePicksBySno(int sno) {
+        pickRepository.removeByStore_Sno(sno);
+    }
 }

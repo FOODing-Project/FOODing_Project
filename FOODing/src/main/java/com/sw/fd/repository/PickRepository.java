@@ -25,4 +25,8 @@ public interface PickRepository extends JpaRepository<Pick, Integer> {
 
     List<Pick> findByPfolder(Pfolder pfolder);
 
+    List<Pick> findByPfolder_PfnoAndMember_Mno(int pfno, int mno);
+
+    void removeByStore_Sno(int sno);
+
 }
