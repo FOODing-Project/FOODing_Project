@@ -61,12 +61,6 @@
                             <a>${pick.store.sname}</a>
                         </td>
                     </tr>
-                    <%--<tr>
-                        <td>
-                            <input type="checkbox" name="selectedStore" value="${pick.store.sname}" />
-                            <button class="storeName">${pick.store.sname}</button>
-                        </td>
-                    </tr>--%>
                 </c:forEach>
             </table>
             <div class="removeButton-container">
@@ -76,24 +70,6 @@
     </div>
 </div>
 <script>
-    /*$(document).on('click', '.remove-pick', function() {
-        var pno = $(this).data('pno');
-        $.ajax({
-            type: 'POST',
-            url: '${pageContext.request.contextPath}/removePick',
-            data: { pno: pno },
-            success: function(response) {
-                if (response === 'success') {
-                    alert('찜 목록에서 삭제되었습니다.');
-                    location.reload(); // 페이지를 새로고침하여 목록을 업데이트합니다.
-                } else {
-                    alert('삭제 중 오류가 발생했습니다.');
-                }
-            }
-        });
-    });*/
-</script>
-<script>
     document.getElementById("deleteFolder").addEventListener("click", function() {
         var checkboxes = document.querySelectorAll(".folder-checkbox:checked");
         if (checkboxes.length === 0) {
@@ -101,7 +77,7 @@
         } else {
             checkboxes.forEach(function(checkbox) {
             });
-            document.getElementById("deleteFolderForm").submit(); // 폼 제출
+            document.getElementById("deleteFolderForm").submit();
         }
     });
 
@@ -122,12 +98,12 @@
             type: 'POST',
             url: '${pageContext.request.contextPath}/removePick',
             data: {
-                snos: snos.join(',')  // 선택된 sno들을 쉼표로 구분하여 전송
+                snos: snos.join(',')
             },
             success: function(response) {
                 if (response === "success") {
                     alert('선택된 가게들이 삭제되었습니다.');
-                    location.reload(); // 페이지 새로고침
+                    location.reload();
                 } else {
                     alert('삭제 중 오류가 발생했습니다.');
                 }
@@ -148,10 +124,9 @@
 
     function savePfname(pfno) {
         var newName = document.getElementById('edit_' + pfno).value;
-        // AJAX를 이용해 서버로 새로운 폴더 이름 전송
         $.ajax({
             type: 'POST',
-            url: '${pageContext.request.contextPath}/updateFolderName', // 폴더 이름 업데이트를 처리하는 엔드포인트
+            url: '${pageContext.request.contextPath}/updateFolderName',
             data: {
                 pfno: pfno,
                 pfname: newName
@@ -225,12 +200,12 @@
             type: 'POST',
             url: '${pageContext.request.contextPath}/addPickToFolder',
             data: {
-                pfnos: pfnos.join(','), // 폴더 ID들을 쉼표로 구분된 문자열로 변환하여 전송
-                snos: snos.join(',') // 가게 ID들을 쉼표로 구분된 문자열로 변환하여 전송
+                pfnos: pfnos.join(','),
+                snos: snos.join(',')
             },
             success: function(response) {
                 alert('가게들이 선택한 폴더들에 추가되었습니다.');
-                location.reload(); // 페이지를 새로고침하여 목록을 업데이트
+                location.reload();
             },
             error: function() {
                 alert('가게들을 폴더에 추가하는 중 오류가 발생했습니다.');
