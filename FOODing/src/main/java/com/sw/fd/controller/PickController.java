@@ -122,16 +122,20 @@ public class PickController {
     }
 
     @PostMapping("/addPickToFolder")
+    @ResponseBody
     public String addPickToFolder(@RequestParam("pfnos") String pfnos, @RequestParam("snos") String snos, HttpSession httpSession) {
         Member loggedInMember = (Member) httpSession.getAttribute("loggedInMember");
         /*Store store = storeService.getStoreById(sno);
         Pfolder pfolder = pfolderService.findByPfno(pfno);*/
 
-        List<Pfolder> pfolders = pfolderService.findPfoldersByPfno(pfnos);
+        List<Pfolder> pfolders = pfolderService.findPfoldersByPfnos(pfnos);
         List<Store> stores = storeService.findStoresBySnos(snos);
 
         for(Pfolder pfolder : pfolders) {
             if(!pfolder.getMember().equals(loggedInMember)) {
+                System.out.println("사용자와 폴더 소유자 불일치: " + pfolder);
+                System.out.println("LoggedIn Member: " + loggedInMember.getMid());
+                System.out.println("Pfolder Member: " + pfolder.getMember().getMid());
                 continue;
             }
 
@@ -141,10 +145,12 @@ public class PickController {
                 newPick.setStore(store);
                 newPick.setMember(loggedInMember);
 
+                System.out.println("Saving pick: " + newPick);
+
+
                 pickService.savePick(newPick);
             }
         }
-
         return "success";
     }
 

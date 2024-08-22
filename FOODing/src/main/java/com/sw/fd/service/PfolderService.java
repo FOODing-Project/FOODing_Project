@@ -43,7 +43,7 @@ public class PfolderService {
         return pfolderRepository.findByPfno(pfno).orElse(null);
     }
 
-    public List<Pfolder> findPfoldersByPfno(String pfnos) {
+    public List<Pfolder> findPfoldersByPfnos(String pfnos) {
         String[] pfnoArray = pfnos.split(",");
         List<Integer> pfnoList = Arrays.stream(pfnoArray).map(Integer::parseInt).collect(Collectors.toList());
         return pfolderRepository.findByPfno(pfnoList);

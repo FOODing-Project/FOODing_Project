@@ -67,7 +67,7 @@ public class PickService {
     }
 
     @Transactional
-    public Pick savePick(Pick pick) {
-        return pickRepository.save(pick);
+    public void savePick(Pick pick) {
+        pickRepository.save(pick);
     }
 }

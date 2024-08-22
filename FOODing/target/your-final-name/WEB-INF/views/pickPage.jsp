@@ -12,7 +12,7 @@
                 <c:forEach var="pick" items="${pickList}">
                 <tr>
                     <td>
-                        <input type="checkbox" name="selectedStore" value="${pick.store.sname}" />
+                        <input type="checkbox" name="selectedStore" value="${pick.store.sno}" />
                         <button class="storeName">${pick.store.sname}</button>
                     </td>
                 </tr>
@@ -173,12 +173,36 @@
             alert('추가할 가게를 선택하세요.');
             return;
         }
-
         if (selectedFolders.length === 0) {
             alert('추가할 찜 폴더를 선택하세요.');
             return;
         }
 
+        var pfnos = [];
+        selectedFolders.forEach(function(folder) {
+            pfnos.push(folder.value);
+        });
+
+        var snos = [];
+        selectedStores.forEach(function(store) {
+            snos.push(store.value);
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: '${pageContext.request.contextPath}/addPickToFolder',
+            data: {
+                pfnos: pfnos.join(','), // 폴더 ID들을 쉼표로 구분된 문자열로 변환하여 전송
+                snos: snos.join(',') // 가게 ID들을 쉼표로 구분된 문자열로 변환하여 전송
+            },
+            success: function(response) {
+                alert('가게들이 선택한 폴더들에 추가되었습니다.');
+                location.reload(); // 페이지를 새로고침하여 목록을 업데이트
+            },
+            error: function() {
+                alert('가게들을 폴더에 추가하는 중 오류가 발생했습니다.');
+            }
+        });
     }
 
 </script>

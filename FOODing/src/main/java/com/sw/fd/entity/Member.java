@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "member_t") // 데이터베이스 테이블과 매핑
@@ -54,5 +55,18 @@ public class Member {
     @Override
     public String toString() {
         return "Member{mno=" + mno + ", mid='" + mid + "', mname='" + mname + "'}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return Objects.equals(mid, member.mid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mid);
     }
 }
