@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.ManyToOne;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.html.Option;
 import java.util.List;
 
 @Controller
@@ -135,31 +136,30 @@ public class PickController {
     @ResponseBody
     public String addPickToFolder(@RequestParam("pfnos") String pfnos, @RequestParam("snos") String snos, HttpSession httpSession) {
         Member loggedInMember = (Member) httpSession.getAttribute("loggedInMember");
-        /*Store store = storeService.getStoreById(sno);
-        Pfolder pfolder = pfolderService.findByPfno(pfno);*/
 
-        List<Pfolder> pfolders = pfolderService.findPfoldersByPfnos(pfnos);
-        List<Store> stores = storeService.findStoresBySnos(snos);
+        try {
+            List<Pfolder> pfolders = pfolderService.findPfoldersByPfnos(pfnos);
+            List<Store> stores = storeService.findStoresBySnos(snos);
 
-        for(Pfolder pfolder : pfolders) {
-            if(!pfolder.getMember().equals(loggedInMember)) {
-                System.out.println("사용자와 폴더 소유자 불일치: " + pfolder);
-                System.out.println("LoggedIn Member: " + loggedInMember.getMid());
-                System.out.println("Pfolder Member: " + pfolder.getMember().getMid());
-                continue;
+            for (Pfolder pfolder : pfolders) {
+                if (!pfolder.getMember().equals(loggedInMember)) {
+                    System.out.println("사용자와 폴더 소유자 불일치: " + pfolder);
+                    System.out.println("LoggedIn Member: " + loggedInMember.getMid());
+                    System.out.println("Pfolder Member: " + pfolder.getMember().getMid());
+                    continue;
+                }
+
+                for (Store store : stores) {
+                    Pick newPick = new Pick();
+                    newPick.setPfolder(pfolder);
+                    newPick.setStore(store);
+                    newPick.setMember(loggedInMember);
+
+                    pickService.savePick(newPick);
+                }
             }
-
-            for (Store store : stores) {
-                Pick newPick = new Pick();
-                newPick.setPfolder(pfolder);
-                newPick.setStore(store);
-                newPick.setMember(loggedInMember);
-
-                System.out.println("Saving pick: " + newPick);
-
-
-                pickService.savePick(newPick);
-            }
+        } catch (Exception e) {
+            return "error";
         }
         return "success";
     }

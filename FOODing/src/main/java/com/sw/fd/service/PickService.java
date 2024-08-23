@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PickService {
@@ -68,6 +69,8 @@ public class PickService {
 
     @Transactional
     public void savePick(Pick pick) {
+        List<Pick> existingPicks = pickRepository.findByPfolder_PfnoAndMember_MnoAndStore_Sno(
+                pick.getPfolder().getPfno(), pick.getMember().getMno(), pick.getStore().getSno());
         pickRepository.save(pick);
     }
 
@@ -79,4 +82,6 @@ public class PickService {
     public void removePicksBySno(int sno) {
         pickRepository.removeByStore_Sno(sno);
     }
+
+
 }

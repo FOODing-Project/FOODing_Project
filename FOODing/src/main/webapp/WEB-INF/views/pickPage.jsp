@@ -204,11 +204,15 @@
                 snos: snos.join(',')
             },
             success: function(response) {
-                alert('가게들이 선택한 폴더들에 추가되었습니다.');
-                location.reload();
+                if (response === "success") {
+                    alert('선택한 폴더에 찜이 추가되었습니다.');
+                    location.reload();
+                } else if (response === "error") {
+                    alert('한 번에 하나의 폴더에만 추가할 수 있습니다. 폴더를 하나만 선택해주세요.')
+                }
             },
             error: function() {
-                alert('가게들을 폴더에 추가하는 중 오류가 발생했습니다.');
+                alert('가게를 폴더에 추가하는 중 오류가 발생했습니다.');
             }
         });
     }

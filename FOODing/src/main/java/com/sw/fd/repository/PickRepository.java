@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PickRepository extends JpaRepository<Pick, Integer> {
@@ -28,5 +29,7 @@ public interface PickRepository extends JpaRepository<Pick, Integer> {
     List<Pick> findByPfolder_PfnoAndMember_Mno(int pfno, int mno);
 
     void removeByStore_Sno(int sno);
+
+    List<Pick> findByPfolder_PfnoAndMember_MnoAndStore_Sno(int pfno, int mno, int sno);
 
 }
