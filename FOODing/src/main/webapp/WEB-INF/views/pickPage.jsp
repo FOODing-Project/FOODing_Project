@@ -41,7 +41,7 @@
                             <div class="folder-items">
                                 <div class="folder-items folder-items-left">
                                     <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
-                                    <button type="button" class="pfolderName" id="pfname_${pfolder.pfno}">${pfolder.pfname}</button>
+                                    <button type="button" class="pfolderName" id="pfname_${pfolder.pfno}" onclick="loadFolderContent('${pfolder.pfno}')">${pfolder.pfname}</button>
                                     <input type="text" class="edit-input" id="edit_${pfolder.pfno}" value="${pfolder.pfname}" style="display: none" />
                                     <button type="button" class="save-pfname" id="save_${pfolder.pfno}" style="display: none" onclick="savePfname('${pfolder.pfno}')">저장</button>
                                     <button type="button" class="cancel-pfname" id="cancel_${pfolder.pfno}" style="display: none" onclick="cancelEdit('${pfolder.pfno}')">취소</button>

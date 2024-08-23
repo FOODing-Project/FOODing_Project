@@ -177,10 +177,7 @@ public class PickController {
 
         StringBuilder contentHtml = new StringBuilder("<ul>");
         for (Pick pick : picks) {
-            Pick specificPick = pickService.findPickByMemberAndStore(loggedInMember, pick.getStore());
-            if (specificPick != null) {
-                contentHtml.append("<li>").append(specificPick.getStore().getSname()).append("</li>");
-            }
+            contentHtml.append("<li>").append(pick.getStore().getSname()).append("</li>");
         }
         contentHtml.append("</ul>");
         return contentHtml.toString();

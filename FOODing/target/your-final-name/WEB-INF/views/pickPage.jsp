@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/pick.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <c:import url="/top.jsp" />
@@ -41,7 +42,7 @@
                             <div class="folder-items">
                                 <div class="folder-items folder-items-left">
                                     <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
-                                    <button type="button" class="pfolderName" id="pfname_${pfolder.pfno}">${pfolder.pfname}</button>
+                                    <button type="button" class="pfolderName" id="pfname_${pfolder.pfno}" onclick="loadFolderContent('${pfolder.pfno}')">${pfolder.pfname}</button>
                                     <input type="text" class="edit-input" id="edit_${pfolder.pfno}" value="${pfolder.pfname}" style="display: none" />
                                     <button type="button" class="save-pfname" id="save_${pfolder.pfno}" style="display: none" onclick="savePfname('${pfolder.pfno}')">저장</button>
                                     <button type="button" class="cancel-pfname" id="cancel_${pfolder.pfno}" style="display: none" onclick="cancelEdit('${pfolder.pfno}')">취소</button>
@@ -205,14 +206,14 @@
             },
             success: function(response) {
                 if (response === "success") {
-                    alert('가게들이 선택한 폴더들에 추가되었습니다.');
+                    alert('선택한 폴더에 찜이 추가되었습니다.');
                     location.reload();
                 } else if (response === "error") {
                     alert('한 번에 하나의 폴더에만 추가할 수 있습니다. 폴더를 하나만 선택해주세요.')
                 }
             },
             error: function() {
-                alert('가게들을 폴더에 추가하는 중 오류가 발생했습니다.');
+                alert('가게를 폴더에 추가하는 중 오류가 발생했습니다.');
             }
         });
     }
