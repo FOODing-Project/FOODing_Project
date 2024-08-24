@@ -185,4 +185,15 @@ public class PickController {
         contentHtml.append("</ul>");
         return contentHtml.toString();*/
     }
+
+    @GetMapping("/folder/{pfno}")
+    public String viewFolderContent(@PathVariable("pfno") Integer pfno, Model model, HttpSession session) {
+        Pfolder pfolder = pfolderService.findByPfno(pfno);
+
+        List<Pick> picks = pickService.getPicksByPfolder(pfolder);
+        model.addAttribute("pfolder", pfolder);
+        model.addAttribute("picks", picks);
+
+        return "folderContent"; // 새로운 폴더 내용을 보여줄 JSP 페이지 이름
+    }
 }

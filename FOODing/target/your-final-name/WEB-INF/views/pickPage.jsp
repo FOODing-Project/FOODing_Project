@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="addToFolder-container">
-        <button type="button" class="add-button" onclick="addPickToFolder()"><img src="${pageContext.request.contextPath}/resources/images/addToFolder.png"></button>
+        <button type="button" class="add-button"><img src="${pageContext.request.contextPath}/resources/images/addToFolder.png"></button>
     </div>
     <div class="pickFolders-container">
         <h4>찜 폴더 관리</h4>
@@ -153,34 +153,47 @@
     }
 
     function loadFolderContent(pfno) {
-        var contentRow = document.getElementById('folder-content-' + pfno);
+        /*var contentRow = document.getElementById('folder-content-' + pfno);
         if (contentRow.style.display === 'table-row') {
             contentRow.style.display = 'none';
             return;
-        }
+        }*/
+        document.querySelector('.addFolder-container').style.display = 'none';
+        document.querySelector('#deleteFolderForm').style.display = 'none';
 
         $.ajax({
             type: 'GET',
             url: '${pageContext.request.contextPath}/getFolderContent',
             data: { pfno: pfno },
             success: function(response) {
+                var contentHtml = '';
                 if (response.length === 0) {
-                    contentRow.querySelector('td').innerHTML = "폴더가 비어있습니다.";
+                    contentHtml = "<p>폴더가 비어있습니다.</p>";
                 } else {
                     var contentHtml = '<ul>';
                     response.forEach(function(pick) {
-                        contentHtml += '<li><a href="#">' + pick.store.sname + '</a></li>';
+                        contentHtml += '<li>';
+                        contentHtml += '<input type="checkbox" name="selectedStores" value="' + pick.store.sno + '" class="store-checkbox"/>';
+                        contentHtml += '<a href="#">' + pick.store.sname + '</a>';
+                        contentHtml += '</li>';
                     });
                     contentHtml += '</ul>';
-                    contentRow.querySelector('td').innerHTML = contentHtml;
                 }
-                contentRow.style.display = 'table-row';
+                var folderContentContainer = document.createElement('div');
+                folderContentContainer.innerHTML = contentHtml;
+                document.querySelector('.pickFolders-container').appendChild(folderContentContainer);
             },
             error: function() {
                 alert('폴더 내용을 불러오는 중 오류가 발생했습니다.');
             }
         });
     }
+
+    document.querySelector('.add-button').addEventListener('click', function() {
+        // 해당 폴더의 pfno를 인자로 넘깁니다. 예시로 첫 번째 폴더의 pfno를 사용합니다.
+        var firstFolderPfno = document.querySelector('.folder-checkbox').value;
+        showFolderContent(firstFolderPfno);
+    });
 
     function addPickToFolder() {
         var selectedStores = document.querySelectorAll('.pickList-container input[name="selectedStore"]:checked');
