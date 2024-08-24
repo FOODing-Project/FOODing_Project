@@ -143,13 +143,6 @@ public class PickController {
             List<Store> stores = storeService.findStoresBySnos(snos);
 
             for (Pfolder pfolder : pfolders) {
-                if (!pfolder.getMember().equals(loggedInMember)) {
-                    System.out.println("사용자와 폴더 소유자 불일치: " + pfolder);
-                    System.out.println("LoggedIn Member: " + loggedInMember.getMid());
-                    System.out.println("Pfolder Member: " + pfolder.getMember().getMid());
-                    continue;
-                }
-
                 for (Store store : stores) {
                     Pick newPick = new Pick();
                     newPick.setPfolder(pfolder);

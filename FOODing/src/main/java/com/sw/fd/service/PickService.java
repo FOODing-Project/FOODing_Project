@@ -91,11 +91,15 @@ public class PickService {
         return pickRepository.findByMemberAndStore(member, store);
     }
 
+
+
     @Transactional
     public void savePick(Pick pick) {
         List<Pick> existingPicks = pickRepository.findByPfolder_PfnoAndMember_MnoAndStore_Sno(
                 pick.getPfolder().getPfno(), pick.getMember().getMno(), pick.getStore().getSno());
-        pickRepository.save(pick);
+        if (existingPicks.isEmpty()) {
+            pickRepository.save(pick);
+        }
     }
 
     public List<Pick> getPicksByPfnoAndMno(int pfno, int mno) {
