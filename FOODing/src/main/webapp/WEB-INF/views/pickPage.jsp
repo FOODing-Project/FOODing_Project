@@ -58,7 +58,7 @@
                         <%--<h4>${pfolder.pfname}</h4>--%>
                         <td>
                             <input type="checkbox" name="selectedStores" value="${pfolder.pfno}" class="folder-checkbox"/>
-                            <a>${pick.store.sname}</a>
+                            <%--<a>${pick.store.sname}</a>--%>
                         </td>
                     </tr>
                 </c:forEach>
@@ -164,8 +164,17 @@
             url: '${pageContext.request.contextPath}/getFolderContent',
             data: { pfno: pfno },
             success: function(response) {
+                if (response.length === 0) {
+                    contentRow.querySelector('td').innerHTML = "폴더가 비어있습니다.";
+                } else {
+                    var contentHtml = '<ul>';
+                    response.forEach(function(pick) {
+                        contentHtml += '<li><a href="#">' + pick.store.sname + '</a></li>';
+                    });
+                    contentHtml += '</ul>';
+                    contentRow.querySelector('td').innerHTML = contentHtml;
+                }
                 contentRow.style.display = 'table-row';
-                contentRow.querySelector('td').innerHTML = response;
             },
             error: function() {
                 alert('폴더 내용을 불러오는 중 오류가 발생했습니다.');

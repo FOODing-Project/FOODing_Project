@@ -4,6 +4,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -23,6 +25,7 @@
                 <thead>
                 <tr>
                     <th>번호</th>
+                    <th>그룹 이미지</th>
                     <th>모임명</th>
                     <th>모임장</th>
                     <th>모임 생성 날짜</th>
@@ -32,9 +35,19 @@
                 <c:forEach var="memberGroup" items="${leaderList}" varStatus="status">
                     <tr>
                         <td>${status.index + 1}</td>
-                        <td><a href="#">${memberGroup.group.gname}</a></td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${not empty memberGroup.group.gimage}">
+                                    <img src="${pageContext.request.contextPath}${memberGroup.group.gimage}" alt="Group Image" style="max-width: 100px; max-height: 100px;">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${pageContext.request.contextPath}/resources/images/default-group.png" alt="Default Group Image" style="max-width: 100px; max-height: 100px;">
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td><a href="${pageContext.request.contextPath}/board?gno=${memberGroup.group.gno}">${memberGroup.group.gname}</a></td>
                         <td>${memberGroup.member.mnick}</td>
-                        <td>${memberGroup.group.gdate}</td>
+                        <td>${formattedDate}</td>
                     </tr>
                     <c:set var="mnickString" value=""/>
                     <c:forEach var="allMemberGroup" items="${allMembers}" varStatus="status">
@@ -45,7 +58,7 @@
                         </c:choose>
                     </c:forEach>
                     <tr>
-                        <td colspan="4" align="center">
+                        <td colspan="5" align="center">
                                 ${mnickString}
                         </td>
                     </tr>
@@ -67,14 +80,14 @@
                 </table>
             </div>
         </form:form>
-        <form:form name="member-addForm" action="${pageContext.request.contextPath}/addMember" modelAttribute="memberGroup" method="post" onsubmit="return memberAddForm()">
-            <div class="groupMember-add-area">
-                <h1>모임 회원 추가</h1>
+        <form:form name="member-inviteForm" action="${pageContext.request.contextPath}/inviteMember" modelAttribute="memberGroup" method="post" onsubmit="return memberInviteForm()">
+            <div class="groupMember-invite-area">
+                <h1>모임 회원 초대</h1>
                 <table class="groupMember-table">
                     <tr>
                         <td><form:label path="group.gno">모임명</form:label></td>
                         <td>
-                            <%--아래의 form안의 group.gno은 get컨트롤러에서 가져온 것! 위의  group.gno는 modelAttribute="memberGroup"에 담겨서 /addMember post 컨트롤러로 보내질 것!--%>
+                            <%--아래의 form안의 group.gno은 get컨트롤러에서 가져온 것! 위의  group.gno는 modelAttribute="memberGroup"에 담겨서 /inviteMember post 컨트롤러로 보내질 것!--%>
                             <form:select path="group.gno">
                                 <form:options items="${memberGroups}" itemValue="group.gno" itemLabel="group.gname"/>
                             </form:select>
@@ -88,7 +101,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" align="center">
-                            <input type="submit" value="추가"/>
+                            <input type="submit" value="초대"/>
                         </td>
                     </tr>
                 </table>

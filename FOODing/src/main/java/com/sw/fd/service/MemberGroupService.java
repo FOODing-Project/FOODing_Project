@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 @Service
@@ -52,9 +53,15 @@ public class MemberGroupService {
         return groups;
     }
 
+
     // 특정 그룹(gno)의 모든 회원 목록을 조회하는 메서드
     public List<MemberGroup> findMembersByGroupGno(Integer gno) {
         return memberGroupRepository.findByGroupGnoIn(List.of(gno));
+    }
+
+    // 모임방 기능을 위한 추가 (수정자 : 희진)
+    public List<MemberGroup> getMemberGroupsByGnos(List<Integer> gnos) {
+        return memberGroupRepository.findByGroupGnoIn(gnos);
     }
 
     public MemberGroup getMemberGroupByGroupGnoAndMemberMid(int gno, String mid) {
@@ -76,7 +83,14 @@ public class MemberGroupService {
         for (MemberGroup memberGroup : memberGroups) {
             Group group = memberGroup.getGroup();
             if (group != null) {
-                GroupDTO groupDTO = new GroupDTO(group.getGno(), group.getGname(), group.getGdate());
+                GroupDTO groupDTO;
+                if (group.getGimage() != null && !group.getGimage().isEmpty()) {
+                    // gimage 값이 비어있지 않으면 gimage를 포함한 생성자를 사용
+                    groupDTO = new GroupDTO(group.getGno(), group.getGname(), group.getGdate(), group.getGimage());
+                } else {
+                    // gimage 값이 비어있으면 gimage 없이 생성자를 사용
+                    groupDTO = new GroupDTO(group.getGno(), group.getGname(), group.getGdate());
+                }
                 MemberGroupDTO memberGroupDTO = new MemberGroupDTO(
                         memberGroup.getJno(),
                         groupDTO,
@@ -156,5 +170,44 @@ public class MemberGroupService {
                 }
             }
         }
+    }
+
+    public int getMemberJauth(String memberId, int gno) {
+        MemberGroup memberGroup = memberGroupRepository.findByGroupGnoAndMemberMid(gno, memberId);
+        return memberGroup != null ? memberGroup.getJauth() : -1; // 권한이 없는 경우 -1 반환
+    }
+
+    // 특정 모임의 모임장 정보 조회
+    public MemberGroup getGroupLeaderMemberGroup(int groupId) {
+        return memberGroupRepository.findLeaderMemberGroupByGroupId(groupId);
+    }
+
+    public Member findMemberByJno(int jno) {
+        MemberGroup memberGroup = memberGroupRepository.findByJno(jno)
+                .orElseThrow(() -> new IllegalArgumentException("No MemberGroup found for jno: " + jno));
+
+        return memberGroup.getMember();
+    }
+
+
+    /*-------------------------------------- 메인화면에 모임방을 위해 추가한 메서드들 (다혜) ------------------------------------------------*/
+
+    public String findMnicksByGroupGno(Integer gno) {
+        List<MemberGroup> memberGroups = memberGroupRepository.findByGroupGnoIn(List.of(gno));
+        StringJoiner allMemberString = new StringJoiner(" ");
+
+        for (MemberGroup memberGroup : memberGroups) {
+            allMemberString.add(memberGroup.getMember().getMnick());
+        }
+        return allMemberString.toString();
+    }
+
+    public MemberGroup getLeaderByGno(int gno) {
+        List<MemberGroup> memberGroups = memberGroupRepository.findByGroupGnoAndJauthIsOne(gno);
+
+        if (memberGroups == null || memberGroups.isEmpty()) {
+            return null;
+        }
+        return memberGroups.get(0);
     }
 }

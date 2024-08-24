@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,13 +36,15 @@ public class Member {
     private String mphone;
     private String memail;
     private String maddr;
-    private LocalDate mdate;
+    private LocalDateTime mdate;
+    private String mimage;
+
 
     private int mwarning;
 
     @PrePersist
     protected void onCreate() {
-        mdate = LocalDate.now();
+        mdate = LocalDateTime.now();
     }
 
     public String getMpassConfirm() {

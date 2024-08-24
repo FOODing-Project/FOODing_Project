@@ -14,6 +14,7 @@ public interface StoreRepository extends JpaRepository<Store, Integer> {
     List<Store> findByScate(String scate);
     List<Store> findAll();
 
+/*----------------------다현씨 추가파트-------------------*/
     @Query("SELECT s FROM Store s WHERE s.sno IN :snoList")
     List<Store> findBySno(@Param("snoList") List<Integer> snoList);
 }

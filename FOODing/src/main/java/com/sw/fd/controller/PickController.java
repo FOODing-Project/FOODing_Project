@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.ManyToOne;
 import javax.servlet.http.HttpSession;
 import javax.swing.text.html.Option;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -166,20 +167,29 @@ public class PickController {
 
     @GetMapping("/getFolderContent")
     @ResponseBody
-    public String getFolderContent(@RequestParam("pfno") Integer pfno, HttpSession session) {
+    public List<Pick> getFolderContent(@RequestParam("pfno") Integer pfno, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
         Pfolder pfolder = pfolderService.findByPfno(pfno);
 
         List<Pick> picks = pickService.getPicksByPfolder(pfolder);
-        if (picks == null || picks.isEmpty()) {
+        if (picks  == null || picks.isEmpty()) {
+            return Collections.emptyList();  // 비어있는 리스트 반환
+        }
+        for (Pick pick : picks) {
+            pick.getPfolder().getMember().setMemberGroupList(null);
+        }
+
+        return picks;
+        /*if (picks == null || picks.isEmpty()) {
             return "폴더가 비어있습니다.";
         }
 
         StringBuilder contentHtml = new StringBuilder("<ul>");
         for (Pick pick : picks) {
             contentHtml.append("<li>").append(pick.getStore().getSname()).append("</li>");
+            System.out.println("contentHtml= " + contentHtml);
         }
         contentHtml.append("</ul>");
-        return contentHtml.toString();
+        return contentHtml.toString();*/
     }
 }

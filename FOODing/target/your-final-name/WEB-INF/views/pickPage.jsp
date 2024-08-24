@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/pick.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <c:import url="/top.jsp" />
@@ -59,7 +58,7 @@
                         <%--<h4>${pfolder.pfname}</h4>--%>
                         <td>
                             <input type="checkbox" name="selectedStores" value="${pfolder.pfno}" class="folder-checkbox"/>
-                            <a>${pick.store.sname}</a>
+                            <%--<a>${pick.store.sname}</a>--%>
                         </td>
                     </tr>
                 </c:forEach>
@@ -165,8 +164,17 @@
             url: '${pageContext.request.contextPath}/getFolderContent',
             data: { pfno: pfno },
             success: function(response) {
+                if (response.length === 0) {
+                    contentRow.querySelector('td').innerHTML = "폴더가 비어있습니다.";
+                } else {
+                    var contentHtml = '<ul>';
+                    response.forEach(function(pick) {
+                        contentHtml += '<li><a href="#">' + pick.store.sname + '</a></li>';
+                    });
+                    contentHtml += '</ul>';
+                    contentRow.querySelector('td').innerHTML = contentHtml;
+                }
                 contentRow.style.display = 'table-row';
-                contentRow.querySelector('td').innerHTML = response;
             },
             error: function() {
                 alert('폴더 내용을 불러오는 중 오류가 발생했습니다.');

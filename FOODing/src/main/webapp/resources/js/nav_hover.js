@@ -31,4 +31,20 @@ $(document).ready(function() {
             $(this).stop(true, true).slideUp(500);
         }
     );
+
+    <!-- 알림 기능 추가(희진) -->
+    // 추가할 코드: 종 모양 이미지를 클릭했을 때 anb 보이기/숨기기
+    $(".bell").click(function(event) {
+        event.preventDefault(); // 링크 기본 동작 막기
+        $(".anb").toggle(); // anb를 보이거나 숨김
+    });
+
+    $(document).click(function(event) {
+        if (!$(event.target).closest('.bell, .anb').length) {
+            $(".anb").hide(); // anb 숨기기
+        } else {
+            $(".anb").css("display", "flex"); // anb의 display 속성을 flex로 변경
+        }
+    });
+
 });

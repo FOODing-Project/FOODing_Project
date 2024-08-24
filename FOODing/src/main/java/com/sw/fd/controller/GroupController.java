@@ -2,18 +2,21 @@ package com.sw.fd.controller;
 
 import com.sw.fd.dto.GroupDTO;
 import com.sw.fd.dto.MemberGroupDTO;
-import com.sw.fd.entity.Group;
-import com.sw.fd.entity.Member;
-import com.sw.fd.entity.MemberGroup;
-import com.sw.fd.service.GroupService;
-import com.sw.fd.service.MemberGroupService;
-import com.sw.fd.service.MemberService;
+import com.sw.fd.entity.*;
+import com.sw.fd.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,12 +34,25 @@ public class GroupController {
     @Autowired
     private MemberService memberService;
 
+    @Autowired
+    private InviteService inviteService;
+
+    @Autowired
+    private AlarmService alarmService;
+
+    @Autowired
+    private BoardService boardService;
+
+    @Autowired
+    private ServletContext servletContext;
+
     @GetMapping("/groupList")
-    public String groupList(Model model, HttpSession session) {
+    public String bringGroupList(Model model, HttpSession session) {
         Member member = (Member) session.getAttribute("loggedInMember");
         if (member == null) {
             return "redirect:/login";
         }
+
         String nick = member.getMnick();
         System.out.println("Member의 이름: " + nick);
 
@@ -45,6 +61,10 @@ public class GroupController {
         for (MemberGroupDTO memberGroup : memberGroups) {
              memberCount.put(memberGroup.getGroup().getGno(), groupService.groupMemberCount(memberGroup.getGroup().getGno()));
             System.out.println(memberGroup.getJno() + "의 getGroup().getGname() = :" + memberGroup.getGroup().getGname());
+
+            LocalDateTime gdate = memberGroup.getGroup().getGdate();
+            String formattedDate = (gdate != null) ? gdate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) : "N/A";
+            model.addAttribute("formattedDate", formattedDate);
         }
 
         model.addAttribute("group", new GroupDTO());
@@ -56,7 +76,8 @@ public class GroupController {
             gnos.add(memberGroup.getGroup().getGno());
         }
 
-        List<MemberGroup> allMembers = memberService.getMemberGroupsByGnos(gnos);
+
+        List<MemberGroup> allMembers = memberGroupService.getMemberGroupsByGnos(gnos);
 
         List<MemberGroup> leaderList = new ArrayList<>();
         for (MemberGroup memberGroup : allMembers) {
@@ -91,11 +112,15 @@ public class GroupController {
         group.setGname(createdGroupDTO.getGname());
         memberGroupService.addMemberToGroup(member, group, 1);
 
+//-----------------------------------------모임 생성 시 게시판 같이 생성(정희)------------------------------
+        int gno = group.getGno();
+        boardService.createBoard(gno);
+
         return "redirect:/groupList";
     }
 
-    @PostMapping("/addMember")
-    public String addMemberSubmit(@ModelAttribute MemberGroup memberGroup, Model model, HttpSession session) {
+    @PostMapping("/inviteMember")
+    public String inviteMemberSubmit(@ModelAttribute MemberGroup memberGroup, Model model, HttpSession session) {
         Member member = (Member) session.getAttribute("loggedInMember");
         if (member == null) {
             return "redirect:/login";
@@ -104,7 +129,7 @@ public class GroupController {
         Member newMember = memberService.getMemberById(memberGroup.getMember().getMid());
         if (newMember == null) {
             model.addAttribute("error", "해당 ID의 회원은 존재하지 않습니다.");
-            return groupList(model, session);
+            return bringGroupList(model, session);
         }
 
         GroupDTO groupDTO = groupService.getGroupById(memberGroup.getGroup().getGno());
@@ -112,13 +137,52 @@ public class GroupController {
         group.setGno(groupDTO.getGno());
         group.setGname(groupDTO.getGname());
 
-        // 추가하려는 회원이 이미 모임에 존재하는지 확인
+        // 초대하려는 회원이 이미 모임에 존재하는지 확인
         if (memberGroupService.isMemberInGroup(newMember.getMid(), group.getGno())) {
             model.addAttribute("error", "이미 모임에 참여하고 있는 회원입니다.");
-            return groupList(model, session);
+            return bringGroupList(model, session);
         }
 
-        memberGroupService.addMemberToGroup(newMember, group, 0);
+        // 현재 로그인한 회원의 모임에서의 권한 조회
+        int currentMemberJauth = memberGroupService.getMemberJauth(member.getMid(), group.getGno());
+
+        // 초대하는 회원의 MemberGroup 객체를 데이터베이스에서 조회
+        MemberGroup inviterMemberGroup = memberGroupService.getMemberGroupByGroupGnoAndMemberMid(group.getGno(), member.getMid());
+        if (inviterMemberGroup == null) {
+            model.addAttribute("error", "초대하는 회원의 모임 정보가 존재하지 않습니다.");
+            return "groupList";
+        }
+
+        // 초대 유형 설정
+        int inviteType = (currentMemberJauth == 1) ? 6 : 0;
+
+        // Invite 엔티티 생성 및 설정
+        Invite invite = new Invite();
+        invite.setMemberGroup(inviterMemberGroup); // 초대하는 회원의 정보를 jno로 설정
+        invite.setMember(newMember); // 초대받는 회원의 정보를 mno로 설정
+        invite.setItype(inviteType);
+
+        // 모임장의 MemberGroup 객체를 가져와서 leaderNum을 설정
+        MemberGroup groupLeaderMemberGroup = memberGroupService.getGroupLeaderMemberGroup(groupDTO.getGno());
+        if (groupLeaderMemberGroup != null) {
+            invite.setLeadNum(groupLeaderMemberGroup.getJno()); // 모임장의 jno를 설정
+        } else {
+            model.addAttribute("error", "모임장 정보를 찾을 수 없습니다.");
+            return "redirect:/groupList";
+        }
+
+        // 초대 정보 저장
+        inviteService.saveInvite(invite);
+
+        // 알림 엔티티 생성 및 설정
+        Alarm alarm = new Alarm();
+        alarm.setLinkedPk(String.valueOf(invite.getIno())); // 초대 엔티티의 ino 값을 문자열로 설정
+        alarm.setAtype(inviteType == 6 ? "모임장 초대" : "일반 회원 초대"); // 초대 유형에 따라 알림 유형 설정
+        alarm.setMember(newMember); // 알림을 받을 회원
+        alarm.setIsChecked(0); // 확인 여부는 0 (미확인 상태)
+
+        // 알림 정보 저장
+        alarmService.saveAlarm(alarm);
 
         return "redirect:/groupList";
     }
@@ -151,7 +215,8 @@ public class GroupController {
         return "groupManage";
     }
 
-    @PostMapping("/updateGroupName")
+    /*--------------------희진씨의 원래 모임방 이름 수정 코드(다혜)----------*/
+/*    @PostMapping("/updateGroupName")
     public String updateGroupName(HttpSession session, Model model, String newGname, int gno) {
         Member member = (Member) session.getAttribute("loggedInMember");
         if (member == null) {
@@ -180,7 +245,7 @@ public class GroupController {
         }
 
         return "redirect:/groupManage";
-    }
+    }*/
 
     @PostMapping("/deleteMemberToGroup")
     public String deleteMemberToGroup(@ModelAttribute("gno") int gno,
@@ -343,6 +408,39 @@ public class GroupController {
 
         // 그룹 삭제
         groupService.deleteGroupByGno(gno);
+
+        return "redirect:/groupManage";
+    }
+
+
+
+   /* -------------그룹 프로필을 위해 추가한 함수(다혜)----------*/
+
+    @GetMapping("/editGroup")
+    public String showEditForm(Model model, @RequestParam("gno") int gno) {
+        Group group = groupService.findGroupByGno(gno);
+        model.addAttribute("group", group);
+        return "editGroup";
+    }
+
+    @PostMapping("/editGroup")
+    @ResponseBody
+    public String updateGroup(@RequestParam("gno") int gno, @RequestParam("gname") String gname, @RequestParam("gimageFile") MultipartFile gimageFile) throws IOException {
+        Group originalGroup = groupService.findGroupByGno(gno);
+        originalGroup.setGname(gname);
+
+        if (!gimageFile.isEmpty()) {
+            String fileName = gimageFile.getOriginalFilename();
+            String uploadDir = servletContext.getRealPath("/resources/images/");
+            String filePath = Paths.get(uploadDir, fileName).toString();
+
+            gimageFile.transferTo(new File(filePath));
+
+            String fileUrl = "/resources/images/" + fileName;
+            originalGroup.setGimage(fileUrl);
+        }
+
+        groupService.save(originalGroup);
 
         return "redirect:/groupManage";
     }
