@@ -268,53 +268,77 @@
     }
 
 
-    document.querySelector('.add-button').addEventListener('click', function() {
-        addPickToFolder();
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentPfno = null;
+        document.querySelectorAll('.pfolderName').forEach(function(folder) {
+            folder.addEventListener('click', function() {
+                // 다른 모든 폴더에서 selected 클래스 제거
+                document.querySelectorAll('.pfolderName').forEach(function(f) {
+                    f.classList.remove('selected');
+                });
 
-    function addPickToFolder() {
-        var selectedStores = document.querySelectorAll('.pickList-container input[name="selectedStore"]:checked');
-        var selectedFolders = document.querySelectorAll('.pickFolders-container input[name="selectedFolders"]:checked');
-
-        if (selectedStores.length === 0) {
-            alert('추가할 가게를 선택하세요.');
-            return;
-        }
-        if (selectedFolders.length === 0) {
-            alert('추가할 찜 폴더를 선택하세요.');
-            return;
-        }
-
-        var pfnos = [];
-        selectedFolders.forEach(function(folder) {
-            pfnos.push(folder.value);
+                // 현재 클릭된 폴더에만 selected 클래스 추가
+                this.classList.add('selected');
+                currentPfno = this.getAttribute('id').replace('pfname_', '');  // currentPfno 업데이트
+                console.log("Selected folder:", currentPfno); // 선택된 폴더의 id 확인
+            });
         });
 
-        var snos = [];
-        selectedStores.forEach(function(store) {
-            snos.push(store.value);
+        document.querySelector('.add-button').addEventListener('click', function() {
+            addPickToFolder();
         });
 
-        $.ajax({
-            type: 'POST',
-            url: '${pageContext.request.contextPath}/addPickToFolder',
-            data: {
-                pfnos: pfnos.join(','),
-                snos: snos.join(',')
-            },
-            success: function(response) {
-                if (response === "success") {
-                    alert('선택한 폴더에 찜이 추가되었습니다.');
-                    location.reload();
-                } else if (response === "error") {
-                    alert('한 번에 하나의 폴더에만 추가할 수 있습니다. 폴더를 하나만 선택해주세요.')
-                }
-            },
-            error: function() {
-                alert('가게를 폴더에 추가하는 중 오류가 발생했습니다.');
+        function addPickToFolder() {
+            var selectedStores = document.querySelectorAll('.pickList-container input[name="selectedStore"]:checked');
+            var selectedFolders = document.querySelectorAll('.pickFolders-container input[name="selectedFolders"]:checked');
+
+            if (selectedStores.length === 0) {
+                alert('추가할 가게를 선택하세요.');
+                return;
             }
-        });
-    }
+            if (selectedFolders.length === 0) {
+                if (currentPfno !== null) {
+                    selectedFolders = [currentPfno]; // currentPfno 값을 배열로 변환하여 사용
+                } else {
+                    alert('추가할 찜 폴더를 선택하세요.');
+                    return;
+                }
+            } else {
+                // 선택된 폴더가 있으면 currentPfno 값을 업데이트
+                currentPfno = selectedFolders[0].value;
+            }
+
+            var pfnos = [];
+            selectedFolders.forEach(function(folder) {
+                pfnos.push(folder.value || folder);
+            });
+
+            var snos = [];
+            selectedStores.forEach(function(store) {
+                snos.push(store.value);
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '${pageContext.request.contextPath}/addPickToFolder',
+                data: {
+                    pfnos: pfnos.join(','),
+                    snos: snos.join(',')
+                },
+                success: function(response) {
+                    if (response === "success") {
+                        alert('선택한 폴더에 찜이 추가되었습니다.');
+                        loadFolderContent(currentPfno);
+                    } else if (response === "error") {
+                        alert('한 번에 하나의 폴더에만 추가할 수 있습니다. 폴더를 하나만 선택해주세요.')
+                    }
+                },
+                error: function() {
+                    alert('가게를 폴더에 추가하는 중 오류가 발생했습니다.');
+                }
+            });
+        }
+    });
 
 </script>
 <c:import url="/bottom.jsp" />
