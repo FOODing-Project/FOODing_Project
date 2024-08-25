@@ -153,11 +153,6 @@
     }
 
     function loadFolderContent(pfno) {
-        /*var contentRow = document.getElementById('folder-content-' + pfno);
-        if (contentRow.style.display === 'table-row') {
-            contentRow.style.display = 'none';
-            return;
-        }*/
         document.querySelector('.addFolder-container').style.display = 'none';
         document.querySelector('#deleteFolderForm').style.display = 'none';
 
@@ -166,11 +161,13 @@
             url: '${pageContext.request.contextPath}/getFolderContent',
             data: { pfno: pfno },
             success: function(response) {
-                var contentHtml = '';
+                // contentHtml을 한 번만 선언하고 초기화합니다.
+                var contentHtml = '<img id="backButton" src="${pageContext.request.contextPath}/resources/images/back.png" style="cursor:pointer;">';
+
                 if (response.length === 0) {
-                    contentHtml = "<p>폴더가 비어있습니다.</p>";
+                    contentHtml += "<p>폴더가 비어있습니다.</p>";
                 } else {
-                    var contentHtml = '<ul>';
+                    contentHtml += '<ul>';
                     response.forEach(function(pick) {
                         contentHtml += '<li>';
                         contentHtml += '<input type="checkbox" name="selectedStores" value="' + pick.store.sno + '" class="store-checkbox"/>';
@@ -179,15 +176,31 @@
                     });
                     contentHtml += '</ul>';
                 }
+
                 var folderContentContainer = document.createElement('div');
+                folderContentContainer.id = 'folder-content-container';  // ID 추가
                 folderContentContainer.innerHTML = contentHtml;
                 document.querySelector('.pickFolders-container').appendChild(folderContentContainer);
+
+                document.getElementById('backButton').addEventListener('click', function() {
+                    goBackToFolderList();
+                });
             },
             error: function() {
                 alert('폴더 내용을 불러오는 중 오류가 발생했습니다.');
             }
         });
     }
+
+    function goBackToFolderList() {
+        var folderContentContainer = document.getElementById('folder-content-container');
+        if (folderContentContainer) {
+            folderContentContainer.remove(); // 폴더 내용을 담은 컨테이너 제거
+        }
+        document.querySelector('.addFolder-container').style.display = 'block';
+        document.querySelector('#deleteFolderForm').style.display = 'block';
+    }
+
 
     document.querySelector('.add-button').addEventListener('click', function() {
         // 해당 폴더의 pfno를 인자로 넘깁니다. 예시로 첫 번째 폴더의 pfno를 사용합니다.
