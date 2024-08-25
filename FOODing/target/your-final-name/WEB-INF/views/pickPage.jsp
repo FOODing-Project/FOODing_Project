@@ -70,16 +70,75 @@
     </div>
 </div>
 <script>
-    document.getElementById("deleteFolder").addEventListener("click", function() {
-        var checkboxes = document.querySelectorAll(".folder-checkbox:checked");
-        if (checkboxes.length === 0) {
-            alert("삭제할 폴더를 선택하세요.");
-        } else {
-            checkboxes.forEach(function(checkbox) {
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.pfolderName').forEach(function(folder) {
+            folder.addEventListener('click', function() {
+                // 다른 모든 폴더에서 selected 클래스 제거
+                document.querySelectorAll('.pfolderName').forEach(function(f) {
+                    f.classList.remove('selected');
+                });
+
+                // 현재 클릭된 폴더에만 selected 클래스 추가
+                this.classList.add('selected');
             });
-            document.getElementById("deleteFolderForm").submit();
-        }
+        });
+
+        document.getElementById("deleteFolder").addEventListener("click", function() {
+            event.preventDefault();
+            console.log("삭제 버튼이 클릭됨");
+
+            var folderContentContainer = document.getElementById('folder-content-container');
+
+            if (folderContentContainer) {
+                // 찜 폴더 내부에서 가게 삭제
+                var selectedStores = document.querySelectorAll('.store-checkbox:checked');
+                if (selectedStores.length === 0) {
+                    alert("삭제할 가게를 선택하세요.");
+                    return;
+                }
+
+                var snos = [];
+                selectedStores.forEach(function(store) {
+                    snos.push(store.value);
+                });
+
+                var pfnoElement = document.querySelector('.pfolderName.selected');
+
+                if (pfnoElement) {
+                    var pfno = pfnoElement.getAttribute('id').replace('pfname_', '');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '${pageContext.request.contextPath}/deletePickFromFolder',
+                        data: {
+                            snos: snos.join(','),
+                            pfno: pfno
+                        },
+                        success: function(response) {
+                            if (response === "success") {
+                                alert('선택된 가게가 삭제되었습니다.');
+                                loadFolderContent(pfno);
+                            } else {
+                                alert('삭제 중 오류가 발생했습니다.');
+                            }
+                        },
+                        error: function() {
+                            alert('가게를 삭제하는 중 오류가 발생했습니다.');
+                        }
+                    });
+                }
+            } else {
+                // '찜 폴더 관리' 에서 폴더 삭제
+                var checkboxes = document.querySelectorAll(".folder-checkbox:checked");
+                if (checkboxes.length === 0) {
+                    alert("삭제할 폴더를 선택하세요.");
+                } else {
+                    document.getElementById("deleteFolderForm").submit();
+                }
+            }
+        });
     });
+
 
     document.getElementById("removePick").addEventListener("click", function() {
         var selectedStores = document.querySelectorAll('.pickList-container input[name="selectedStore"]:checked');
@@ -153,8 +212,14 @@
     }
 
     function loadFolderContent(pfno) {
+        // 기존의 폴더 내용 삭제 (reload 시 내용 중복 방지)
+        var folderContentContainer = document.getElementById('folder-content-container');
+        if (folderContentContainer) {
+            folderContentContainer.remove();
+        }
+
         document.querySelector('.addFolder-container').style.display = 'none';
-        document.querySelector('#deleteFolderForm').style.display = 'none';
+        document.querySelector('.folder-table').style.display = 'none';
 
         var pfname = document.getElementById('pfname_' + pfno).getAttribute('data-pfname');
         document.querySelector('#allFolderList').innerText = pfname;
@@ -198,7 +263,7 @@
             folderContentContainer.remove();
         }
         document.querySelector('.addFolder-container').style.display = 'block';
-        document.querySelector('#deleteFolderForm').style.display = 'block';
+        document.querySelector('.folder-table').style.display = 'block';
         document.querySelector('#allFolderList').innerText = '찜 폴더 관리';
     }
 

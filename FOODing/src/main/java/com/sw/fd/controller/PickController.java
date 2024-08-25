@@ -76,11 +76,22 @@ public class PickController {
         return isPicked ? "picked" : "unpicked";
     }
 
+    // 전체 가게 목록에서 찜 삭제 (pfno == 1)
     @PostMapping("/removePick")
     @ResponseBody
     public String removePick(@RequestParam("snos") List<Integer> snos) {
         for (int sno : snos) {
             pickService.removePicksBySno(sno);
+        }
+        return "success";
+    }
+
+    // 찜 폴더 내부에서 가게 삭제
+    @PostMapping("deletePickFromFolder")
+    @ResponseBody
+    public String deletePickFromFolder(@RequestParam("snos") List<Integer> snos, @RequestParam("pfno") Integer pfno) {
+        for (int sno : snos) {
+            pickService.removePicksByPfolderAndSno(pfno, sno);
         }
         return "success";
     }

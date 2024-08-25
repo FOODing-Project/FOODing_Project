@@ -111,5 +111,8 @@ public class PickService {
         pickRepository.removeByStore_Sno(sno);
     }
 
-
+    @Transactional
+    public void removePicksByPfolderAndSno(Integer pfno, Integer sno) {
+        pickRepository.deleteByPfolder_PfnoAndStore_Sno(pfno, sno);
+    }
 }
