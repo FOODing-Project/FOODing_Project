@@ -7,7 +7,7 @@
 <h2>찜 폴더 관리</h2>
 <div class="pick-container">
     <div class="pickList-container">
-        <h4>전체 찜 목록</h4>
+        <h4 id="allPickList">전체 찜 목록</h4>
             <table class="pick-table">
                 <c:forEach var="pick" items="${pickList}">
                 <tr>
@@ -26,7 +26,7 @@
         <button type="button" class="add-button"><img src="${pageContext.request.contextPath}/resources/images/addToFolder.png"></button>
     </div>
     <div class="pickFolders-container">
-        <h4>찜 폴더 관리</h4>
+        <h4 id="allFolderList">찜 폴더 관리</h4>
         <div class="addFolder-container">
             <form method="post" action="${pageContext.request.contextPath}/createFolder">
                 <input type="hidden" name="pfname" value="새 폴더" />
@@ -41,7 +41,7 @@
                             <div class="folder-items">
                                 <div class="folder-items folder-items-left">
                                     <input type="checkbox" name="selectedFolders" value="${pfolder.pfno}" class="folder-checkbox"/>
-                                    <button type="button" class="pfolderName" id="pfname_${pfolder.pfno}" onclick="loadFolderContent('${pfolder.pfno}')">${pfolder.pfname}</button>
+                                    <button type="button" class="pfolderName" id="pfname_${pfolder.pfno}" data-pfname="${pfolder.pfname}" onclick="loadFolderContent('${pfolder.pfno}')">${pfolder.pfname}</button>
                                     <input type="text" class="edit-input" id="edit_${pfolder.pfno}" value="${pfolder.pfname}" style="display: none" />
                                     <button type="button" class="save-pfname" id="save_${pfolder.pfno}" style="display: none" onclick="savePfname('${pfolder.pfno}')">저장</button>
                                     <button type="button" class="cancel-pfname" id="cancel_${pfolder.pfno}" style="display: none" onclick="cancelEdit('${pfolder.pfno}')">취소</button>
@@ -156,14 +156,15 @@
         document.querySelector('.addFolder-container').style.display = 'none';
         document.querySelector('#deleteFolderForm').style.display = 'none';
 
+        var pfname = document.getElementById('pfname_' + pfno).getAttribute('data-pfname');
+        document.querySelector('#allFolderList').innerText = pfname;
+
         $.ajax({
             type: 'GET',
             url: '${pageContext.request.contextPath}/getFolderContent',
             data: { pfno: pfno },
             success: function(response) {
-                // contentHtml을 한 번만 선언하고 초기화합니다.
                 var contentHtml = '<img id="backButton" src="${pageContext.request.contextPath}/resources/images/back.png" style="cursor:pointer;">';
-
                 if (response.length === 0) {
                     contentHtml += "<p>폴더가 비어있습니다.</p>";
                 } else {
@@ -181,7 +182,6 @@
                 folderContentContainer.id = 'folder-content-container';  // ID 추가
                 folderContentContainer.innerHTML = contentHtml;
                 document.querySelector('.pickFolders-container').appendChild(folderContentContainer);
-
                 document.getElementById('backButton').addEventListener('click', function() {
                     goBackToFolderList();
                 });
@@ -195,15 +195,16 @@
     function goBackToFolderList() {
         var folderContentContainer = document.getElementById('folder-content-container');
         if (folderContentContainer) {
-            folderContentContainer.remove(); // 폴더 내용을 담은 컨테이너 제거
+            folderContentContainer.remove();
         }
         document.querySelector('.addFolder-container').style.display = 'block';
         document.querySelector('#deleteFolderForm').style.display = 'block';
+        document.querySelector('#allFolderList').innerText = '찜 폴더 관리';
     }
 
 
     document.querySelector('.add-button').addEventListener('click', function() {
-        // 해당 폴더의 pfno를 인자로 넘깁니다. 예시로 첫 번째 폴더의 pfno를 사용합니다.
+        // 해당 폴더의 pfno를 인자로 넘김 (첫 번째 폴더의 pfno 사용)
         var firstFolderPfno = document.querySelector('.folder-checkbox').value;
         showFolderContent(firstFolderPfno);
     });
