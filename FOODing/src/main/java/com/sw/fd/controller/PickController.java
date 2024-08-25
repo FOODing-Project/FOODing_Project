@@ -76,18 +76,6 @@ public class PickController {
         return isPicked ? "picked" : "unpicked";
     }
 
-    /*@PostMapping("/removePick")
-    @ResponseBody
-    public String removePick(@RequestParam("pno") int pno) {
-        try {
-            pickService.removePickByPno(pno);
-            return "success";
-        } catch (Exception e) {
-            return "error";
-        }
-        return "redirect:/pickList";
-    }*/
-
     @PostMapping("/removePick")
     @ResponseBody
     public String removePick(@RequestParam("snos") List<Integer> snos) {
@@ -173,17 +161,6 @@ public class PickController {
         }
 
         return picks;
-        /*if (picks == null || picks.isEmpty()) {
-            return "폴더가 비어있습니다.";
-        }
-
-        StringBuilder contentHtml = new StringBuilder("<ul>");
-        for (Pick pick : picks) {
-            contentHtml.append("<li>").append(pick.getStore().getSname()).append("</li>");
-            System.out.println("contentHtml= " + contentHtml);
-        }
-        contentHtml.append("</ul>");
-        return contentHtml.toString();*/
     }
 
     @GetMapping("/folder/{pfno}")

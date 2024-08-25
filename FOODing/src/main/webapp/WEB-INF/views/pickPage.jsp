@@ -204,9 +204,7 @@
 
 
     document.querySelector('.add-button').addEventListener('click', function() {
-        // 해당 폴더의 pfno를 인자로 넘김 (첫 번째 폴더의 pfno 사용)
-        var firstFolderPfno = document.querySelector('.folder-checkbox').value;
-        showFolderContent(firstFolderPfno);
+        addPickToFolder();
     });
 
     function addPickToFolder() {
