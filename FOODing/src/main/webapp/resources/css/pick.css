@@ -1,4 +1,28 @@
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: saddlebrown;
+    font-weight : bold;
+}
+
+body {
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .pick-container {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
@@ -8,18 +32,36 @@
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
-    width: 40%;
+    width: 50%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-
+    padding-top: 20px;
 }
 
-.pick-table, .folder-table {
+
+h4 {
+    text-align: center;
+}
+
+.pick-table {
     border: 1px solid #ccc;
     width: 96%;
     border-radius: 5px;
-    padding: 10px;
+    padding: 23px;
+    margin: 2%;
+    height: 250px;
+    font-size: 17px;
+    overflow-y: auto;
+    display: inline-flex;
+    margin-top: 30px;
+}
+
+.folder-table {
+    border: 1px solid #ccc;
+    width: 96%;
+    border-radius: 5px;
+    padding: 23px;
     margin: 2%;
     height: 250px;
     font-size: 17px;
@@ -27,13 +69,22 @@
     display: inline-flex;
 }
 
+.pick-table td {
+    padding-bottom: 5px;
+}
+
 .folder-items {
     display: flex;
-    align-items: center;
     width: 100%;
-    padding: 2px;
-    margin-left: 7px;
     border: 2px;
+}
+
+.folder-items-left {
+    flex-grow: 1;
+}
+
+.folder-items-right {
+    flex-shrink: 0;
 }
 
 .folder-items-left label {
@@ -43,14 +94,17 @@
 }
 
 
-.storeName, .folderName, .pfolderName {
+.storeName, .folderName {
     border: none;
     background-color: white;
     cursor: pointer;
 }
 
 .pfolderName {
-    width: 150px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    width: 200px;
     text-align: left;
     padding-bottom: 5px;
     margin-left: 5px;
@@ -76,7 +130,7 @@
     flex-direction: row-reverse;
 }
 
-.removePick, .deleteFolder, .createFolder {
+.removePick, .deleteFolder {
     text-align: right;
     color: gray;
     border: none;
@@ -84,6 +138,15 @@
     display: block;
     margin-top: 5px;
     padding: 5px;
+    margin-right: 2%;
+}
+
+.createFolder {
+    text-align: right;
+    color: gray;
+    border: none;
+    background-color: white;
+    display: block;
     margin-right: 2%;
 }
 
@@ -120,9 +183,7 @@
     object-fit: contain;
 }
 
-.td {
-    height: auto;
-}
+
 
 #backButton {
     width: 30px;

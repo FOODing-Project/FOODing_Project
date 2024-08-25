@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/pick.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/pick.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
 <c:import url="/top.jsp" />
-<h2>찜 폴더 관리</h2>
+<section class="content">
+<h1>찜 폴더 관리</h1>
 <div class="pick-container">
     <div class="pickList-container">
         <h4 id="allPickList">전체 찜 목록</h4>
@@ -26,7 +32,7 @@
         <button type="button" class="add-button"><img src="${pageContext.request.contextPath}/resources/images/addToFolder.png"></button>
     </div>
     <div class="pickFolders-container">
-        <h4 id="allFolderList">찜 폴더 관리</h4>
+        <h4 id="allFolderList">나의 찜 폴더</h4>
         <div class="addFolder-container">
             <form method="post" action="${pageContext.request.contextPath}/createFolder">
                 <input type="hidden" name="pfname" value="새 폴더" />
@@ -47,7 +53,7 @@
                                     <button type="button" class="cancel-pfname" id="cancel_${pfolder.pfno}" style="display: none" onclick="cancelEdit('${pfolder.pfno}')">취소</button>
                                 </div>
                                 <div class="folder-items folder-items-right">
-                                    <button type="button" class="edit-button" onclick="editPfname('${pfolder.pfno}')">
+                                    <button type="button" class="edit-button" id="editButton" onclick="editPfname('${pfolder.pfno}')">
                                         <img src="${pageContext.request.contextPath}/resources/images/edit_icon.png">
                                     </button>
                                 </div>
@@ -69,6 +75,8 @@
         </form>
     </div>
 </div>
+</section>
+<c:import url="/bottom.jsp" />
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.pfolderName').forEach(function(folder) {
@@ -179,6 +187,7 @@
         document.getElementById('edit_' + pfno).focus();
         document.getElementById('save_' + pfno).style.display = 'inline';
         document.getElementById('cancel_' + pfno).style.display = 'inline';
+        document.getElementById('editButton').style.display = 'none';
     }
 
     function savePfname(pfno) {
@@ -197,6 +206,7 @@
                     document.getElementById('edit_' + pfno).style.display = 'none';
                     document.getElementById('save_' + pfno).style.display = 'none';
                     document.getElementById('cancel_' + pfno).style.display = 'none';
+                    document.getElementById('editButton').style.display = 'inline';
                 } else {
                     alert('폴더 이름 변경 중 오류가 발생했습니다.');
                 }
@@ -209,6 +219,7 @@
         document.getElementById('save_' + pfno).style.display = 'none';
         document.getElementById('cancel_' + pfno).style.display = 'none';
         document.getElementById('pfname_' + pfno).style.display = 'inline';
+        document.getElementById('editButton').style.display = 'inline';
     }
 
     function loadFolderContent(pfno) {
@@ -339,6 +350,6 @@
             });
         }
     });
-
 </script>
-<c:import url="/bottom.jsp" />
+</body>
+</html>
