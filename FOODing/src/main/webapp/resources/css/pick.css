@@ -96,18 +96,36 @@ h4 {
 
 .storeName, .folderName {
     border: none;
-    background-color: white;
+    background-color: transparent;
     cursor: pointer;
 }
 
 .pfolderName {
     border: none;
-    background-color: white;
+    background-color: transparent;
     cursor: pointer;
     width: 200px;
     text-align: left;
     padding-bottom: 5px;
     margin-left: 5px;
+}
+
+.edit-input {
+    margin-left: 10px;
+    margin-right: 2px;
+
+}
+
+.save-pfname, .cancel-pfname {
+    background-color: lightgrey;
+    padding: 2px;
+    cursor: pointer;
+    width: 45px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 2px;
+    font-size: 15px;
 }
 
 .storeName:hover, .folderName:hover, pfolderName:hover {
@@ -134,10 +152,8 @@ h4 {
     text-align: right;
     color: gray;
     border: none;
-    background-color: white;
+    background-color: transparent;
     display: block;
-    margin-top: 5px;
-    padding: 5px;
     margin-right: 2%;
 }
 
@@ -145,7 +161,7 @@ h4 {
     text-align: right;
     color: gray;
     border: none;
-    background-color: white;
+    background-color: transparent;
     display: block;
     margin-right: 2%;
 }
@@ -184,9 +200,35 @@ h4 {
 }
 
 
-
 #backButton {
     width: 30px;
     height: 30px;
     cursor: pointer;
+    margin-left: 2%;
+}
+
+.folder-list {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 23px;
+    margin: 8px;
+    width: 96%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 13px;
+    height: 235px;
+}
+
+.folder-item {
+    padding-bottom: 7px;
+}
+
+.store-checkbox {
+    margin-right: 10px;
+}
+
+.store-label {
+    font-size: 17px;
 }

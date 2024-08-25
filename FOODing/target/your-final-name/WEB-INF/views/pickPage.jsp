@@ -60,13 +60,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr id="folder-content-${pfolder.pfno}" style="display:none;">
-                        <%--<h4>${pfolder.pfname}</h4>--%>
-                        <td>
-                            <input type="checkbox" name="selectedStores" value="${pfolder.pfno}" class="folder-checkbox"/>
-                            <%--<a>${pick.store.sname}</a>--%>
-                        </td>
-                    </tr>
+                    <tr id="folder-content-${pfolder.pfno}" style="display:none;"></tr>
                 </c:forEach>
             </table>
             <div class="removeButton-container">
@@ -240,19 +234,20 @@
             url: '${pageContext.request.contextPath}/getFolderContent',
             data: { pfno: pfno },
             success: function(response) {
-                var contentHtml = '<img id="backButton" src="${pageContext.request.contextPath}/resources/images/back.png" style="cursor:pointer;">';
+                var contentHtml = '';
                 if (response.length === 0) {
                     contentHtml += "<p>폴더가 비어있습니다.</p>";
                 } else {
-                    contentHtml += '<ul>';
+                    contentHtml += '<ul class="folder-list">';
                     response.forEach(function(pick) {
-                        contentHtml += '<li>';
+                        contentHtml += '<li class="folder-item">';
                         contentHtml += '<input type="checkbox" name="selectedStores" value="' + pick.store.sno + '" class="store-checkbox"/>';
-                        contentHtml += '<a href="#">' + pick.store.sname + '</a>';
+                        contentHtml += '<span class="store-label">' + pick.store.sname + '</span>';
                         contentHtml += '</li>';
                     });
                     contentHtml += '</ul>';
                 }
+                contentHtml += '<img id="backButton" src="${pageContext.request.contextPath}/resources/images/back.png" style="cursor:pointer;">';
 
                 var folderContentContainer = document.createElement('div');
                 folderContentContainer.id = 'folder-content-container';  // ID 추가
