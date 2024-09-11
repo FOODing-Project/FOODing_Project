@@ -45,13 +45,39 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 <!-- 다혜 추가한 부분 -->
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
             </props>
         </property>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <!--mail(정희씨)-->
+    <!-- Root Context: defines shared resources visible to all other web components -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="fooding2441" />
+        <property name="password" value="nwrqmihlozqeqaik" />
+        <property name="defaultEncoding" value="utf-8" />
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtps.ssl.checkserveridentity">true</prop>
+                <prop key="mail.smtps.ssl.trust">smtp.gmail.com</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+            </props>
+        </property>
+    </bean>
+
+<!--   프로필 파일 업로드를 위해 추가한 부분(다혜)-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760"/> <!-- 최대 업로드 크기: 10MB -->
     </bean>
 
     <tx:annotation-driven />

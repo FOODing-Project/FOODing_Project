@@ -18,17 +18,68 @@ section {
     margin: auto;
 }
 
+.store-head {
+    width: 80%;
+}
+.head-elements {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    justify-content: space-between;
+}
+
+.s-first-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.pickNum-area{
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    height: fit-content;
+}
+
+.pickNum-area p{
+    margin-left: 6px;
+    margin-bottom: 10%;
+    font-weight: bold;
+    color: #e8ab00;
+}
+
+.pickNum-area img{
+    width: 36px;
+}
+
 #store-img {
     object-fit: cover;
     width: 80%;
-    height: 100px;
-    margin-bottom: 10px;
+    height: 140px;
+    margin-bottom: 0px;
 }
 
 #store-title {
     font-size: 30px;
     font-weight: bolder;
-    margin-bottom: 10px;
+    margin-right: 6px;
+}
+#store-score {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #e35a56;
+}
+
+#score-img {
+    width: 18px;
+    margin-right: 2px;
+}
+
+.title-area {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    align-items: baseline;
+    margin-top: 10px;
 }
 
 .menu-table {
@@ -44,6 +95,7 @@ section {
     background-color: #f2f2f2;
     font-weight: bold;
     font-size: 20px;
+
 }
 
 #store-explain {
@@ -123,4 +175,26 @@ section {
 .tab.active {
     background-color: #fff;
     border-bottom: 2px solid #ff6347;
+}
+
+.pickStar {
+    height: 58px;
+    margin-right: 9px;
+}
+
+.main-tag-button{
+    font-weight: bolder;
+    font-size: 0.8rem;
+    height: 28px;
+    padding: 5px 10px;
+    margin: 3px;
+    color: black;
+    background-color: rgba(255,186,51,0.53);
+    border-radius: 30px;
+    border: 2px solid transparent;
+}
+
+.stag-area{
+    text-align: left;
+    margin-bottom: 8px;
 }

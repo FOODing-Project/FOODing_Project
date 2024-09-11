@@ -1,4 +1,20 @@
 @charset "UTF-8";
+section {
+    height: 600px;
+    align-content: center;
+    flex: 1;
+}
+
+@font-face {
+    font-family: 'TTLaundryGothicB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.head{
+    font-family: 'TTLaundryGothicB';
+}
 
 .view-container {
     width: 650px;

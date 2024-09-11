@@ -1,12 +1,16 @@
 package com.sw.fd.service;
 
 import com.sw.fd.entity.Member;
+import com.sw.fd.entity.MemberGroup;
+import com.sw.fd.repository.MemberGroupRepository;
 import com.sw.fd.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,8 +20,11 @@ public class MemberService {
     @Autowired
     private MemberRepository memberRepository;
 
+    @Autowired
+    private MemberGroupRepository memberGroupRepository;
+
     public Member saveMember(Member member) {
-        member.setMdate(LocalDate.now()); // 가입 날짜를 현재 날짜로 설정
+        member.setMdate(LocalDateTime.now()); // 가입 날짜를 현재 날짜로 설정
         return memberRepository.save(member);
     }
 
@@ -40,6 +47,8 @@ public class MemberService {
         return memberRepository.findByMid(mid).orElse(null);
     }
 
+    public boolean isMnoExists(int mno) {return memberRepository.existsByMno(mno);}
+
     public void updateMember(Member member) {
         if (memberRepository.existsByMid(member.getMid())) {
             memberRepository.save(member);
@@ -53,5 +62,44 @@ public class MemberService {
         return memberRepository.existsByMnick(mnick);
     }
 
+
+    public void deleteMemberByMno(int mno) {
+        memberRepository.deleteByMno(mno);
+    }
+
+
+    public String findIdByMnameEmailAndPhone(String mname, String memail, String mphone) {
+        Member memberByEmail = memberRepository.findByMnameAndMemail(mname, memail);
+        Member memberByPhone = memberRepository.findByMnameAndMphone(mname, mphone);
+
+        if (memberByEmail != null && memberByPhone != null && memberByEmail.getMno() == memberByPhone.getMno()) {
+            return maskId(memberByEmail.getMid());
+        } else {
+            return null;
+        }
+    }
+
+    private String maskId(String id) {
+        if (id.length() <= 3) {
+            return id.charAt(0) + "**";
+        }
+        StringBuilder maskedId = new StringBuilder();
+        maskedId.append(id.charAt(0));
+        for (int i = 1; i < id.length() - 2; i++) {
+            maskedId.append("*");
+        }
+        maskedId.append(id.substring(id.length() - 2));
+        return maskedId.toString();
+    }
+
+    public Optional<Member> findByMember(String mid, String mname, String memail) {
+        return memberRepository.findByMidAndMnameAndMemail(mid, mname, memail);
+    }
+
+
+    // 모임방 기능을 위한 추가 (수정자 : 희진)
+    public Member getMemberById(String mid) {
+        return  memberRepository.findByMid(mid).orElse(null);
+    }
 
 }

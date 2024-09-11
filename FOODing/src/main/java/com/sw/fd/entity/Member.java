@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "member_t") // 데이터베이스 테이블과 매핑
@@ -16,6 +19,9 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mno;
+
+    @OneToMany(mappedBy = "member") // 수정사항
+    private List<MemberGroup> memberGroupList; // 수정사항
 
     private String mid;
     private String mname;
@@ -30,11 +36,15 @@ public class Member {
     private String mphone;
     private String memail;
     private String maddr;
-    private LocalDate mdate;
+    private LocalDateTime mdate;
+    private String mimage;
+
+
+    private int mwarning;
 
     @PrePersist
     protected void onCreate() {
-        mdate = LocalDate.now();
+        mdate = LocalDateTime.now();
     }
 
     public String getMpassConfirm() {
@@ -45,4 +55,21 @@ public class Member {
         this.mpassConfirm = mpassConfirm;
     }
 
+    @Override
+    public String toString() {
+        return "Member{mno=" + mno + ", mid='" + mid + "', mname='" + mname + "'}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return Objects.equals(mid, member.mid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mid);
+    }
 }

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,22 +20,65 @@
     <div class="store-div">
         <!-- 가게 정보 섹션 -->
         <c:choose>
+            <c:when test="${store.sno == 1 || store.sno == 19 || store.sno == 82 || store.sno == 181}">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/${store.sno}.jpg" alt="국밥">
+            </c:when>
             <c:when test="${store.scate == '한식'}">
-                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/korean_food.jpg">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/korean_food.jpg" alt="한식">
             </c:when>
             <c:when test="${store.scate == '일식'}">
-                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/japanese_food.jpg">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/japanese_food.jpg" alt="일식">
             </c:when>
             <c:when test="${store.scate == '중식'}">
-                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/chinese_food.jpg">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/chinese_food.jpg" alt="중식">
+            </c:when>
+            <c:when test="${store.scate == '양식'}">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/western_food.jpg" alt="양식">
+            </c:when>
+            <c:when test="${store.scate == '세계요리'}">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/global_food.jpg" alt="세계요리">
+            </c:when>
+            <c:when test="${store.scate == '빵/디저트'}">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/dessert.jpg" alt="빵/디저트">
+            </c:when>
+            <c:when test="${store.scate == '차/커피'}">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/coffee.jpg" alt="차/커피">
+            </c:when>
+            <c:when test="${store.scate == '술집'}">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/pub.jpg" alt="술집">
             </c:when>
             <c:otherwise>
-                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/fastfood.jpg">
+                <img id="store-img" src="${pageContext.request.contextPath}/resources/store_images/other_food_icon.png" alt="기타음식">
             </c:otherwise>
         </c:choose>
         <div class="store-head">
-            <p id="store-title">${store.sname}</p>
-            <p>${store.scate}</p>
+            <div class="head-elements">
+                <div class="s-first-area">
+                <a id="star-area" class="star-area">
+                    <img class="pickStar" src="${pageContext.request.contextPath}/resources/images/bookmark_icon.png" alt="StarE"/>
+                </a>
+                <div class ="title-area">
+                    <p id="store-title">${store.sname}</p>
+                    <c:choose>
+                        <c:when test="${store.scoreArg != 0}">
+                            <img id="score-img" src="${pageContext.request.contextPath}/resources/images/score_icon.png"/>
+                            <p id="store-score"><fmt:formatNumber value="${store.scoreArg}" pattern="0.0"/>점</p>
+                        </c:when>
+                    </c:choose>
+                </div>
+                </div>
+                <div class="pickNum-area">
+                    <img src="${pageContext.request.contextPath}/resources/images/pickNum_icon2.png">
+                    <p>${store.pickNum}찜</p>
+                </div>
+            </div>
+            <div class="stag-area">
+                <c:forEach var="stag" items="${storeTags}">
+                    <c:if test="${stag.tagCount > (rCount*0.3)}">
+                        <button type="button" class="main-tag-button">${stag.tag.ttag}</button>
+                    </c:if>
+                </c:forEach>
+            </div>
             <p id="store-explain">${store.seg}</p>
         </div>
 
@@ -94,32 +139,116 @@
         window.addEventListener('resize', adjustMapHeight);
     }
 
-    function initializeReviewScript() {
-        const stars = document.querySelectorAll('.rating > span');
-        const hiddenInput = document.getElementById('rstar');
-        let isRatingFixed = false;
 
-        stars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                if (!isRatingFixed) {
-                    const value = parseInt(star.getAttribute('data-value'));
-                    hiddenInput.value = value;
-                    console.log("value 값 = ${hiddenInput.value}");
-                    stars.forEach((s, i) => {
-                        if (i+2 <= value) {
-                            s.textContent = '☆';
-                        } else {
-                            s.textContent = '★';
+    /*document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('review').addEventListener('submit', function(event) {
+            var starSelected = document.querySelector('input[name="rstar"]:checked');
+            if (!starSelected) {
+                alert("별점을 선택하세요.");
+                event.preventDefault(); // 폼 제출을 막음
+            }
+        });
+    });*/
+    function toggleTagList() {
+        var tagList = document.getElementById('tagList');
+        if (tagList.style.display === 'none' || tagList.style.display === '') {
+            tagList.style.display = 'block';
+        } else {
+            tagList.style.display = 'none';
+        }
+    }
+
+    var selectedTags = [];
+
+    function toggleTag(tno, button) {
+        var index = selectedTags.indexOf(tno);
+        if (index === -1) {
+            // 태그가 선택되지 않았으면 추가
+            selectedTags.push(tno);
+            button.classList.add('selected');
+        } else {
+            // 태그가 이미 선택되었으면 제거
+            selectedTags.splice(index, 1);
+            button.classList.remove('selected');
+        }
+        // 선택된 태그 ID를 hidden input에 설정
+        document.getElementById('tnos').value = selectedTags.join(',');
+    }
+    function initializeReviewScript() {
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('mouseover', function() {
+                    resetStars();
+                    let previousStar = this.previousElementSibling;
+                    while (previousStar) {
+                        if (previousStar.classList.contains('star')) {
+                            previousStar.classList.add('hover');
                         }
-                    });
-                    isRatingFixed = true;
-                    stars.forEach(s => {
-                        s.style.pointerEvents = 'none'; // 별의 클릭 이벤트 비활성화
-                    });
-                }
+                        previousStar = previousStar.previousElementSibling;
+                    }
+                });
+
+                star.addEventListener('mouseout', function() {
+                    resetStars();
+                });
+
+                star.addEventListener('click', function() {
+                    resetStars();
+                    this.classList.add('selected');
+                    let previousStar = this.previousElementSibling;
+                    while (previousStar) {
+                        if (previousStar.classList.contains('star')) {
+                            previousStar.classList.add('selected');
+                        }
+                        previousStar = previousStar.previousElementSibling;
+                    }
+                    document.querySelector('input[name="rstar"][value="' + this.value + '"]').checked = true;
+                });
             });
+
+            function resetStars() {
+                document.querySelectorAll('.star').forEach(star => {
+                    star.classList.remove('hover', 'selected');
+                });
+            }
         });
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var message = urlParams.get('message');
+        if (message === 'deleted') {
+            alert('삭제가 완료되었습니다.');
+        }
+        if (message === 'login_required') {
+            alert('로그인 후 이용 가능합니다.');
+        }
+        /*if (message === 'rstar_required') {
+            alert('별점을 선택해야 합니다.')
+        }*/
+    });
+
+    function openEditWindow(rno) {
+        var url = "${pageContext.request.contextPath}/review/edit?rno=" + rno;
+        var name = "editReview";
+        var specs = "width=850, height=850";
+        window.open(url, name, specs);
+    }
+
+    function openReportWindow(rno, sno) {
+        var url = "${pageContext.request.contextPath}/review/report?rno=" + rno +  "&sno=" + sno;
+        var name = "reportReview";
+        var specs = "width=500,height=350";
+        window.open(url, name, specs);
+    }
+
+/*    function openPickWindow(sno, pfno) {
+        var url = "${pageContext.request.contextPath}/pick?sno=" + sno + "&pfno=" + pfno;
+        var name = "pickFolder";
+        var specs = "width=500,height=350";
+        window.open(url, name, specs);
+    }*/
+    initializeReviewScript();
 
     document.addEventListener("DOMContentLoaded", function() {
         initializeMap('${store.saddr}');
@@ -157,10 +286,42 @@
                 }
             });
         }
+
+        const starArea = document.getElementById("star-area");
+        const sno = "${store.sno}"; // 가게 sno 값 할당
+        const pfno = 1;
+
+        // 초기 상태 확인
+        $.post("${pageContext.request.contextPath}/checkPick", { sno: sno }, function(response) {
+            if (response === "picked") {
+                // star.classList.add("picked");
+                starArea.innerHTML = '<img class="pickStar" src="${pageContext.request.contextPath}/resources/images/bookmark_icon_full.png" alt="Star"/>'; // 꽉 찬 별 모양
+            } else {
+                // star.classList.remove("picked");
+                starArea.innerHTML = '<img class="pickStar" src="${pageContext.request.contextPath}/resources/images/bookmark_icon.png" alt="StarE"/>'; // 빈 별 모양
+            }
+        });
+
+        starArea.addEventListener("click", function() {
+            // AJAX 요청으로 서버에 찜 상태 저장 요청
+            $.post("${pageContext.request.contextPath}/pick", { sno: sno, pfno: pfno }, function(response) {
+                if (response === "picked") {
+                    // starArea.classList.add("picked");
+                    starArea.innerHTML = '<img class="pickStar" src="${pageContext.request.contextPath}/resources/images/bookmark_icon_full.png" alt="Star"/>'; // 꽉 찬 별 모양
+                } else if (response === "unpicked") {
+                    // star.classList.remove("picked");
+                    starArea.innerHTML = '<img class="pickStar" src="${pageContext.request.contextPath}/resources/images/bookmark_icon.png" alt="StarE"/>'; // 빈 별 모양
+                } else {
+                    alert("찜 기능을 사용하려면 로그인이 필요합니다.");
+                    window.location.href = "${pageContext.request.contextPath}/login";
+                }
+            }).fail(function(xhr, status, error) {
+                console.error("Error occurred:", error);
+                console.error("Status:", status);
+                console.error("Response:", xhr.responseText);
+            });
+        });
     });
 </script>
 <!-- 하단 내비게이션 바 -->
 <c:import url="/bottom.jsp" />
-
-</body>
-</html>
