@@ -34,54 +34,31 @@ public class MainController {
         Map<Integer, String> leaderList = new HashMap<>();
         Map<Integer, String> allMemberList = new HashMap<>();
 
-        /* 알림 기능 추가 (희진) */
+
         if (loggedInMember != null) {
-            boolean hasAlarms = alarmService.hasAlarms(loggedInMember);
-            System.out.println("hasAlarms  = " + hasAlarms);
+            /*----------알림처리를 위한 부분-----------*/
+            Boolean hasAlarms = (Boolean) session.getAttribute("hasAlarms");
+            if (hasAlarms == null) {
+                hasAlarms = false; // null이면 false로 처리
+            }
             model.addAttribute("hasAlarms", hasAlarms);
 
             if (hasAlarms) {
-                List<Alarm> alarms = alarmService.getAlarmsByMember(loggedInMember.getMid());
+                List<Alarm> alarms = (List<Alarm>) session.getAttribute("alarms");
+                boolean alarmChecked = (Boolean) session.getAttribute("alarmChecked");
+
                 model.addAttribute("alarms", alarms);
-
-                boolean alarmChecked = true;
-
-                for (Alarm alarm : alarms) {
-                    if (alarm.getIsChecked() == 0) {
-                        alarmChecked = false;
-                    }
-
-                    Invite invite = inviteService.getInviteByIno(Integer.parseInt(alarm.getLinkedPk()));
-                    String inviterName = invite.getMemberGroup().getMember().getMnick();
-                    String groupName = invite.getMemberGroup().getGroup().getGname();
-                    System.out.println("alarm.getAtype() = " + alarm.getAtype());
-                    if (alarm.getAtype().equals("일반 회원 초대") || alarm.getAtype().equals("모임장 초대")) {
-                        alarm.setMessage(inviterName + "님이 " + groupName + " 모임에<br>회원님을 초대하였습니다.");
-                    }
-                    else if (alarm.getAtype().equals("초대 거절")) {
-                        String inviteeName = invite.getMember().getMnick();
-                        alarm.setMessage(inviteeName + "님이 초대를 거절하였습니다");
-                    }
-                    else if (alarm.getAtype().equals("모임장 수락 대기")) {
-                        String inviteeName = invite.getMember().getMnick();
-                        alarm.setMessage(inviteeName + "님이<br>모임장 수락을 요청하였습니다.");
-                    }
-                }
                 model.addAttribute("alarmChecked", alarmChecked);
             }
-            else {
-                model.addAttribute("hasAlarms", false);
-            }
-        }
+            /*---------------------------------------*/
 
-        if (loggedInMember != null) {
             myMemberGroups = memberGroupService.getMemberGroupsWithGroup(loggedInMember);
 
             if (myMemberGroups.isEmpty())
-                model.addAttribute("myMemberGroups", null);
+                model.addAttribute("myMemberGroups", "모임방x");
             else {
                 for (MemberGroupDTO memberGroup : myMemberGroups) {
-                    System.out.println(memberGroup.getGroup().getGimage());
+/*                    System.out.println(memberGroup.getGroup().getGimage());*/
                     int thisGno = memberGroup.getGroup().getGno();
                     // 해당 gno 그룹의 모든 맴버 닉네임을 한줄의 String으로 만들어서 gno와 함께 Map화 (key= gno, value= 모임방의 모든 맴버 닉네임)
                     allMemberList.put(thisGno, memberGroupService.findMnicksByGroupGno(thisGno));
@@ -112,7 +89,7 @@ public class MainController {
 	
 	// 확인 버튼 클릭 시 알림의 isChecked 상태를 1로 변경 (희진 추가)
     @PostMapping("/alarmChecked")
-    public String alarmChecked(@RequestParam("alarmId") int alarmId, HttpSession session) {
+    public String alarmChecked(@RequestParam("alarmId") int alarmId, @RequestParam("returnUrl") String returnUrl, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
 
         if (loggedInMember != null) {
@@ -121,19 +98,45 @@ public class MainController {
                 alarm.setIsChecked(1); // 확인된 상태로 설정
                 alarmService.saveAlarm(alarm);
             }
+
+            List<Alarm> alarms = alarmService.getAlarmsByMember(loggedInMember.getMid());
+            session.setAttribute("alarms", alarms);
+
+            boolean alarmChecked = true;
+            for (Alarm a : alarms) {
+                if (a.getIsChecked() == 0) {
+                    alarmChecked = false;
+                    break;
+                }
+            }
+            session.setAttribute("alarmChecked", alarmChecked);
         }
-        return "redirect:/main";
+        return "redirect:" + returnUrl;
     }
-	
 	
 	/* 알림 기능 추가 (희진) */
     @PostMapping("/alarmDelete")
-    public String alarmDelete(@RequestParam("alarmId") int alarmId, HttpSession session) {
+    public String alarmDelete(@RequestParam("alarmId") int alarmId, @RequestParam("returnUrl") String returnUrl, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
 
         if (loggedInMember != null) {
-            alarmService.deleteAlarm(alarmId); // 알림을 삭제하는 서비스 호출
+            alarmService.deleteAlarm(alarmId);
+
+            List<Alarm> alarms = alarmService.getAlarmsByMember(loggedInMember.getMid());
+            session.setAttribute("alarms", alarms);
+
+            boolean alarmChecked = true;
+            for (Alarm a : alarms) {
+                if (a.getIsChecked() == 0) {
+                    alarmChecked = false;
+                    break;
+                }
+            }
+            session.setAttribute("alarmChecked", alarmChecked);
+
+            // 알림이 더 이상 없으면 hasAlarms를 false로 설정
+            session.setAttribute("hasAlarms", !alarms.isEmpty());
         }
-        return "redirect:/main";
+        return "redirect:" + returnUrl;
     }
 }

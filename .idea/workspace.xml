@@ -10,10 +10,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d781d0f-b515-4fd6-9a94-f607f6238cdf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/.idea/webContexts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/FOODing.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/pickPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/pickPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/pick.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/src/main/webapp/resources/css/pick.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/pickPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/WEB-INF/views/pickPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/pick.css" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name/resources/css/pick.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/src/main/webapp/WEB-INF/views/searchStore.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/InviteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/InviteController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/StoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/controller/StoreController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Group.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/entity/Group.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/InviteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/InviteRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/PickRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/repository/PickRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/InviteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/InviteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/MemberGroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/MemberGroupService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/StoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/classes/com/sw/fd/service/StoreService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing/target/your-final-name.war" beforeDir="false" afterPath="$PROJECT_DIR$/FOODing/target/your-final-name.war" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

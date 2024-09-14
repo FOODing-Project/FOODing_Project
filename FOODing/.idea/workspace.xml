@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b17c6d67-07f8-48c4-9ac7-1acab3b4d54f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FOODing.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/GroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/InviteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/InviteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/StoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/controller/StoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/entity/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/entity/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/repository/InviteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/repository/InviteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/repository/PickRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/repository/PickRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/service/InviteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/service/InviteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/service/LocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/service/MemberGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/service/MemberGroupService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sw/fd/service/StoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sw/fd/service/StoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editChangePass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editChangePass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editReview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editReview.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/folderContent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/folderContent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groupList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groupList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groupManage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/groupManage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pickPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pickPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/review.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/review.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/searchStore.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storeDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/editMember.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/editMember.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/editReview.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/editReview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/groupList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/groupList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/index_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/index_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/main_style_header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/main_style_header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/main_style_nav.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/main_style_nav.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/mypage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/mypage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/pick.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/pick.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/storeDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/storeDetail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/storeList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/storeList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/viewMember.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/viewMember.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/store_images/fastfood.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/store_images/western_food.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/store_images/western_food.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/top.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/InviteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/InviteController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/StoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/controller/StoreController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/entity/Group.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/entity/Group.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/repository/InviteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/repository/InviteRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/repository/PickRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/repository/PickRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/service/InviteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/service/InviteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/service/MemberGroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/service/MemberGroupService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sw/fd/service/StoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sw/fd/service/StoreService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/applicationContext 2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/GroupController 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/GroupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/GroupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/InviteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/InviteController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/MemberController 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/PickController 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/ReviewController 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/ReviewController 3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/StoreController 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/StoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/controller/StoreController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/dto/GroupDTO 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Business 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Group 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Group.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Group.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Member 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/MemberGroup 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Menu 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Report 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Report 3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Review 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/Store 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/entity/StoreTag 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/InviteRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/InviteRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/MemberGroupRepository 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/MemberRepository 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/PickRepository 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/PickRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/PickRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/ReviewRepository 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/ReviewTagRepository 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/repository/StoreTagRepository 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/ApiService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/GroupService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/InviteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/InviteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/LocationService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/MemberGroupService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/MemberGroupService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/MemberGroupService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/MemberService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/ReportService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/ReviewService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/StoreService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/StoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/classes/com/sw/fd/service/StoreService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/checkOwner 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/editChangePass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/editChangePass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/editMember 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/editReview 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/editReview.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/editReview.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/errorPage 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/findID 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/findIDResult 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/findPassAuth 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/folderContent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/folderContent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/groupList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/groupList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/groupManage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/groupManage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/includes/pickFolder.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/login 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/main 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/myPage 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/myReviews 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/pickPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/pickPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/review.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/review.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/searchStore.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/storeDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/storeDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/WEB-INF/views/viewMember 2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/checkOwner 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/editMember 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/editMember.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/editMember.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/editReview 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/editReview.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/editReview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/findIDResult 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/findPassAuth 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/findPass_IdAuth 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/groupList 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/groupList.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/groupList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/index_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/index_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/login 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/main_style_header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/main_style_header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/main_style_nav.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/main_style_nav.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/myReviews 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/mypage 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/mypage.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/mypage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/pick.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/pick.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/register 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/registerSelect 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/review 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/storeDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/storeDetail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/storeList.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/storeList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/viewMember 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/css/viewMember.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/css/viewMember.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/images/bookmark_icon 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/images/bookmark_icon(before) 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/images/score_icon 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/js/alertHandler 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/js/nav_hover 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/store_images/fastfood.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/store_images/western_food.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/resources/store_images/western_food.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/101 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/102 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/103 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/104 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/105 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/106 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/107 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/201 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/202 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/203 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/204 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/205 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/206 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/207 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/301 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/302 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/303 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/304 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/305 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/306 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/resources/tag_images/307 2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/your-final-name/top.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/your-final-name/topNoneNav 2.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "dahyeon6v6"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:FOODing-Project/FOODing_Project.git",
+    "accountId": "b81f8f01-a7cd-486b-b03d-c6eb03a713c5"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2m3FFLUbt7zS2WbnzK86qrJSOgF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dahyeon",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/dahyeon/Desktop/깃/FOODing_Project/FOODing",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.90" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.90" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="FOODing:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/FOODing" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="b8d19a8b-87d8-4c90-aaa7-737e7012a626" />
+        <option name="HTTP_PORT" value="8081" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="58947" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="FOODing:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b17c6d67-07f8-48c4-9ac7-1acab3b4d54f" name="Changes" comment="" />
+      <created>1726297247842</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726297247842</updated>
+      <workItem from="1726297248940" duration="73000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

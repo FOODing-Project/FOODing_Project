@@ -78,13 +78,17 @@ h1 {
 .sort-area {
     display: flex;
     justify-content: flex-end;
+    font-size: 18px;
+
 }
 
 .sort-element {
     margin-left: 5px;
     margin-bottom: 0;
 }
-
+#sort-header {
+    width: 6%;
+}
 /*storeListByLocation에 대한 css*/
 
 .now-location-area{

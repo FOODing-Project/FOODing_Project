@@ -65,7 +65,6 @@ h4 {
     margin: 2%;
     height: 250px;
     font-size: 17px;
-    overflow-y: auto;
     display: inline-flex;
 }
 
@@ -164,6 +163,7 @@ h4 {
     background-color: transparent;
     display: block;
     margin-right: 2%;
+    margin-left: auto;
 }
 
 .edit-button {
@@ -231,4 +231,12 @@ h4 {
 
 .store-label {
     font-size: 17px;
+}
+
+.isEmpty {
+    font-size: 20px;
+    text-align: center;
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }

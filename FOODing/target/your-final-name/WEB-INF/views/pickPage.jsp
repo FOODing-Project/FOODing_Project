@@ -19,7 +19,7 @@
                 <tr>
                     <td>
                         <input type="checkbox" name="selectedStore" value="${pick.store.sno}" />
-                        <button class="storeName">${pick.store.sname}</button>
+                        <button class="storeName" onclick="location.href='${pageContext.request.contextPath}/storeDetail?sno=${pick.store.sno}'">${pick.store.sname}</button>
                     </td>
                 </tr>
                 </c:forEach>
@@ -236,7 +236,7 @@
             success: function(response) {
                 var contentHtml = '';
                 if (response.length === 0) {
-                    contentHtml += "<p>폴더가 비어있습니다.</p>";
+                    contentHtml += '<p class="isEmpty">폴더가 비어있습니다.</p>';
                 } else {
                     contentHtml += '<ul class="folder-list">';
                     response.forEach(function(pick) {
@@ -268,9 +268,14 @@
         if (folderContentContainer) {
             folderContentContainer.remove();
         }
+        var addFolderContainer = document.querySelector('.addFolder-container');
+        addFolderContainer.style.display = 'block';
+        addFolderContainer.style.justifyContent = 'flex-end';
+
         document.querySelector('.addFolder-container').style.display = 'block';
         document.querySelector('.folder-table').style.display = 'block';
         document.querySelector('#allFolderList').innerText = '찜 폴더 관리';
+        document.querySelector('.createFolder').style.marginLeft = 'auto';
     }
 
 
@@ -286,7 +291,6 @@
                 // 현재 클릭된 폴더에만 selected 클래스 추가
                 this.classList.add('selected');
                 currentPfno = this.getAttribute('id').replace('pfname_', '');  // currentPfno 업데이트
-                console.log("Selected folder:", currentPfno); // 선택된 폴더의 id 확인
             });
         });
 

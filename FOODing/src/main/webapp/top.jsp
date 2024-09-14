@@ -22,39 +22,67 @@
                         <c:forEach items="${alarms}" var="alarm">
                             <div class="subalarm">
                                 <div>
-                                    <c:if test="${alarm.atype == '모임장 초대'}">
-                                        <a href="${pageContext.request.contextPath}/inviteManage">
-                                            <c:out value="${alarm.message} (모임장)" escapeXml="false"/>
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${alarm.atype == '일반 회원 초대'}">
-                                        <a href="${pageContext.request.contextPath}/inviteManage">
-                                            <c:out value="${alarm.message} (일반회원)" escapeXml="false"/></a>
-                                    </c:if>
-                                    <c:if test="${alarm.atype == '초대 거절'}">
-                                        <c:out value="${alarm.message}" escapeXml="false"/>
-                                    </c:if>
-                                    <c:if test="${alarm.atype == '모임장 수락 대기'}">
-                                        <a href="${pageContext.request.contextPath}/groupManage">
+                                    <c:choose>
+                                        <c:when test="${alarm.atype == '모임장 초대'}">
+                                            <a href="${pageContext.request.contextPath}/inviteManage">
+                                                <c:out value="${alarm.message} (모임장)" escapeXml="false"/>
+                                            </a>
+                                        </c:when>
+                                        <c:when test="${alarm.atype == '일반 회원 초대'}">
+                                            <a href="${pageContext.request.contextPath}/inviteManage">
+                                                <c:out value="${alarm.message} (일반회원)" escapeXml="false"/></a>
+                                        </c:when>
+                                        <c:when test="${alarm.atype == '초대 거절'}">
                                             <c:out value="${alarm.message}" escapeXml="false"/>
-                                        </a>
-                                    </c:if>
+                                        </c:when>
+                                        <c:when test="${alarm.atype == '모임장 수락 대기'}">
+                                            <a href="${pageContext.request.contextPath}/groupManage">
+                                                <c:out value="${alarm.message}" escapeXml="false"/>
+                                            </a>
+                                        </c:when>
+                                        <%--     모임장 수락을 위해 추가한 부분(다혜)--%>
+                                        <c:when test="${alarm.atype == '모임장 수락'}">
+                                            <a href="${pageContext.request.contextPath}/groupList">
+                                                <c:out value="${alarm.message}" escapeXml="false"/>
+                                            </a>
+                                        </c:when>
+                                        <c:when test="${alarm.atype == '모임장 수락 거절1' || alarm.atype == '모임장 수락 거절2'}">
+                                            <a href="#">
+                                                <c:out value="${alarm.message}" escapeXml="false"/>
+                                            </a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a style="color: dimgray">메세지를 불러오지 못 하였습니다</a>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <!-- 확인 및 삭제 버튼 추가 -->
                                 <div class="alarmButton-area">
+                                    <script>
+                                        function setReturnUrl(form) {
+                                            var currentPage = window.location.href; // 현재 페이지 URL을 가져옵니다.
+                                            form.returnUrl.value = currentPage; // 히든 필드에 현재 페이지 URL을 설정합니다.
+                                            form.submit(); // 폼을 제출합니다.
+                                        }
+                                    </script>
+
+                                    <!-- 알림 확인 버튼 -->
                                     <c:choose>
                                         <c:when test="${alarm.isChecked == 0}">
-                                            <form action="${pageContext.request.contextPath}/alarmChecked" method="post" style="display:inline;">
+                                            <form action="${pageContext.request.contextPath}/alarmChecked" method="post" style="display:inline;" onsubmit="setReturnUrl(this);">
                                                 <input type="hidden" name="alarmId" value="${alarm.ano}"/>
+                                                <input type="hidden" name="returnUrl" value=""/>
                                                 <button type="submit" class="alarmButton">
                                                     <img src="${pageContext.request.contextPath}/resources/images/check-icon.png"/>
                                                 </button>
                                             </form>
                                         </c:when>
                                     </c:choose>
-                                    <!-- 삭제 버튼 -->
-                                    <form action="${pageContext.request.contextPath}/alarmDelete" method="post" style="display:inline;">
+
+                                    <!-- 알림 삭제 버튼 -->
+                                    <form action="${pageContext.request.contextPath}/alarmDelete" method="post" style="display:inline;" onsubmit="setReturnUrl(this);">
                                         <input type="hidden" name="alarmId" value="${alarm.ano}"/>
+                                        <input type="hidden" name="returnUrl" value=""/>
                                         <button type="submit" class="alarmButton">
                                             <img src="${pageContext.request.contextPath}/resources/images/delete-icon.png"/>
                                         </button>
@@ -143,13 +171,12 @@
         <a class = "nav" href="${pageContext.request.contextPath}/storeList">맛집 찾기</a>
         <a class = "nav" href = "${pageContext.request.contextPath}/groupList">모임</a>
         <a class = "nav" href = "${pageContext.request.contextPath}/pickList">찜</a>
-        <form class="d-flex">
-<%--<form:form name="store-searchForm" action="${pageContext.request.contextPath}/searchStore">--%>
-            <div class = "search-form">
-                <input class="form-control me-2" type="search" placeholder="가게를 검색하세욧" aria-label="Search">
-                <a class = "btn btn-link" href = "#" role = "button">
-                    <img src = "${pageContext.request.contextPath}/resources/images/search.png" alt="Search">
-                </a>
+        <form action="${pageContext.request.contextPath}/searchResultView" method="GET" class="d-flex">
+            <div class="search-form">
+                <input class="form-control me-2" name="searchKeyword" type="search" placeholder="가게를 검색하세욧" aria-label="Search">
+                <button type="submit" class="btn btn-link">
+                    <img src="${pageContext.request.contextPath}/resources/images/search.png" alt="Search">
+                </button>
             </div>
         </form>
         <ul class = "snb">
@@ -174,7 +201,7 @@
                 <li><a href = "${pageContext.request.contextPath}/inviteManage">내 초대 관리</a></li>
             </div>
             <div class = "submenu">
-                <li><a href = "#">찜 기능</a></li>
+                <li><a href = "${pageContext.request.contextPath}/pickList">찜 폴더 관리</a></li>
                 <li><a href = "#"></a></li>
                 <li><a href = "#"></a></li>
             </div>
