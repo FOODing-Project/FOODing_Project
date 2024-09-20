@@ -1,0 +1,553 @@
+﻿DROP TABLE IF EXISTS write_t;
+DROP TABLE IF EXISTS reviewreport_t;
+DROP TABLE IF EXISTS invite_t;
+DROP TABLE IF EXISTS alarm_t;
+DROP TABLE IF EXISTS reviewtag_t;
+DROP TABLE IF EXISTS storetag_t;
+DROP TABLE IF EXISTS join_t;
+DROP TABLE IF EXISTS pick_t;
+DROP TABLE IF EXISTS pfolder_t;
+DROP TABLE IF EXISTS sowner_t;
+DROP TABLE IF EXISTS menu_t;
+DROP TABLE IF EXISTS review_t;
+DROP TABLE IF EXISTS board_t;
+DROP TABLE IF EXISTS group_table;
+DROP TABLE IF EXISTS report_t;
+DROP TABLE IF EXISTS tag_t;
+DROP TABLE IF EXISTS store_t;
+DROP TABLE IF EXISTS member_t;
+
+-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- store_t Table Create SQL
+-- 테이블 생성 SQL - store_t
+CREATE TABLE store_t
+(
+    `sno`    INT             NOT NULL    COMMENT '가게No', 
+    `sname`  VARCHAR(30)     NOT NULL    COMMENT '가게이름', 
+    `saddr`  VARCHAR(50)     NOT NULL    COMMENT '가게주소', 
+    `stel`   VARCHAR(30)     NOT NULL    COMMENT '가게연락처', 
+    `seg`    VARCHAR(200)    NOT NULL    COMMENT '가게설명', 
+    `scate`  VARCHAR(20)     NOT NULL    COMMENT '음식점종류', 
+    `stime`  VARCHAR(100)    NOT NULL    COMMENT '영업시간', 
+    `spark`  VARCHAR(20)     NOT NULL    COMMENT '주차장여부', 
+     PRIMARY KEY (sno)
+);
+
+-- 테이블 Comment 설정 SQL - store_t
+ALTER TABLE store_t COMMENT '가게';
+
+
+-- member_t Table Create SQL
+-- 테이블 생성 SQL - member_t
+CREATE TABLE member_t
+(
+    `mno`       INT             NOT NULL  AUTO_INCREMENT  COMMENT '회원No', 
+    `mid`       VARCHAR(30)     NOT NULL    COMMENT '회원ID', 
+    `mpass`     VARCHAR(100)    NOT NULL    COMMENT '비밀번호', 
+    `mtype`     INT             NOT NULL    COMMENT '회원유형', 
+    `mname`     VARCHAR(20)     NOT NULL    COMMENT '이름', 
+    `mnick`     VARCHAR(30)     NOT NULL    COMMENT '닉네임', 
+    `mbirth`    DATE            NOT NULL    COMMENT '생년월일', 
+    `mphone`    VARCHAR(30)     NOT NULL    COMMENT '전화번호', 
+    `memail`    VARCHAR(50)     NOT NULL    COMMENT '이메일', 
+    `maddr`     VARCHAR(50)     NULL        COMMENT '주소', 
+    `mdate`     DATETIME        NOT NULL    COMMENT '가입날짜', 
+    `mwarning`  INT             NULL        COMMENT '신고횟수', 
+    `mimage`    VARCHAR(100)    NULL        COMMENT '회원이미지', 
+     PRIMARY KEY (mno)
+);
+
+-- 테이블 Comment 설정 SQL - member_t
+ALTER TABLE member_t COMMENT '회원';
+
+
+-- group_table Table Create SQL
+-- 테이블 생성 SQL - group_table
+CREATE TABLE group_table
+(
+    `gno`    INT            NOT NULL  AUTO_INCREMENT  COMMENT '모임No', 
+    `gname`  VARCHAR(50)    NOT NULL    COMMENT '모임명', 
+    `gdate`  DATETIME       NOT NULL    COMMENT '생성날짜', 
+    `gimage`  VARCHAR(100)    NULL        COMMENT '모임이미지', 
+     PRIMARY KEY (gno)
+);
+
+-- 테이블 Comment 설정 SQL - group_table
+ALTER TABLE group_table COMMENT '모임';
+
+
+-- join_t Table Create SQL
+-- 테이블 생성 SQL - join_t
+CREATE TABLE join_t
+(
+    `jno`    INT         NOT NULL  AUTO_INCREMENT  COMMENT '참여No', 
+    `gno`    INT         NOT NULL    COMMENT '모임No', 
+    `mno`    INT         NOT NULL    COMMENT '회원No', 
+    `jauth`  INT         NULL        COMMENT '모임장권한', 
+    `jdate`  DATETIME    NOT NULL    COMMENT '가입날짜', 
+     PRIMARY KEY (jno)
+);
+
+-- 테이블 Comment 설정 SQL - join_t
+ALTER TABLE join_t COMMENT '참여';
+
+-- Foreign Key 설정 SQL - join_t(mno) -> member_t(mno)
+ALTER TABLE join_t
+    ADD CONSTRAINT FK_join_t_mno_member_t_mno FOREIGN KEY (mno)
+        REFERENCES member_t (mno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - join_t(mno)
+-- ALTER TABLE join_t
+-- DROP FOREIGN KEY FK_join_t_mno_member_t_mno;
+
+-- Foreign Key 설정 SQL - join_t(gno) -> group_table(gno)
+ALTER TABLE join_t
+    ADD CONSTRAINT FK_join_t_gno_group_table_gno FOREIGN KEY (gno)
+        REFERENCES group_table (gno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - join_t(gno)
+-- ALTER TABLE join_t
+-- DROP FOREIGN KEY FK_join_t_gno_group_table_gno;
+
+
+-- board_t Table Create SQL
+-- 테이블 생성 SQL - board_t
+CREATE TABLE board_t
+(
+    `bno`    INT            NOT NULL  AUTO_INCREMENT  COMMENT '게시판No', 
+    `gno`    INT            NOT NULL    COMMENT '모임No', 
+    `bname`  VARCHAR(50)    NOT NULL    COMMENT '게시판명', 
+    `btype`  INT            NOT NULL    COMMENT '게시판유형', 
+     PRIMARY KEY (bno)
+);
+
+-- 테이블 Comment 설정 SQL - board_t
+ALTER TABLE board_t COMMENT '게시판';
+
+-- Foreign Key 설정 SQL - board_t(gno) -> group_table(gno)
+ALTER TABLE board_t
+    ADD CONSTRAINT FK_board_t_gno_group_table_gno FOREIGN KEY (gno)
+        REFERENCES group_table (gno) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - board_t(gno)
+-- ALTER TABLE board_t
+-- DROP FOREIGN KEY FK_board_t_gno_group_table_gno;
+
+
+
+
+-- tag_t Table Create SQL
+-- 테이블 생성 SQL - tag_t
+CREATE TABLE tag_t
+(
+    `tno`   INT            NOT NULL    COMMENT '태그No', 
+    `ttag`  VARCHAR(50)    NOT NULL    COMMENT '태그내용', 
+     PRIMARY KEY (tno)
+);
+
+-- 테이블 Comment 설정 SQL - tag_t
+ALTER TABLE tag_t COMMENT '태그';
+
+
+-- pfolder_t Table Create SQL
+-- 테이블 생성 SQL - pfolder_t
+CREATE TABLE pfolder_t
+(
+    `pfno`    INT            NOT NULL  AUTO_INCREMENT  COMMENT '폴더No', 
+    `pfname`  VARCHAR(50)    NOT NULL    COMMENT '폴더명', 
+    `mno`     INT            NULL        COMMENT '회원No', 
+     PRIMARY KEY (pfno)
+);
+
+-- 테이블 Comment 설정 SQL - pfolder_t
+ALTER TABLE pfolder_t COMMENT '찜폴더';
+
+-- Foreign Key 설정 SQL - pfolder_t(mno) -> member_t(mno)
+ALTER TABLE pfolder_t
+    ADD CONSTRAINT FK_pfolder_t_mno_member_t_mno FOREIGN KEY (mno)
+        REFERENCES member_t (mno) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Foreign Key 삭제 SQL - pfolder_t(mno)
+-- ALTER TABLE pfolder_t
+-- DROP FOREIGN KEY FK_pfolder_t_mno_member_t_mno;
+
+-- review_t Table Create SQL
+-- 테이블 생성 SQL - review_t
+CREATE TABLE review_t
+(
+    `rno`    INT             NOT NULL  AUTO_INCREMENT  COMMENT '리뷰No', 
+    `mno`    INT             NOT NULL    COMMENT '회원No', 
+    `sno`    INT             NOT NULL    COMMENT '가게No', 
+    `rstar`  INT             NOT NULL    COMMENT '별점', 
+    `rcomm`  VARCHAR(200)    NULL        COMMENT '리뷰내용', 
+    `rdate`  DATETIME        NOT NULL    COMMENT '작성날짜', 
+    `mdelete`  INT             NULL    COMMENT '사용자삭제', 
+    `adelete`  INT             NULL    COMMENT '관리자삭제', 
+     PRIMARY KEY (rno)
+);
+
+-- 테이블 Comment 설정 SQL - review_t
+ALTER TABLE review_t COMMENT '리뷰';
+
+-- Foreign Key 설정 SQL - review_t(mno) -> member_t(mno)
+ALTER TABLE review_t
+    ADD CONSTRAINT FK_review_t_mno_member_t_mno FOREIGN KEY (mno)
+        REFERENCES member_t (mno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - review_t(mno)
+-- ALTER TABLE review_t
+-- DROP FOREIGN KEY FK_review_t_mno_member_t_mno;
+
+-- Foreign Key 설정 SQL - review_t(sno) -> store_t(sno)
+ALTER TABLE review_t
+    ADD CONSTRAINT FK_review_t_sno_store_t_sno FOREIGN KEY (sno)
+        REFERENCES store_t (sno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - review_t(sno)
+-- ALTER TABLE review_t
+-- DROP FOREIGN KEY FK_review_t_sno_store_t_sno;
+
+
+-- report_t Table Create SQL
+-- 테이블 생성 SQL - report_t
+CREATE TABLE report_t
+(
+    `rpno`    INT             NOT NULL  AUTO_INCREMENT  COMMENT '신고No', 
+    `rptype`  VARCHAR(100)    NOT NULL    COMMENT '신고유형', 
+     PRIMARY KEY (rpno)
+);
+
+-- 테이블 Comment 설정 SQL - report_t
+ALTER TABLE report_t COMMENT '신고';
+
+
+-- sowner_t Table Create SQL
+-- 테이블 생성 SQL - sowner_t
+CREATE TABLE sowner_t
+(
+    `sono`  INT    NOT NULL  AUTO_INCREMENT  COMMENT '사장님No', 
+    `mno`   INT    NOT NULL    COMMENT '회원No', 
+    `sno`   INT    NOT NULL    COMMENT '가게No', 
+     PRIMARY KEY (sono)
+);
+
+-- 테이블 Comment 설정 SQL - sowner_t
+ALTER TABLE sowner_t COMMENT '사장님';
+
+-- Foreign Key 설정 SQL - sowner_t(mno) -> member_t(mno)
+ALTER TABLE sowner_t
+    ADD CONSTRAINT FK_sowner_t_mno_member_t_mno FOREIGN KEY (mno)
+        REFERENCES member_t (mno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - sowner_t(mno)
+-- ALTER TABLE sowner_t
+-- DROP FOREIGN KEY FK_sowner_t_mno_member_t_mno;
+
+-- Foreign Key 설정 SQL - sowner_t(sno) -> store_t(sno)
+ALTER TABLE sowner_t
+    ADD CONSTRAINT FK_sowner_t_sno_store_t_sno FOREIGN KEY (sno)
+        REFERENCES store_t (sno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - sowner_t(sno)
+-- ALTER TABLE sowner_t
+-- DROP FOREIGN KEY FK_sowner_t_sno_store_t_sno;
+
+
+-- pick_t Table Create SQL
+-- 테이블 생성 SQL - pick_t
+CREATE TABLE pick_t
+(
+    `pno`   INT    NOT NULL  AUTO_INCREMENT  COMMENT '찜No', 
+    `pfno`  INT    NOT NULL    COMMENT '폴더No', 
+    `mno`   INT    NOT NULL    COMMENT '회원No', 
+    `sno`   INT    NOT NULL    COMMENT '가게No', 
+     PRIMARY KEY (pno)
+);
+
+-- 테이블 Comment 설정 SQL - pick_t
+ALTER TABLE pick_t COMMENT '찜';
+
+-- Foreign Key 설정 SQL - pick_t(mno) -> member_t(mno)
+ALTER TABLE pick_t
+    ADD CONSTRAINT FK_pick_t_mno_member_t_mno FOREIGN KEY (mno)
+        REFERENCES member_t (mno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - pick_t(mno)
+-- ALTER TABLE pick_t
+-- DROP FOREIGN KEY FK_pick_t_mno_member_t_mno;
+
+-- Foreign Key 설정 SQL - pick_t(sno) -> store_t(sno)
+ALTER TABLE pick_t
+    ADD CONSTRAINT FK_pick_t_sno_store_t_sno FOREIGN KEY (sno)
+        REFERENCES store_t (sno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - pick_t(sno)
+-- ALTER TABLE pick_t
+-- DROP FOREIGN KEY FK_pick_t_sno_store_t_sno;
+
+-- Foreign Key 설정 SQL - pick_t(pfno) -> pfolder_t(pfno)
+ALTER TABLE pick_t
+    ADD CONSTRAINT FK_pick_t_pfno_pfolder_t_pfno FOREIGN KEY (pfno)
+        REFERENCES pfolder_t (pfno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - pick_t(pfno)
+-- ALTER TABLE pick_t
+-- DROP FOREIGN KEY FK_pick_t_pfno_pfolder_t_pfno;
+
+
+-- storetag_t Table Create SQL
+-- 테이블 생성 SQL - storetag_t
+CREATE TABLE storetag_t
+(
+    `stno`      INT    NOT NULL  AUTO_INCREMENT  COMMENT '가게태그No', 
+    `tno`       INT    NOT NULL    COMMENT '태그No', 
+    `sno`       INT    NOT NULL    COMMENT '가게No', 
+    `tagcount`  INT    NULL, 
+     PRIMARY KEY (stno)
+);
+
+-- 테이블 Comment 설정 SQL - storetag_t
+ALTER TABLE storetag_t COMMENT '가게태그';
+
+-- Foreign Key 설정 SQL - storetag_t(tno) -> tag_t(tno)
+ALTER TABLE storetag_t
+    ADD CONSTRAINT FK_storetag_t_tno_tag_t_tno FOREIGN KEY (tno)
+        REFERENCES tag_t (tno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - storetag_t(tno)
+-- ALTER TABLE storetag_t
+-- DROP FOREIGN KEY FK_storetag_t_tno_tag_t_tno;
+
+-- Foreign Key 설정 SQL - storetag_t(sno) -> store_t(sno)
+ALTER TABLE storetag_t
+    ADD CONSTRAINT FK_storetag_t_sno_store_t_sno FOREIGN KEY (sno)
+        REFERENCES store_t (sno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - storetag_t(sno)
+-- ALTER TABLE storetag_t
+-- DROP FOREIGN KEY FK_storetag_t_sno_store_t_sno;
+
+
+-- reviewtag_t Table Create SQL
+-- 테이블 생성 SQL - reviewtag_t
+CREATE TABLE reviewtag_t
+(
+    `rtno`  INT    NOT NULL  AUTO_INCREMENT  COMMENT '리뷰태그No', 
+    `rno`   INT    NOT NULL    COMMENT '리뷰No', 
+    `tno`   INT    NOT NULL    COMMENT '태그No', 
+     PRIMARY KEY (rtno)
+);
+
+-- 테이블 Comment 설정 SQL - reviewtag_t
+ALTER TABLE reviewtag_t COMMENT '리뷰태그';
+
+-- Foreign Key 설정 SQL - reviewtag_t(rno) -> review_t(rno)
+ALTER TABLE reviewtag_t
+    ADD CONSTRAINT FK_reviewtag_t_rno_review_t_rno FOREIGN KEY (rno)
+        REFERENCES review_t (rno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - reviewtag_t(rno)
+-- ALTER TABLE reviewtag_t
+-- DROP FOREIGN KEY FK_reviewtag_t_rno_review_t_rno;
+
+-- Foreign Key 설정 SQL - reviewtag_t(tno) -> tag_t(tno)
+ALTER TABLE reviewtag_t
+    ADD CONSTRAINT FK_reviewtag_t_tno_tag_t_tno FOREIGN KEY (tno)
+        REFERENCES tag_t (tno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - reviewtag_t(tno)
+-- ALTER TABLE reviewtag_t
+-- DROP FOREIGN KEY FK_reviewtag_t_tno_tag_t_tno;
+
+
+-- menu_t Table Create SQL
+-- 테이블 생성 SQL - menu_t
+CREATE TABLE menu_t
+(
+    `mnno`     INT            NOT NULL  AUTO_INCREMENT  COMMENT '메뉴No', 
+    `mnname`   VARCHAR(50)    NOT NULL    COMMENT '메뉴이름', 
+    `mnprice`  VARCHAR(30)    NOT NULL    COMMENT '메뉴가격', 
+    `sno`      INT            NOT NULL    COMMENT '가게No', 
+     PRIMARY KEY (mnno)
+);
+
+-- 테이블 Comment 설정 SQL - menu_t
+ALTER TABLE menu_t COMMENT '메뉴';
+
+-- Foreign Key 설정 SQL - menu_t(sno) -> store_t(sno)
+ALTER TABLE menu_t
+    ADD CONSTRAINT FK_menu_t_sno_store_t_sno FOREIGN KEY (sno)
+        REFERENCES store_t (sno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - menu_t(sno)
+-- ALTER TABLE menu_t
+-- DROP FOREIGN KEY FK_menu_t_sno_store_t_sno;
+
+
+-- reviewreport_t Table Create SQL
+-- 테이블 생성 SQL - reviewreport_t
+CREATE TABLE reviewreport_t
+(
+    `rrno`        INT         NOT NULL  AUTO_INCREMENT  COMMENT '리뷰신고No', 
+    `rno`         INT         NOT NULL    COMMENT '리뷰No', 
+    `mno`         INT         NOT NULL    COMMENT '회원No', 
+    `rpno`        INT         NOT NULL    COMMENT '신고No', 
+    `rrdate`      DATETIME    NOT NULL    COMMENT '신고날짜', 
+    `rrcomplete`  INT         NULL        COMMENT '처리여부', 
+     PRIMARY KEY (rrno)
+);
+
+-- 테이블 Comment 설정 SQL - reviewreport_t
+ALTER TABLE reviewreport_t COMMENT '리뷰신고';
+
+-- Foreign Key 설정 SQL - reviewreport_t(rno) -> review_t(rno)
+ALTER TABLE reviewreport_t
+    ADD CONSTRAINT FK_reviewreport_t_rno_review_t_rno FOREIGN KEY (rno)
+        REFERENCES review_t (rno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - reviewreport_t(rno)
+-- ALTER TABLE reviewreport_t
+-- DROP FOREIGN KEY FK_reviewreport_t_rno_review_t_rno;
+
+-- Foreign Key 설정 SQL - reviewreport_t(mno) -> member_t(mno)
+ALTER TABLE reviewreport_t
+    ADD CONSTRAINT FK_reviewreport_t_mno_member_t_mno FOREIGN KEY (mno)
+        REFERENCES member_t (mno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - reviewreport_t(mno)
+-- ALTER TABLE reviewreport_t
+-- DROP FOREIGN KEY FK_reviewreport_t_mno_member_t_mno;
+
+-- Foreign Key 설정 SQL - reviewreport_t(rpno) -> report_t(rpno)
+ALTER TABLE reviewreport_t
+    ADD CONSTRAINT FK_reviewreport_t_rpno_report_t_rpno FOREIGN KEY (rpno)
+        REFERENCES report_t (rpno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - reviewreport_t(rpno)
+-- ALTER TABLE reviewreport_t
+-- DROP FOREIGN KEY FK_reviewreport_t_rpno_report_t_rpno;
+
+
+-- invite_t Table Create SQL
+-- 테이블 생성 SQL - invite_t
+CREATE TABLE invite_t
+(
+    `ino`    INT    NOT NULL  AUTO_INCREMENT  COMMENT '초대No', 
+    `jno`    INT    NOT NULL    COMMENT '참여No', 
+    `mno`    INT    NOT NULL    COMMENT '회원No', 
+    `itype`  INT    NOT NULL    COMMENT '처리유형', 
+    `leadnum`  INT    NOT NULL    COMMENT '모임장no추가', 
+     PRIMARY KEY (ino)
+);
+
+-- 테이블 Comment 설정 SQL - invite_t
+ALTER TABLE invite_t COMMENT '초대';
+
+-- Foreign Key 설정 SQL - invite_t(jno) -> join_t(jno)
+ALTER TABLE invite_t
+    ADD CONSTRAINT FK_invite_t_jno_join_t_jno FOREIGN KEY (jno)
+        REFERENCES join_t (jno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - invite_t(jno)
+-- ALTER TABLE invite_t
+-- DROP FOREIGN KEY FK_invite_t_jno_join_t_jno;
+
+-- Foreign Key 설정 SQL - invite_t(mno) -> member_t(mno)
+ALTER TABLE invite_t
+    ADD CONSTRAINT FK_invite_t_mno_member_t_mno FOREIGN KEY (mno)
+        REFERENCES member_t (mno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - invite_t(mno)
+-- ALTER TABLE invite_t
+-- DROP FOREIGN KEY FK_invite_t_mno_member_t_mno;
+
+
+-- alarm_t Table Create SQL
+-- 테이블 생성 SQL - alarm_t
+CREATE TABLE alarm_t
+(
+    `ano`    INT            NOT NULL  AUTO_INCREMENT  COMMENT '알림No', 
+    `linkedpk`   VARCHAR(50)    NOT NULL    COMMENT '출처', 
+    `atype`  VARCHAR(50)    NOT NULL    COMMENT '알림유형', 
+    `mno`    INT            NOT NULL    COMMENT '회원No', 
+    `ischecked`  INT            NOT NULL    COMMENT '확인여부', 
+     PRIMARY KEY (ano)
+);
+
+-- 테이블 Comment 설정 SQL - alarm_t
+ALTER TABLE alarm_t COMMENT '알림';
+
+-- Foreign Key 설정 SQL - alarm_t(mno) -> member_t(mno)
+ALTER TABLE alarm_t
+    ADD CONSTRAINT FK_alarm_t_mno_member_t_mno FOREIGN KEY (mno)
+        REFERENCES member_t (mno) ON DELETE CASCADE  ON UPDATE CASCADE ;
+
+-- Foreign Key 삭제 SQL - alarm_t(mno)
+-- ALTER TABLE alarm_t
+-- DROP FOREIGN KEY FK_alarm_t_mno_member_t_mno;
+
+-- write_t Table Create SQL
+-- 테이블 생성 SQL - write_t
+CREATE TABLE write_t
+(
+    `wno`       INT             NOT NULL  AUTO_INCREMENT  COMMENT '게시글No', 
+    `bno`       INT             NOT NULL    COMMENT '게시판No', 
+    `mno`       INT             NOT NULL    COMMENT '회원No', 
+    `wdate`     DATETIME        NOT NULL    COMMENT '게시날짜', 
+    `wtitle`    VARCHAR(100)    NOT NULL    COMMENT '글제목', 
+    `wcontent`  VARCHAR(500)    NOT NULL    COMMENT '글내용', 
+     PRIMARY KEY (wno)
+);
+
+-- 테이블 Comment 설정 SQL - write_t
+ALTER TABLE write_t COMMENT '게시글';
+
+-- Foreign Key 설정 SQL - write_t(bno) -> board_t(bno)
+ALTER TABLE write_t
+    ADD CONSTRAINT FK_write_t_bno_board_t_bno FOREIGN KEY (bno)
+        REFERENCES board_t (bno) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - write_t(bno)
+-- ALTER TABLE write_t
+-- DROP FOREIGN KEY FK_write_t_bno_board_t_bno;
+
+-- Foreign Key 설정 SQL - write_t(mno) -> member_t(mno)
+ALTER TABLE write_t
+    ADD CONSTRAINT FK_write_t_mno_member_t_mno FOREIGN KEY (mno)
+        REFERENCES member_t (mno) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - write_t(mno)
+-- ALTER TABLE write_t
+-- DROP FOREIGN KEY FK_write_t_mno_member_t_mno;
+
+
+
+insert into pfolder_t (pfno, pfname) values (1, '기본');
+
+insert into tag_t (tno, ttag) values (101, '음식이 맛있어요');
+insert into tag_t (tno, ttag) values (102, '양이 많아요');
+insert into tag_t (tno, ttag) values (103, '가성비가 좋아요');
+insert into tag_t (tno, ttag) values (104, '음료가 맛있어요');
+insert into tag_t (tno, ttag) values (105, '디저트가 맛있어요');
+insert into tag_t (tno, ttag) values (106, '현지 맛에 가까워요');
+insert into tag_t (tno, ttag) values (107, '향신료가 강하지 않아요');
+insert into tag_t (tno, ttag) values (201, '매장이 넓어요');
+insert into tag_t (tno, ttag) values (202, '혼밥하기 좋아요');
+insert into tag_t (tno, ttag) values (203, '모임 장소로 좋아요');
+insert into tag_t (tno, ttag) values (204, '뷰가 좋아요');
+insert into tag_t (tno, ttag) values (205, '데이트 장소로 좋아요');
+insert into tag_t (tno, ttag) values (206, '집중하기 좋아요');
+insert into tag_t (tno, ttag) values (207, '혼술하기 좋아요');
+insert into tag_t (tno, ttag) values (301, '친절해요');
+insert into tag_t (tno, ttag) values (302, '매장이 청결해요');
+insert into tag_t (tno, ttag) values (303, '화장실이 깨끗해요');
+insert into tag_t (tno, ttag) values (304, '반려동물과 가기 좋아요');
+insert into tag_t (tno, ttag) values (305, '아이와 가기 좋아요');
+insert into tag_t (tno, ttag) values (306, '노키즈존이에요');
+insert into tag_t (tno, ttag) values (307, '직접 잘 구워줘요');
+
+insert into report_t (rpno, rptype) values (1, '음란성, 욕설 등 부적절한 내용');
+insert into report_t (rpno, rptype) values (2, '부적절한 홍보 또는 광고');
+insert into report_t (rpno, rptype) values (3, '개인정보 유출 위험');
+insert into report_t (rpno, rptype) values (4, '주문과 관련 없는 내용');
