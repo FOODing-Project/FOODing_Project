@@ -1,0 +1,9 @@
+준비물 : MySQl, MySQLWorkBench, IntelliJ
+
+1. MySQLWorkBench에서 DB 쿼리문 입력
+2. IntelliJ에서 파일 실행
+3. Tomcat 설정 - Local
+4. Tomcat Server - HTTP port 8081로 변경
+5. Tomcat Deployment - deploy 추가
+6. deploy - Artifact 선택 - FOODing:war exploded 선택
+7. deploy - Application context : /FOODing 으로 변경
